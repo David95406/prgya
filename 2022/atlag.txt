@@ -1,0 +1,13 @@
+Thu Apr 21 12:45:32 2022
+
+
+A(z) matek eredménye:
+----------------------------------------------
+Jelesek száma: 5 db
+Jók száma: 0 db
+Közepesek száma: 1 db
+Elégsegesek száma: 0 db
+Elégtelenek száma: 3
+Jegyei száma: 9
+Az átlaga: 3.4444444444444446 
+
