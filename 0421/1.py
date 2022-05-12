@@ -10,7 +10,7 @@ class focimeccs:
     hcsapat: str
     vcsapat: str
     
-    def __init__(self, sor: str) -> None:
+    def __init__(self, sor: str) -> None:   
         adatok = sor.strip().split(" ")
         self.fordulo = int(adatok[1])
         self.hfordulo = int(adatok[1])
