@@ -62,3 +62,10 @@ print()
 #splitlines; a szöveget feldarabolja sortores mentén, és a darabokat listába teszi
 szavakn = "Táska\nElem\nKabát\nSzék\nEgér\nSzekrény\n"
 print(szavak.splitlines())
+#round
+szam = 12.6
+print(round(szam))
+szam = 12.4
+print(round(szam))
+szam = 12.6
+print(round(szam))
