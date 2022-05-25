@@ -32,4 +32,3 @@ for i in f1:
 for sor in hsz:
     egyhsz = Haromszog(sor)
     print(egyhsz.haromszoge())
-
