@@ -1,3 +1,5 @@
+from math import *
+from xmlrpc.client import boolean
 # OSZTÁLY:
 hsz = []
 f1 = open("0519/haromszog.txt", "r")
@@ -22,9 +24,16 @@ class Haromszog:
             return "Nem alkotnak háromszöget."
     
     # osztály metódusa: egész számként visszaadja a háromszög kerületét
-    def kerulet(self)-> int            :
+    def kerulet(self):
         return self.a + self.b + self.c
+    
+    def derekszoge(self):
+        if pow(self.a,2) + pow(self.b,2) == pow(self.c,2):
+            return True
+        return False
 
+    def vane(self, szam) -> boolean:
+        return self.a == szam or self.b == szam or self.c == szam
 
 for i in f1:
     hsz.append(i.strip().split("*"))
@@ -32,3 +41,13 @@ for i in f1:
 for sor in hsz:
     egyhsz = Haromszog(sor)
     print(egyhsz.haromszoge())
+ 
+hszf = []#haromszogfelhasznalolistacucc   
+print("Addja meg a haromszog 3 oldalát.")
+for b in range(3):
+    hszf.append(int(input("$")))
+egyharomszog = Haromszog(hszf)
+print(egyharomszog.haromszoge())
+print(f"Ez a háromszög derékszögű? {egyharomszog.derekszoge()}")
+fszam = int(input("Addjom meg egy számot! "))
+print(f"A megadott szám szerepel? {egyharomszog.vane(fszam)}")
