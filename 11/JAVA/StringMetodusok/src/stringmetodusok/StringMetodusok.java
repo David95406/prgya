@@ -46,6 +46,21 @@ public class StringMetodusok {
         //végződik-e valamivel
         System.out.println(szoveg.endsWith(" "));
         
+        //kezdődik valamivel
+        System.out.println(szoveg.startsWith(" "));
+        
+        //keresett karakter(ek) első pozíciója 
+        System.out.println(szoveg.indexOf("t"));
+        System.out.println(szoveg.indexOf("egy"));
+        
+        //keresett karakter(ek) utolsó pozíciója
+        System.out.println(szoveg.lastIndexOf("t"));
+        
+        //string üres-e (boolean)
+        System.out.println(szoveg.isEmpty());
+        String ures = "";
+        System.out.println(ures.isEmpty());
+        
     }
     
 }

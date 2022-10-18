@@ -16,13 +16,20 @@ public class LKKT {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        int i;
         int a;
         int b;
+        int lkkt;
         Scanner scan = new Scanner(System.in);
         
         a = scan.nextInt();
         b = scan.nextInt();
+        lkkt = a;
         
+        while(lkkt % b != 0) {
+            lkkt += a;
+        }
+        System.out.println(lkkt);
         
     }
     
