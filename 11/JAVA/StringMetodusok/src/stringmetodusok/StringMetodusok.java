@@ -16,7 +16,7 @@ public class StringMetodusok {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String szoveg = "Ez egy szoveg. ";
+        String szoveg = "Ez egy tetszőleges szoveg. ";
         
         //szoveg hossza
         System.out.println(szoveg.length());
@@ -60,6 +60,17 @@ public class StringMetodusok {
         System.out.println(szoveg.isEmpty());
         String ures = "";
         System.out.println(ures.isEmpty());
+        
+        //lecseréli a szövegben az összes! megadott karakter(ek)et más karakter(ek)re
+        System.out.println(szoveg.replace("tetszőleges", "akármilyen"));
+        System.out.println(szoveg.replace("e", "b"));
+        
+        //lecseréli a szövegben az első! megadott karakter(ek)et más karakter(ek)re
+        System.out.println(szoveg.split(" "));
+        
+        //stringből substring kivétele
+        System.out.println(szoveg.substring(10));
+        System.out.println(szoveg.substring(3,6));
         
     }
     
