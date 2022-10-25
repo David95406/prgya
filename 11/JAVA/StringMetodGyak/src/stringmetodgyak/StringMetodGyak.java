@@ -16,6 +16,18 @@ public class StringMetodGyak {
         email = nev.toLowerCase().replace(" ", ".").concat(".2022i@bankitatabanya.hu");
         System.out.println(email);
         
+        
+        //doga ell
+        String ujszoveg = "Sok lúd disznót győz.";
+        String masikszoveg = "";
+        
+        System.out.println(ujszoveg.length());
+        System.out.println(ujszoveg.charAt(0));
+        System.out.println(ujszoveg.equals(masikszoveg));
+        System.out.println(ujszoveg.contains("lúd"));
+        System.out.println(szoveg.indexOf("lúd"));
+        System.out.println(ujszoveg.replace("lúd", "veréb"));
+        System.out.println(szoveg.substring(ujszoveg.indexOf(" ")));
     }
     
 }

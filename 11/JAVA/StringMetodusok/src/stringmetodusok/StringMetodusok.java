@@ -32,7 +32,7 @@ public class StringMetodusok {
         //sorvegi szokoz levagasa
         System.out.println(szoveg.trim().length());
         
-        //copmare
+        //compare
         System.out.println(szoveg.compareTo("asd"));
         System.out.println(szoveg.equals("asd"));
         System.out.println(szoveg.compareToIgnoreCase("ez egy szoveg. "));
@@ -72,6 +72,29 @@ public class StringMetodusok {
         System.out.println(szoveg.substring(10));
         System.out.println(szoveg.substring(3,6));
         
+        
+        
+        //tan
+        System.out.println("tan:\n\n\n\n");
+        
+        //compare
+        System.out.println(szoveg.compareTo("ezegy tetszoleges szoveg"));
+        //equals
+        System.out.println(szoveg.equals("ezegy tetszoleges szoveg"));
+        //compare ignorecase
+        System.out.println(szoveg.compareToIgnoreCase("ezegy tetszoleges szoveg"));
+        
+        System.out.println(szoveg.concat("Ez pedig egy").concat(" hozzafuzott."));
+        
+        System.out.println(szoveg.contains("s"));
+        
+        System.out.println(szoveg.startsWith("e"));
+        System.out.println(szoveg.endsWith(" "));
+        
+        System.out.println(szoveg.indexOf("t"));
+        System.out.println(szoveg.lastIndexOf("t"));
+        
+        System.out.println(szoveg.substring(3, 7));
     }
     
 }
