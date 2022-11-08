@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author user3
  */
-public class Metodusok1004 { //11!
+public class Metodusok1004 {
 
     public static float atlag(float a, float b) {
         return (a + b) / 2;
@@ -85,11 +85,9 @@ public class Metodusok1004 { //11!
         }
         
         //gula
-        System.out.println("A gula terulete: ");
         ga = bill.nextDouble();
-        System.out.println("A gula magassaga: ");
         m = bill.nextDouble();
-        System.out.println("A gula terfogata: " + gula(ga, m));
+        System.out.println(gula(ga, m));
     }
 
 }
