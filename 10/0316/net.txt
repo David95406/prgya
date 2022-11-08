@@ -1,0 +1,65 @@
+Microsoft Windows [Version 10.0.19043.1586]
+(c) Microsoft Corporation. Minden jog fenntartva.
+
+C:\Users\david>
+C:\Users\david>netsh
+netsh>wlan show profiles
+
+Profiles on interface Wi-Fi:
+
+Group policy profiles (read only)
+---------------------------------
+    <None>
+
+User profiles
+-------------
+    All User Profile     : BDPA
+    All User Profile     : eduroam
+    All User Profile     : Peca
+    All User Profile     : TP-LINK_F64D8C
+    All User Profile     : TP-DAVID
+    All User Profile     : TP_CSABA
+
+netsh>wlan show profiles name=TP-DAVID key=clear
+
+Profile TP-DAVID on interface Wi-Fi:
+=======================================================================
+
+Applied: All User Profile
+
+Profile information
+-------------------
+    Version                : 1
+    Type                   : Wireless LAN
+    Name                   : TP-DAVID
+    Control options        :
+        Connection mode    : Connect automatically
+        Network broadcast  : Connect only if this network is broadcasting
+        AutoSwitch         : Do not switch to other networks
+        MAC Randomization  : Disabled
+
+Connectivity settings
+---------------------
+    Number of SSIDs        : 1
+    SSID name              : "TP-DAVID"
+    Network type           : Infrastructure
+    Radio type             : [ Any Radio Type ]
+    Vendor extension          : Not present
+
+Security settings
+-----------------
+    Authentication         : WPA2-Personal
+    Cipher                 : TKIP
+    Security key           : Present
+    Key Content            : retekmacska2016
+
+Cost settings
+-------------
+    Cost                   : Unrestricted
+    Congested              : No
+    Approaching Data Limit : No
+    Over Data Limit        : No
+    Roaming                : No
+    Cost Source            : Default
+
+netsh>
