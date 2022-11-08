@@ -1,7 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package stringmetodgyak;
 
+/**
+ *
+ * @author user3
+ */
 public class StringMetodGyak {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
+        // TODO code application logic here
         String nev, szoveg, email;
         int i, nevKezd = 0, nevVeg = 0;
         szoveg = "A Diak osztaly objektuma (Vad Alma Korte) peldanyositas utjan jon letre.";

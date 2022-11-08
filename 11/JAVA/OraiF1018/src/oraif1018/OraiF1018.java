@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package oraif1018;
 
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author david
+ * @author user3
  */
 public class OraiF1018 {
 
@@ -43,10 +44,6 @@ public class OraiF1018 {
         if((classID.split("")[3].equals(classID.split("")[3].toUpperCase())) && (classID.split("")[4].equals(classID.split("")[4].toUpperCase()))) {
             System.out.println("Ez egy estis osztály");
         }
-        
     }
-        
-        
-}
     
-
+}

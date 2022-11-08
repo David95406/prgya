@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package elemialgoritmustanar;
 
@@ -8,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author david
+ * @author user3
  */
 public class ElemiAlgoritmusTanar {
 
@@ -85,7 +86,6 @@ public class ElemiAlgoritmusTanar {
             {
              System.out.println("Van a számok között 4-gyel osztható.");
             }
-    
     }
     
 }

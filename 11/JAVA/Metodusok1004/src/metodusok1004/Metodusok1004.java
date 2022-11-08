@@ -38,11 +38,16 @@ public class Metodusok1004 {
         return (int) (Math.random() * a) + b;
     }
 
+    public static double gula(double a, double m) {
+        return (a * a * m) / 3;
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner bill = new Scanner(System.in);
         float a, b;
-        int c, d;
+        int i, c, d;
+        double ga, m;
 
         fejlec();
 
@@ -68,6 +73,21 @@ public class Metodusok1004 {
             System.out.println(c + " = " + d);
         }
 
+        //tomb feltoltese random szamokkal
+        int[] szamok = new int[20];
+        for (i = 0; i < 20; i++) {
+            szamok[i] = random(c, d);
+        }
+
+        System.out.println("Lista:");
+        for (i = 0; i < szamok.length; i++) {
+            System.out.println(szamok[i] + "\t");
+        }
+        
+        //gula
+        ga = bill.nextDouble();
+        m = bill.nextDouble();
+        System.out.println(gula(ga, m));
     }
 
 }
