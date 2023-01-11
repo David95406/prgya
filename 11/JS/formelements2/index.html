@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <title>Form elements 2</title>
+
+    <script>
+      // Get the form and all of the radio buttons
+      var form = document.querySelector("form");
+      var radios = document.querySelectorAll('input[type=radio][name="season"]');
+    
+      // Listen for the submit event on the form
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        // Check if any of the radio buttons is checked
+        var checked = false;
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                checked = true;
+                break;
+            }
+        }
+        if (!checked) {
+            // If none of the radio buttons is checked, display an error message
+            alert("Error: Please select a season");
+        } else {
+            // If one of the radio buttons is checked, submit the form as usual
+            form.submit();
+        }
+      });
+    </script>
+
+</head>
+<body>
+    <form onsubmit="return(writeAnswer())">
+        <label for="cars">Choose a car:</label>
+        <select id="cars">
+          <option value="1" id="volvo"">Volvo</option>
+          <option value="2" id="saab">Saab</option>
+          <option value="3" id="fiat">Fiat</option>
+          <option value="4" id="audi">Audi</option>
+        </select>
+        <input type="submit" id="usercar">
+    </form>
+
+    <p id="printUA"></p>
+
+
+    <form onsubmit="return(seasons())">
+      <select id="evszakok">
+        <label for="season-spring">Spring:</label>
+        <input type="radio" id="season-spring" name="season" value="spring"><br>
+
+        <label for="season-summer">Summer:</label>
+        <input type="radio" id="season-summer" name="season" value="summer"><br>
+
+        <label for="season-fall">Fall:</label>
+        <input type="radio" id="season-fall" name="season" value="fall"><br>
+
+        <label for="season-winter">Winter:</label>
+        <input type="radio" id="season-winter" name="season" value="winter"><br><br>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+    
+    
+    
+
+      
+</body>
+</html>
