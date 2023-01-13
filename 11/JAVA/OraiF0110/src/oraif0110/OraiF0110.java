@@ -89,7 +89,7 @@ public class OraiF0110 {
         int end = 0;
         int maxStart = 0;
         int maxEnd = 0;
-        int width = 0;
+        int width;
 
         for (int i = 0; i < meres.size(); i++) {
             if (meres.get(i) == 0) {
