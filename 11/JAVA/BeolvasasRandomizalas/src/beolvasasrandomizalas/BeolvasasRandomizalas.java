@@ -7,18 +7,18 @@ public class BeolvasasRandomizalas {
         
         Scanner bill = new Scanner(System.in);
         //adat beolvasas billrol - egesz szam
-        System.out.print("Addjon meg egy számot: ");
+        System.out.print("Adjon meg egy számot: ");
         int szam;
         szam = bill.nextInt();
         System.out.println("A beolvasott érték: " + szam);
         //szam2
-        System.out.print("Addjon meg egy valos szamot: ");
+        System.out.print("Adjon meg egy valos szamot: ");
         Float vszam;
         vszam = bill.nextFloat();
         System.out.println("A beolvasott érték: " + vszam);
         
         //string olvas
-        System.out.print("Addja meg a nevet: ");
+        System.out.print("Adja meg a nevet: ");
         String nev;
         nev = bill.nextLine();
         System.out.println("A neve: " + nev);
