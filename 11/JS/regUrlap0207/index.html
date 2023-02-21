@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztációs űrlap</title>
+
+    <script>
+        function changeMessageColor() {
+            const colorSelect = document.querySelector("#color-select");
+            const selectedColor = colorSelect.value;
+
+            document.querySelector(".password-requirements").style.color = selectedColor;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>Regisztráció</h1>
+    <form>
+        <label for="color-select">Válasszon színt:</label>
+        <select id="color-select" onchange="changeMessageColor()">
+            <option value="red">Piros</option>
+            <option value="green">Zöld</option>
+            <option value="blue">Kék</option>
+            <option value="yellow">Sárga</option>
+            <option value="purple">Lila</option>
+        </select>
+        <br><br>
+        <label for="username">Felhasználónév:</label>
+        <input type="text" id="username" name="username">
+        <br><br>
+        <label for="password">Jelszó:</label>
+        <input type="password" id="password" name="password"
+            onfocus="document.querySelector('.password-requirements').style.display = 'block'"
+            onblur="document.querySelector('.password-requirements').style.display = 'none'">
+        <div class="password-requirements">
+            Jelszó tartalma legalább 6 karakterből álljon és tartalmazzon legalább 1 nagybetűt, 1 kisbetűt és 1 számot.
+        </div>
+        <br><br>
+        <input type="submit" value="Regisztráció">
+    </form>
+
+</body>
+</body>
+
+</html>

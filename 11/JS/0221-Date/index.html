@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0221</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <p id="maiNap"></p>
+
+
+    <form>
+        <label class="form-label">Esemény neve:</label>
+        <input type="text" id="esemenyNev"><br>
+        <label class="form-label">Esemény kezdő napja:</label>
+        <input type="date" id="eKezdoNap"><br>
+        <label class="form-label">Esemény befejező napja:</label>
+        <input type="date" id="eBefNap"><br>
+        <input type="button" onclick="writeEvent()" value="Submit" class="btn btn-primary">
+    </form>
+    <p id="pEvent"></p>
+
+
+    <script>
+        var dt = "2023-01-12-T12:33:50"
+        var date = new Date()
+        let napok = ["Vasárnap", "Hetfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"]
+
+        document.getElementById("demo").innerHTML = ("Mai dátum: " + date)
+        document.getElementById("maiNap").innerHTML = ("Mai nap: " + napok[date.getDay()])
+
+        function writeEvent() {
+            var nowDate = new Date()
+            esemenyNev = document.getElementById("esemenyNev").value
+            kezdoDate = new Date(document.getElementById("eKezdoNap").value)
+            befDate = new Date(document.getElementById("eBefNap").value)
+
+            console.log(kezdoDate)
+
+            if (kezdoDate > befDate || befDate < nowDate) {
+                document.getElementById("pEvent").innerHTML = ("Az esemény befejező napja nem lehet a kezdő/mai napnál korábban!")
+            } else {
+                document.getElementById("pEvent").innerHTML = ("A(z) " + esemenyNev + " nevű esemény létezhet.")
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
