@@ -43,7 +43,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        String decide;
+        decide = (20 > 10) ? "asd" : "nem";
+        System.out.println(decide);
     }
 
 }
