@@ -22,7 +22,6 @@ public class Dolgozat0301 {
         }
     }
 
-    
     public static void sorMinMaxKulonbseg(int[][] matrixTomb) {
         int min, max;
 
@@ -77,6 +76,27 @@ public class Dolgozat0301 {
         return returnVar;
     }
 
+    public static boolean isPrime(int num) {
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean containsPrime(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (isPrime(matrix[i][j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int[][] matrix = new int[4][4];
         randomMatrix(matrix);
@@ -91,10 +111,10 @@ public class Dolgozat0301 {
         //2. feladat
         System.out.println(((primeInMatrix(matrix)) ? "A mátrixban van prímszám." : "A mátrixban nincs prímszám."));
         System.out.println();
-        
+
         //3. feladat
         System.out.println((primePlaceMatrix(matrix)[0] != -1) ? "Az első prímszám a(z) " + (primePlaceMatrix(matrix)[0] + 1) + ".sor " + (primePlaceMatrix(matrix)[1] + 1) + ".eleme." : "A mátrixban nincs prímszám.");
-        
+
     }
 
 }
