@@ -11,45 +11,30 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <title>0228</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <form>
-                    <div class="form-group">
-                        <label>Jelszó</label>
-                        <div class="input-group" id="show_hide_password">
-                            <input class="form-control" type="password">
-                            <div class="input-group-addon">
-                                <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    
     <form>
         <div class="form-group">
             <label for="password-input">Jelszó</label>
             <input type="password" class="form-control" id="password-input" placeholder="Add meg a jelszavad" required
-                minlength="5" pattern="^(?=.*[A-Z])(?=.*[0-9]).*$">
+                onkeyup="passwdStr()">
+            <p id="passwdStrValue" style="font-size: small; color:red"></p>
+            <input type="checkbox" onclick="showPasswd()">Show Password
         </div>
         <div class="form-group">
             <label for="password-confirmation">Jelszó megerősítése</label>
             <input type="password" class="form-control" id="password-confirmation"
-                placeholder="Add meg újra a jelszavad" required minlength="5" pattern="^(?=.*[A-Z])(?=.*[0-9]).*$">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+                placeholder="Add meg újra a jelszavad" onkeyup="check2Passwd()">
+            <p id="check2PasswdResult" style="font-size: small; color: red"></p>
+        </div><br>
+        <button type="submit" class="btn btn-primary" onclick="emptyCheck()">Submit</button>
     </form>
 
     <script>
+        /*
+
         const form = document.querySelector('form');
         const passwordInput = document.getElementById('password-input');
         const passwordConfirmation = document.getElementById('password-confirmation');
@@ -58,11 +43,67 @@
             if (passwordInput.value !== passwordConfirmation.value) {
                 alert('A megadott jelszavak nem egyeznek meg!');
                 event.preventDefault();
-            } else if (passwordInput.value.length < 5 || !/(?=.*[A-Z])(?=.*[0-9]).*/.test(passwordInput.value)) {
-                alert('A jelszónak legalább 5 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy nagybetűt és egy számot!');
-                event.preventDefault();
+            } else if (passwordInput.value.length < 5 || !/(?=.*[A-Z])(?=.*[0-9]).*//*.test(passwordInput.value)) {
+    alert('A jelszónak legalább 5 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy nagybetűt és egy számot!');
+    event.preventDefault();
+}
+});
+*/
+
+        //0307 feladatok
+        function showPasswd() {
+            let passwd = document.getElementById('password-input')
+
+            if (passwd.type == "password") {
+                passwd.type = "text";
+            } else {
+                passwd.type = "password";
             }
-        });
+        }
+
+        function check2Passwd() {
+            let passwd1 = String(document.getElementById('password-input').value)
+            let passwd2 = String(document.getElementById('password-confirmation').value)
+
+            if (passwd1 != passwd2) {
+                document.getElementById('check2PasswdResult').innerHTML = "A két jelszó nem egyezik!"
+            }
+        }
+
+        function passwdStr() {
+            let pont = 0
+            let passwd = String(document.getElementById('password-input').value)
+
+
+            if (/[a-z]/.test(passwd)) {
+                pont++
+            }
+            if (/[A-Z]/.test(passwd)) {
+                pont++
+            }
+            if (/[0-9]/.test(passwd)) {
+                pont++
+            }
+            if (/[#@!&]/.test(passwd)) {
+                pont++
+            }
+
+            switch (pont) {
+                case (1): document.getElementById('passwdStrValue').innerHTML = "A jelszó gyenge"; break;
+                case (2): document.getElementById('passwdStrValue').innerHTML = "A jelszó közepes"; break;
+                case (3): document.getElementById('passwdStrValue').innerHTML = "A jelszó közepes"; break;
+                case (4): document.getElementById('passwdStrValue').innerHTML = "A jelszó erős"; break;
+                default: document.getElementById('passwdStrValue').innerHTML = "";
+            }
+        }
+
+        function emptyCheck() {
+            let passwd = String(document.getElementById('password-input').value)
+
+            if (passwd == "") {
+                alert("A jelszó nem lehet üres!")
+            }
+        }
     </script>
 
 </body>
