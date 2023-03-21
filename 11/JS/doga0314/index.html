@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="bootstrap.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Dolgozat 0314</title>
+</head>
+
+<body>
+
+    
+
+    <div class="container">
+        <div class="row justify-content: center">
+            <h1 class="h1">Útiköltség elszámolás</h1><br>
+            <form class="form">
+                <div>
+                    <h2 class="h2">Személyes adatok</h2>
+                    <input type="text" class="form-control" id="name-input" placeholder="Név"><br>
+                    <input type="text" class="form-control" id="city-input" placeholder="Város"><br><br>
+                </div>
+                <div>
+                    <h2 class="h2">Gépjármű- és üzemanyagadatok</h2>
+                    <input type="text" class="form-control" id="car-type-input"
+                        placeholder="Gépjármű gyártmánya, típusa"><br>
+
+                    <label class="form-label">Üzemanyag fajtája</label>
+                    <select name="fuel-type" id="fuel-type-input" class="form-select" oninput="ftLShow()">
+                        <option value="choose">Válasszon...</option>
+                        <option value="benzin">Benzin</option>
+                        <option value="gazolaj">Gázolaj</option>
+                    </select>
+
+                    <label class="form-label">Fogyasztási norma</label>
+                    <select name="fogyasztasiNorma" id="fogyasztasi_norma" class="form-select">
+                        <option value="default">Válasszon...</option>
+                        <option value="7.6">1000 cm3-ig 7,6 l/100km</option>
+                        <option value="8.6">1001-1500 cm3 között 8,6 l/100km</option>
+                        <option value="9.5">1501-2000 cm3 között 9,5 l/100km</option>
+                        <option value="11.4">2001-3000 cm3 között 11,4 l/100km</option>
+                        <option value="13.3">3001 cm3 fölött 13,3 l/100km</option>
+                    </select>
+
+                    <label class="form-label">Utazás dátuma</label>
+                    <input type="date" class="form-control" id="road-date-input" oninput="dateCheck()"
+                        value="2023-03-14"><br>
+
+                    <input type="text" class="form-control" id="fuel-price-result" disabled
+                        value="Üzemanyag egységára"><br><br>
+                </div>
+                <div class="col-md-4">
+
+                    <h2 class="h2">A megtett út adatai</h2>
+                    <input type="text" class="form-control" id="kiindulasi-hely" placeholder="Kiindulási hely"><br>
+                    <input type="text" class="form-control" id="uticel" placeholder="Úticél"><br>
+                    <input type="text" class="form-control" id="google-maps-result"
+                        placeholder="Összes megtett távolság Google Maps alapján" min="0"><br>
+                    <input type="button" class="btn btn-primary" id="distance-calc" onclick="priceCalc()"
+                        value="Ellenőrzés és számítás">
+
+
+                </div>
+                <div>
+                    <hr>
+                    <input type="text" class="form-control" id="utikoltseg" disabled value="Útiköltség: Ft">
+                    <input type="text" class="form-control" id="amortizacio" disabled value="Amortizáció: Ft">
+                    <input type="text" class="form-control" id="osszes-koltseg" disabled
+                        value="Összes elszámolandó költség: Ft">
+                </div><br>
+                <button type="submit" class="btn btn-primary" onclick="" disabled>Nyomtatás</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+        function ftLShow() {
+            let fuel_type = document.getElementById("fuel-type-input").value
+            console.log(fuel_type)
+            if (fuel_type == "benzin") {
+                document.getElementById("fuel-price-result").value = "605 Ft/L"
+            } else {
+                document.getElementById("fuel-price-result").value = "623 Ft/L"
+            }
+
+        }
+
+        function dateCheck() {
+            let dtNow = new Date()
+            let userDt = new Date(document.getElementById("road-date-input").value)
+
+
+            if (userDt > dtNow) {
+                alert("Nem adhat meg a mainál későbbi időpontot!")
+
+                if (dtNow.getMonth() >= 9) {
+                    document.getElementById("road-date-input").value = String(dtNow.getFullYear() + "-" + (dtNow.getMonth() + 1) + "-" + dtNow.getDate())
+                } else {
+                    document.getElementById("road-date-input").value = String(dtNow.getFullYear() + "-0" + (dtNow.getMonth() + 1) + "-" + dtNow.getDate())
+                }
+
+            }
+        }
+
+        function defaultDate() {
+            let dtNow = new Date()
+
+            if (dtNow.getMonth() <= 9) {
+                document.getElementById("road-date-input").value = String(dtNow.getFullYear() + "-0" + (dtNow.getMonth() + 1) + "-" + dtNow.getDate())
+            } else {
+                document.getElementById("road-date-input").value = String(dtNow.getFullYear() + "-" + (dtNow.getMonth() + 1) + "-" + dtNow.getDate())
+            }
+        }
+
+        function distanceCalc() {
+            let kezdo = document.getElementById("kiindulasi-hely").value
+            let cel = document.getElementById("uticel").value
+
+            if (kezdo == "" || cel == "") {
+                alert("A mezők nem lehetnek üresek!")
+            }
+        }
+
+        function priceCalc() {
+            //útiköltség = fogyasztási_norma * üzemanyagegységár * megtett_kilométer / 100
+            let fogyasztasiNormaList = document.getElementById("fogyasztasi_norma")
+            let fogyasztasi_norma = fogyasztasiNormaList.options[fogyasztasiNormaList.selectedIndex].value
+            let fuel_type = document.getElementById("fuel-type-input").value
+            let megtett_kilometer = document.getElementById("google-maps-result").value
+
+            if (fogyasztasiNormaList == "" || fuel_type == "" || megtett_kilometer == "") {
+                alert("Minden szükséges mezőt töltsön ki!")
+            }
+
+            if (fuel_type == "benzin") {
+                fuelPrice = 605
+            } else {
+                fuelPrice = 623
+            }
+
+
+            let utikoltseg = fogyasztasi_norma * fuelPrice * megtett_kilometer / 100
+            document.getElementById("utikoltseg").value = "Útiköltség: " + utikoltseg + " Ft"
+            document.getElementById("amortizacio").value = "Amortizáció: " + (megtett_kilometer * 15) + " Ft"
+            document.getElementById("osszes-koltseg").value = "Összes elszámolandó költség: " + (utikoltseg + (megtett_kilometer * 15)) + " Ft"
+        }
+    </script>
+</body>
+
+</html>
