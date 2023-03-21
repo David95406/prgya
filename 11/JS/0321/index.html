@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <title>Továbbképzés jelentkezési űrlap</title>
+</head>
+
+<body>
+
+    <div class="container" style="width: 50%">
+        <div class="row justify-content: center">
+            <div class="form-control">
+                <h1 class="h1" style="text-align: center;">Regisztráció</h1>
+            </div>
+            <div class="form-control">
+                <form class="form">
+                    <div>
+                        <h2 class="h2">Személyes adatok</h2>
+                        <input type="text" class="form-control" id="first-name-input" placeholder="Vezetéknév" required><br>
+                        <input type="text" class="form-control" id="last-name-input" placeholder="Keresztnév" required><br>
+                        <input type="email" class="form-control" id="email-input" placeholder="Email cím" required><br><br>
+                    
+                        <h2 class="h2">Skillek</h2>
+
+                        <div class="form-control">
+                            <label class="form-label" id="javaRangeLabel">Java (0)</label>
+                            <input type="range" class="form-range" value="0" min="0" max="10" step="1" id="javaRange"
+                                oninput="rangeOutput()">
+                        </div><br>
+
+                        <div class="form-control">
+                            <label class="form-label" id="phpRangeLabel">PHP (0)</label>
+                            <input type="range" class="form-range" value="0" min="0" max="10" step="1" id="phpRange"
+                                oninput="rangeOutput()">
+                        </div><br>
+
+                        <div class="form-control">
+                            <label class="form-label" id="jsRangeLabel">JavaScript (0)</label>
+                            <input type="range" class="form-range" value="0" min="0" max="10" step="1" id="jsRange"
+                                oninput="rangeOutput()">
+                        </div><br>
+
+                        <div class="form-control">
+                            <label class="form-label" id="htmlRangeLabel">HTML, CSS (0)</label>
+                            <input type="range" class="form-range" value="0" min="0" max="10" step="1" id="htmlRange"
+                                oninput="rangeOutput()">
+                        </div><br><br>
+
+                        <div class="form-control">
+                            <h2 class="h2">Időpont</h2>
+                            <select id="idopont" class="form-select" required oninput="timeCheck()">
+                                <option value="default">Válasszon...</option>
+                                <option value="2023-03-21">2023.03.25</option>
+                                <option value="2023-03-26">2023.03.26</option>
+                            </select>
+                        </div><br><br>
+
+                        <div class="form-control">
+                            <label>Javasolt szint</label>
+                            <input style="background-color: white;" type="text" class="form-control" id="level-result"
+                                disabled>
+                        </div><br>
+
+
+                        <button type="submit" class="btn btn-primary" id="submitButton" disabled>Beküldés</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function timeCheck() {
+            let dt = new Date()
+            let userDate = new Date(document.getElementById('idopont').value)
+
+            if (userDate != 'Invalid Date' && (dt.getMonth() == 2 && dt.getDate() == 21 && dt.getHours() == 10 && dt.getMinutes() <= 30)) { // && String(document.getElementById('level-result').value) != ""
+                document.getElementById('submitButton').disabled = false
+            } else {
+                document.getElementById('submitButton').disabled = true
+            }
+            
+        }
+
+        function rangeOutput() {
+            let javaValue = parseInt(document.getElementById('javaRange').value)
+            let phpValue = parseInt(document.getElementById('phpRange').value)
+            let jsValue = parseInt(document.getElementById('jsRange').value)
+            let htmlValue = parseInt(document.getElementById('htmlRange').value)
+
+            document.getElementById('javaRangeLabel').innerHTML = "Java (" + javaValue + ")"
+            document.getElementById('phpRangeLabel').innerHTML = "PHP (" + phpValue + ")"
+            document.getElementById('jsRangeLabel').innerHTML = "JavaScript (" + jsValue + ")"
+            document.getElementById('htmlRangeLabel').innerHTML = "HTML, CSS (" + htmlValue + ")"
+
+            let score = javaValue + phpValue + jsValue + htmlValue
+
+            if (score <= 20 && (javaValue <= 7 && phpValue <= 7 && jsValue <= 7 && htmlValue <= 7)) {
+                document.getElementById('level-result').value = 'Az ön szintje: középhaladó! Elért pontszáma: ' + score
+            } if (score > 20 && (javaValue >= 6 && phpValue >= 6 && jsValue >= 6 && htmlValue >= 6)) {
+                document.getElementById('level-result').value = 'Az ön szintje: haladó! Elért pontszáma: ' + score
+            } else {
+                document.getElementById('level-result').value = 'Szintfelmérés szükséges! Elért pontszáma: ' + score
+            }
+        }
+
+    </script>
+</body>
+
+</html>
