@@ -1,13 +1,15 @@
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
-    
+
     /*
     int szam = 1;
     sout((float) szam / 4) => float lesz az erdemeny
-    */
-    
+     */
     public static void randomMatrix(int[][] matrixTomb) {
         Random rand = new Random();
 
@@ -47,15 +49,54 @@ public class Main {
         decide = (20 > 10) ? "asd" : "nem";
         System.out.println(decide);
     }
-    
+
     public static boolean isPrime(int num) {
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
                 return false;
             }
         }
-        
+
         return true;
+    }
+
+    public static void fileOlv() {
+        RandomAccessFile raf;
+        String sor;
+        ArrayList<String> autok = new ArrayList<>();
+        int adatLen = 0;
+
+        try {
+            raf = new RandomAccessFile("adat.txt", "r");
+            int db = 0;
+            adatLen = Integer.parseInt(raf.readLine());
+            sor = raf.readLine();
+
+            while (sor != null) {
+                autok.add(sor);
+                db++;
+                sor = raf.readLine();
+            }
+
+            raf.close();
+        } catch (IOException e) {
+            System.out.println("hiba");
+        }
+    }
+
+    public static void fileIr() {
+        RandomAccessFile raf2;
+        String[] adatok = null;
+
+        try {
+            raf2 = new RandomAccessFile("autokWrite.txt", "rw");
+            for (String adat : adatok) {
+                raf2.writeBytes(adat + "\n");
+            }
+            raf2.close();
+        } catch (IOException e) {
+            System.out.println("hiba");
+        }
     }
 
 }
