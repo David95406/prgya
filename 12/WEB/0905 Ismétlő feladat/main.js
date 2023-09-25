@@ -2,7 +2,7 @@ const szamlak = []
 var minOsszegValue
 var maxOsszegValue
 
-function addBill() {    
+function addBill() {
     const szamla = {
         cimzett,
         datum,
@@ -13,8 +13,8 @@ function addBill() {
     let datumInput = document.getElementById("datum").value
     let osszegInput = document.getElementById("osszeg").value
 
-    szamla.cimzett = cimzettInput 
-    szamla.datum = datumInput 
+    szamla.cimzett = cimzettInput
+    szamla.datum = datumInput
     szamla.osszeg = osszegInput
 
     szamlak.push(szamla)
@@ -23,6 +23,7 @@ function addBill() {
 
     var sor = document.createElement('li')
     sor.classList.add('list-group-item')
+    sor.classList.add('billsx0')
     sor.innerText = cimzettInput + " " + datumInput + " " + osszegInput
     //sor.setAttribute("onclick", "this.remove()")       nem jo
     document.getElementById("osszegzes").appendChild(sor)
@@ -63,4 +64,19 @@ function addBill() {
 
     //torles gomb
 
+}
+
+function search_bills() {
+    let sor = document.getElementById('searchbar').value
+    sor = sor.toLowerCase();
+    let x = document.getElementsByClassName('bills');
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(sor)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "list-item";
+        }
+    }
 }

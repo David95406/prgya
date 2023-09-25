@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <title>SZEPT. 12. Könyvlista</title>
+</head>
+
+<body>
+    
+    <div class="btn btn-outline">
+        <input type="text" id="searchbar" class="form-control" name="search" placeholder="Könyv keresés...">
+        <button class="btn btn-outline-secondary" onclick="searchBooks()">Keresés</button>
+    </div>
+    
+    
+
+    <div class="container" style="width: 60%;">
+        <div class="form-group">
+            <div class="form-control">
+                <div class="row justify-content-center">
+                    <h1 class="card-title text-center">Könyvlista</h1>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control books" id="cim" placeholder="Cím">
+                        <input type="text" class="form-control books" id="szerzo" placeholder="Szerző">
+                        <input type="number" class="form-control books" id="rDate" placeholder="Kiadási év">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"
+                                onclick="addBook()">Hozzáadás</button>
+                        </div>
+                    </div>
+
+                    <ul id="osszegzes" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

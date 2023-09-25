@@ -9,12 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>SZEPT. 5. Ismétlő feladat</title>
 </head>
 
 <body>
+
+    <input id="searchbar" onkeyup="search_bills()" type="text" name="search" placeholder="Számla keresés..">
 
     <div class="container" style="width: 60%;">
         <div class="form-group">
@@ -22,9 +24,9 @@
                 <div class="row justify-content-center">
                     <h1 class="card-title text-center">Számlázó</h1>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="cimzett" placeholder="Címzett">
-                        <input type="date" class="form-control" id="datum">
-                        <input type="number" class="form-control" id="osszeg" placeholder="Összeg">
+                        <input type="text" class="form-control bills" id="cimzett" placeholder="Címzett">
+                        <input type="date" class="form-control bills" id="datum">
+                        <input type="number" class="form-control bills" id="osszeg" placeholder="Összeg">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button"
                                 onclick="addBill()">Hozzáadás</button>
