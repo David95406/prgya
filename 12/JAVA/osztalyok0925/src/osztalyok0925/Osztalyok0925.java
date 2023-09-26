@@ -16,15 +16,26 @@ public class Osztalyok0925 {
 
         System.out.println(lenaKutya.getFajta());
         lenaKutya.ugat();
-
+        
         try {
             raf = new RandomAccessFile("kutyak.txt", "r");
-            int db = 0;
+            String[] splitSor = raf.readLine().split(", ");
+            Kutya cezarKutya = new Kutya(splitSor[0], splitSor[1], splitSor[2], Integer.parseInt(splitSor[3]));
+            splitSor = raf.readLine().split(", ");
+            Kutya fickoKutya = new Kutya(splitSor[0], splitSor[1], splitSor[2], Integer.parseInt(splitSor[3]));
+            System.out.println(fickoKutya.getNev());
+        } catch (IOException e) {
+            System.out.println("hiba: " + e);
+        }
+        
+        
+        /*
+        try {
+            raf = new RandomAccessFile("kutyak.txt", "r");
             sor = raf.readLine();
 
             while (sor != null) {
                 adatok.add(sor);
-                db++;
                 sor = raf.readLine();
             }
             raf.close();
@@ -45,6 +56,7 @@ public class Osztalyok0925 {
         for (Kutya kutya : kutyak) {
             System.out.println(kutya.getNev());
         }
+*/
 
     }
 

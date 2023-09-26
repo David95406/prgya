@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Kerület, terület</title>
+
+    <script>
+
+        class Teglalap {
+            constructor(aOldal, bOldal) {
+                this.aOldal = aOldal
+                this.bOldal = bOldal
+            }
+
+            helyes() {
+                return this.aOldal > 0 && this.bOldal > 0
+            }
+
+            kerulet() {
+                return parseInt(2 * (this.aOldal + this.bOldal))
+            }
+
+            terulet() {
+                return parseInt(this.aOldal * this.bOldal)
+            }
+        }
+
+        function showResults() {
+            var ujTegla = new Teglalap(parseInt(document.getElementById("aOldal").value), parseInt(document.getElementById("bOldal").value))
+            if (ujTegla.helyes()) {
+                document.getElementById("kerulet").innerHTML = "Kerület: " + ujTegla.kerulet() + " cm"
+                document.getElementById("terulet").innerHTML = "Terület: " + ujTegla.terulet() + " <b>cm<sup>2</sup></b>"
+            } else {
+                document.getElementById("aOldal").value = null
+                document.getElementById("bOldal").value = null
+                alert("Pozitív számot adjon meg!")
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center flex-column align-items-center">
+            <h3 class="text-center mt-4">Kerület, terület</h3>
+            <form class="d-flex justify-content-center w-50 text-center flex-column my-4">
+                <input type="number" class="form-control mb-3" id="aOldal" min="1" placeholder="a oldal" required>
+                <input type="number" class="form-control mb-3" id="bOldal" min="1" placeholder="b oldal" required>
+                <button class="btn btn-primary" type="button" onclick="showResults()">Eredmény</button>
+            </form>
+
+            <div id="kerulet" class="text-center">Kerület: cm</div>
+            <div id="terulet" class="text-center">Terület: <b>cm<sup>2</sup></div></b>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -47,7 +47,7 @@ public class Matrix {
     
     public static int[][] transMatrix(int[][] matrix1, int[][] matrix2) {
         int[][] returnMatrix = new int[matrix1[0].length][matrix1.length];
-        for (int i = 0)
+        return returnMatrix;
     }
     
     public static void main(String[] args) {
