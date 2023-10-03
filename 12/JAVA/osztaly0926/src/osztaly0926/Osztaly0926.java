@@ -21,6 +21,7 @@ public class Osztaly0926 {
         } catch (IOException e) {
             System.out.println("hiba: " + e);
         }
+        
     }
     
 }
