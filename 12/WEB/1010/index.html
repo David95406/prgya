@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <title>Eemény figyelés anim</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="box" id="boxId"></div><br>
+        <button class="btn btn-primary" id="startButton">Animáció indítása</button><br><br>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" required>
+            <label class="form-label">Felhasználónév</label>
+        </div>
+
+        <div class="mb-3">
+            <input type="password" id="userPassword" class="form-control" onkeyup="passwordCheck()" required>
+            <label class="form-label">Jelszó</label>
+            <p style="font-size: small; color: red" id="printPasswordCheck"></p>
+        </div>
+    </div>
+
+    <script>
+        const box = document.getElementById("boxId")
+        const startButton = document.getElementById("startButton")
+
+        startButton.addEventListener("click", function () {
+            box.style.transform = "translateX(200px)"
+            //
+            box.addEventListener("transitionend", function(){
+                box.style.transform = "translateX(-0px)"
+            })
+        })
+
+        function passwordCheck() {
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
+            const print = document.getElementById("printPasswordCheck")
+            if (regex.test(document.getElementById("userPassword").value)) {
+                print.style.color = "green"
+                document.getElementById("printPasswordCheck").innerHTML = "A jelszó megfelel!"
+            } else {
+                print.style.color = "red"
+                document.getElementById("printPasswordCheck").innerHTML = "A jelszónak tartalmaznia kell kis- és nagybetűket, számokat, és legalább nyolc karakter hosszúnak kell lennie."
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
