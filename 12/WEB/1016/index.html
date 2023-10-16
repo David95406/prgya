@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Szövegváltoztató</title>
+</head>
+<body>
+    <p id="szoveg" onmousemove="colorChange()" onmouseleave="colorReset()">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <button id="gomb" onclick="textChange()">Kattints ide a változtatáshoz</button>
+
+    <script>
+        function textChange() {
+            var ujSzoveg = "Ez a szöveg megváltozott!";
+            document.getElementById("szoveg").innerHTML = ujSzoveg;
+        }
+
+        function colorChange() {
+            document.getElementById("szoveg").style.color = "red"
+        }
+
+        function colorReset() {
+            document.getElementById("szoveg").style.color = "black"
+        }
+    </script>
+</body>
+</html>
