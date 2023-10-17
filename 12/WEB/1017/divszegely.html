@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <title>Divszegely</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+            margin: 5px;
+            border: 5px solid;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row"></div>
+    </div>
+
+    <div class="box" id="boxId" ondblclick="changeColorDbClick()"></div><br>
+    <div class="box" id="boxId"></div><br>
+    <div class="box" id="boxId"></div><br>
+    <div class="box" id="boxId"></div><br>
+    <div class="box" id="boxId"></div><br>
+    <div class="box" id="boxId"></div><br>
+
+
+    <script>
+        const box = document.getElementById("boxId")
+
+        startButton.addEventListener("onclick", function () {
+            box.style.borderColor = "red"
+            alert("asd")
+        })
+    </script>
+</body>
+
+</html>
