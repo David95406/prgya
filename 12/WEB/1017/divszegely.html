@@ -13,36 +13,66 @@
         .box {
             width: 100px;
             height: 100px;
-            background-color: bisque;
+            background-color: cyan;
             margin: 5px;
             border: 5px solid;
             border-color: black;
+            display: inline-block;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="row"></div>
-    </div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
 
-    <div class="box" id="boxId" ondblclick="changeColorDbClick()"></div><br>
-    <div class="box" id="boxId"></div><br>
-    <div class="box" id="boxId"></div><br>
-    <div class="box" id="boxId"></div><br>
-    <div class="box" id="boxId"></div><br>
-    <div class="box" id="boxId"></div><br>
+    <script>
+        const boxs = document.getElementsByClassName("box")
+        
+        for (i = 0; i < boxs.length; i++){
+            boxs[i].addEventListener('click', function(){
+                this.style.borderColor = "red"
+            });
+
+            boxs[i].addEventListener('dblclick', function(){
+                this.style.borderColor = "blue"
+            });
+        }
+    </script>
+
+
+
+<!--
+    <div class="container">
+        <div class="row">
+            <div class="box" id="box"></div>
+            <div class="box" id="box"></div>
+            <div class="box" id="box"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="box" id="box" onclick="test()"></div>
+            <div class="box" id="box"></div>
+            <div class="box" id="box"></div>
+        </div>
+    </div>
 
 
     <script>
         const box = document.getElementById("boxId")
 
-        startButton.addEventListener("onclick", function () {
+        startButton.addEventListener("click", function () {
             box.style.borderColor = "red"
             alert("asd")
         })
     </script>
+-->
 </body>
 
 </html>
