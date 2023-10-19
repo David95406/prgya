@@ -1,6 +1,6 @@
-import java.util.Random;
-
 public class Main {
+
+
 
     public static void main(String[] args) {
         Film elso = new Film("Frakk", 120);
@@ -25,6 +25,6 @@ public class Main {
             }
         }
 
-        System.out.println("\n\nA leghoszabb film: \n" + filmLista[filmId - 1].toString());
+        System.out.println(filmLista[filmId - 1].toString());
     }
 }
