@@ -22,4 +22,8 @@ public class Hivasok {
                 "\nVege: " + vOra + ":" + vPerc + ":" + vMasodperc +
                 "\nTelefonszam: " + telefonszam;
     }
+
+    public double getTime() {
+        return ((vOra * 360 - kOra * 360) + (vPerc * 60 - kPerc * 60) + (vMasodperc - kMasodperc));
+    }
 }

@@ -20,7 +20,7 @@ public class Main {
                 sor = hivasokTxt.readLine();
             }
         } catch (IOException e) {
-            System.out.println("hiba");
+            System.err.println("hiba");
         }
 
         int i = 0;
@@ -38,6 +38,7 @@ public class Main {
         }
 
         System.out.println(hivasok.get(0));
+        System.out.println(hivasok.get(0).getTime());
 
 
     }
