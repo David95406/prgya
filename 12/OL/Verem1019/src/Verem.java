@@ -10,6 +10,7 @@ public class Verem {
         v = new int[n];
     }
 
+    //van itt baj
     public boolean add(int szam) {
         if (k != n) {
             v[k] = szam;
@@ -43,8 +44,26 @@ public class Verem {
         return -1;
     }
 
+    public void clear() {
+        this.k = 0;
+    }
+
     public boolean isContains(int szam) {
         return search(szam) != -1;
+    }
+
+    public int getI(int elem) {
+        if (elem - 1 >= k) {
+            return v[elem];
+        }
+        return -1;
+    }
+
+    public int getIVerem() {
+        if (!isEmpty()) {
+            return v[k];
+        }
+        return -1;
     }
 
     public String toString() {

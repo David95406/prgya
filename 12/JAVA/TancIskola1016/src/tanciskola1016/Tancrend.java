@@ -35,5 +35,11 @@ public class Tancrend {
         this.parLany = parLany;
     }
     
+    public String toString() {
+        return "Nev: " + nev + 
+                "\nFiu: " + parFiu + 
+                "\nLany: " + parLany;
+    }
+    
     
 }
