@@ -1,25 +1,32 @@
 package lift1016;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Lift1016 {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        Random rand = new Random();
 
         RandomAccessFile igenyTxt;
         String sor;
         ArrayList<String> adatok = new ArrayList<>();
+        int szintekSzama = 0;
+        int csapatokSzama = 0;
+        int igenyekSzama = 0;
 
         try {
             igenyTxt = new RandomAccessFile("igeny.txt", "r");
             int db = 0;
-            int szintekSzama = Integer.parseInt(igenyTxt.readLine());
-            int csapatokSzama = Integer.parseInt(igenyTxt.readLine());
-            int igenyekSzama = Integer.parseInt(igenyTxt.readLine());
+            szintekSzama = Integer.parseInt(igenyTxt.readLine());
+            csapatokSzama = Integer.parseInt(igenyTxt.readLine());
+            igenyekSzama = Integer.parseInt(igenyTxt.readLine());
             if (szintekSzama > 100 || csapatokSzama > 50 || igenyekSzama > 100) {
                 System.out.println("hiba");
             }
@@ -46,45 +53,32 @@ public class Lift1016 {
 
         //2
         System.out.println("2. feladat Kérem a lift indulási helyét!");
-        Integer induloSzint = scan.nextInt();
+        int induloSzint = 1;//scan.nextInt();
         igenyek.get(0).setInduloSzint(induloSzint);
         System.out.println(igenyek.get(0));
 
         //3
-        System.out.println("A lift a " + igenyek.get(igenyek.size() - 1).getCelSzint() + ". szinten áll az utolsó igény teljesítése után.");
+        System.out.println("A lift a " + igenyek.get(igenyek.size() - 1).getCelSzint() +
+                ". szinten áll az utolsó igény teljesítése után.");
 
-        //4 (nemjo)
-        int minSzintI = igenyek.get(0).getInduloSzint();
-        int maxSzintI = igenyek.get(0).getCelSzint();
-        int minSzintC = igenyek.get(0).getInduloSzint();
-        int maxSzintC = igenyek.get(0).getCelSzint();
-        for (int i = 1; i < igenyek.size(); i++) {
-            if (minSzintI < igenyek.get(i).getInduloSzint()) {
-                minSzintI = igenyek.get(i).getInduloSzint();
+        //4
+        int[] minMaxSzintek = new int[4];
+        for (Igeny igeny : igenyek) {
+            if (igeny.getInduloSzint() < minMaxSzintek[0]) {
+                minMaxSzintek[0] = igeny.getInduloSzint();
             }
-            if (minSzintC < igenyek.get(i).getCelSzint()) {
-                minSzintC = igenyek.get(i).getCelSzint();
+            if (igeny.getCelSzint() > minMaxSzintek[1]) {
+                minMaxSzintek[1] = igeny.getCelSzint();
             }
-            if (maxSzintI > igenyek.get(i).getInduloSzint()) {
-                maxSzintI = igenyek.get(i).getInduloSzint();
+            if (igeny.getInduloSzint() < minMaxSzintek[2]) {
+                minMaxSzintek[2] = igeny.getInduloSzint();
             }
-            if (maxSzintC > igenyek.get(i).getCelSzint()) {
-                maxSzintC = igenyek.get(i).getCelSzint();
+            if (igeny.getCelSzint() > minMaxSzintek[3]) {
+                minMaxSzintek[3] = igeny.getCelSzint();
             }
         }
-        int min, max;
-        if (minSzintI < minSzintC) {
-            min = minSzintI;
-        } else {
-            min = minSzintC;
-        }
-        if (maxSzintI > maxSzintC) {
-            max = maxSzintI;
-        } else {
-            max = maxSzintC;
-        }
-        System.out.println(min);
-        System.out.println(max);
+        System.out.println("A legalacsonyabb erintett szint: " + Arrays.stream(minMaxSzintek).min().getAsInt() +
+                "\nA legmagasabb erintett szint: " + Arrays.stream(minMaxSzintek).max().getAsInt());
 
         //5
         int felUtasokNelkul = 0;
@@ -104,18 +98,76 @@ public class Lift1016 {
         System.out.println("Utasokkal " + felUtasokkal + "szer ment fel a lift");
 
         //6
-        int minCsapat = igenyek.get(0).getCsapat();
-        int maxCsapat = igenyek.get(0).getCsapat();
-        for (int i = 1; i < igenyek.size(); i++) {
-            if (igenyek.get(i).getCsapat() < min) {
-                minCsapat = igenyek.get(i).getCsapat();
-            }
-            if (igenyek.get(i).getCsapat() > maxCsapat) {
-                maxCsapat = igenyek.get(i).getCsapat();
+        ArrayList<Integer> osszesCsapat = new ArrayList<Integer>();
+        for (int i = 0; i < csapatokSzama; i++) {
+            osszesCsapat.add(i + 1);
+        }
+        ArrayList<Integer> csapatok = new ArrayList<Integer>();
+        for (Igeny igeny : igenyek) {
+            if (!csapatok.contains(igeny.getCsapat())) {
+                csapatok.add(igeny.getCsapat());
             }
         }
-        System.out.println(minCsapat);
-        System.out.println(maxCsapat);
+        ArrayList<Integer> nemVettekIgenybeCsapatok = new ArrayList<Integer>(osszesCsapat);
+        nemVettekIgenybeCsapatok.removeAll(csapatok);
+        System.out.println("Csapatok akik nem vettek igenybe: " +
+                Arrays.toString(nemVettekIgenybeCsapatok.toArray()).replace("[", "").replace("]", ""));
+
+
+        //7
+        int randomCsapat = csapatok.get(rand.nextInt(csapatok.size()));
+        ArrayList<Igeny> randomCsapatIgeny = new ArrayList<Igeny>();
+        for (Igeny igeny : igenyek) {
+            if (igeny.getCsapat() == randomCsapat) {
+                randomCsapatIgeny.add(igeny);
+            }
+        }
+
+        int[] szabalytalansag = new int[2];
+        boolean szabalytalan = false;
+        for (int i = 0; i < randomCsapatIgeny.size() - 1; i++) {
+            if (randomCsapatIgeny.get(i).getCsapat() == randomCsapat &&
+                    randomCsapatIgeny.get(i).getCelSzint() != randomCsapatIgeny.get(i + 1).getInduloSzint()) {
+                szabalytalan = true;
+                szabalytalansag[0] = randomCsapatIgeny.get(i).getCelSzint();
+                szabalytalansag[1] = randomCsapatIgeny.get(i + 1).getInduloSzint();
+                break;
+            }
+        }
+        System.out.println(szabalytalan ? "A " + randomCsapat + ". csapat a "
+                + szabalytalansag[0] + ". szinttol gyalog ment a " + szabalytalansag[1] + ". szintig."
+                : "Nem bizonyítható szabálytalanság a " + randomCsapat + ". csapatnal.");
+
+
+        //8
+        System.out.println("\n\nAdatok bekerese:\n");
+        for (int i = 0; i < randomCsapatIgeny.size(); i++) {
+
+            System.out.println((i + 1) + ". igeny adatai: ");
+            System.out.println(randomCsapatIgeny.get(i));
+
+            System.out.print("Adja meg a(z) " + (i + 1) + ". igeny sikeresseget: ");
+            boolean sikeressegInput = scan.nextBoolean();
+            System.out.print("Adja meg a(z) " + (i + 1) + ". igeny feladatkodjat: ");
+            int feladatkodInput = scan.nextInt();
+
+
+            try (FileWriter writer = new FileWriter("blokkol.txt", true)){
+                String content = "Indulasi emelet: " + randomCsapatIgeny.get(i).getInduloSzint() +
+                        "\nCelemelet: " + randomCsapatIgeny.get(i).getCelSzint() +
+                        "\nFeladatkod: " + feladatkodInput +
+                        "\nBefejezes ideje: " +
+                        randomCsapatIgeny.get(i).getOra() + ":" + randomCsapatIgeny.get(i).getPerc() + ":" + randomCsapatIgeny.get(i).getMasodperc() +
+                        "\nSikeresseg: " + (sikeressegInput ? "befejezett" : "bejezetlen") +
+                        "\n----\n";
+                writer.write(content);
+            } catch (IOException e) {
+                System.out.println("HIBA");
+            }
+            System.out.println("Adatok sikeresen mentve!\n\n\n");
+
+        }
+
+
     }
-    
 }

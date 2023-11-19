@@ -79,7 +79,7 @@ public class Igeny {
     
     @Override
     public String toString() {
-        return ora + ":" + perc + ":" + masodperc 
+        return "Befejezes ideje: " + ora + ":" + perc + ":" + masodperc
                 + "\nCsapat: " + csapat + "\nIndulószint: " + induloSzint + "\nCélszint: " + celSzint;
     }
 }

@@ -29,10 +29,10 @@ public class Tancrend {
         this.parLany = parLany;
     }
 
-    public Tancrend(String nev, String parFiu, String parLany) {
-        this.nev = nev;
-        this.parFiu = parFiu;
-        this.parLany = parLany;
+    public Tancrend(String nev, String parLany, String parFiu) {
+        this.setNev(nev);
+        this.setParFiu(parFiu);
+        this.setParLany(parLany);
     }
     
     public String toString() {

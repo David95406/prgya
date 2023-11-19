@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="where" placeholder="Adja meg a várost">
+    <button type="button" id="varosGomb">Go</button>
+    <div id="temperature"></div>
+    <img id="zawg" width="20%" height="20%">
+
+    <div id="randomUser"></div>
+
+    <script>
+        const varosGomb = document.getElementById("varosGomb")
+
+        const dawgUrl = "https://random.dog/woof.json"
+        var ujXhr = new XMLHttpRequest()
+        ujXhr.open('GET', dawgUrl, true)
+
+        ujXhr.onload = function () {
+            if (ujXhr.status === 200) {
+                const dawgData = JSON.parse(ujXhr.responseText)
+                document.getElementById('zawg').src = dawgData.url
+            } else {
+                document.getElementById('zawg').textContent = "Nem sikerült betölteni a képet."
+            }
+        }
+
+        ujXhr.send()
+
+        varosGomb.addEventListener("click", function () {
+            const varos = document.getElementById("where").value
+
+            var apiUrl = "https://wttr.in/" + varos + "?format=%t"
+            var xhr = new XMLHttpRequest()
+            xhr.open('GET', apiUrl, true)
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var temperature = xhr.responseText
+                    document.getElementById('temperature').textContent = varos + " hőmérséklete: " + temperature
+                } else {
+                    document.getElementById('temperature').textContent = "Nem sikerült betölteni az adatokat: " + xhr.status
+                }
+            }
+
+            xhr.send()
+        })
+
+        const randomUserUrl = "https://randomuser.me/api/";
+        const randomUserXhr = new XMLHttpRequest();
+        randomUserXhr.open("GET", randomUserUrl, true);
+
+        randomUserXhr.onload = function () {
+            if (randomUserXhr.status === 200) {
+                const userData = JSON.parse(randomUserXhr.responseText);
+                document.getElementById('randomUser').textContent = JSON.stringify(userData, null, 2);
+            } else {
+                document.getElementById('randomUser').textContent = "Nem sikerült betölteni az adatokat: " + randomUserXhr.status;
+            }
+        };
+
+        randomUserXhr.send();
+
+    </script>
+</body>
+
+</html>

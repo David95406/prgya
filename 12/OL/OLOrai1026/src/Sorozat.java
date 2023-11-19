@@ -3,27 +3,42 @@ public class Sorozat {
     private int[] elemek;
 
     public Sorozat(int n) {
-        this.n = n;
-        this.k = 0;
+        setN(n);
+        setK(0);
     }
 
     public Sorozat(int[] elemek) {
-        this.n = elemek.length;
-        k = n;
-        this.elemek = new int[n];
-
-        for (int i = 0; i < elemek.length; i++) {
-            this.elemek[i] = elemek[i];
-
-        }
+        setN(elemek.length);
+        setK(this.getN());
+        setElemek(elemek);
     }
 
     public String toString() {
-        String str = "Elemek: ";
+        String text = "Elemek: ";
+
         for (int i = 0; i < k; i++) {
-            str += String.valueOf(elemek[i]) + " ";
+            text += String.valueOf(elemek[i]) + " ";
         }
-        return str;
+
+        return text;
+    }
+
+    public int kozosElemek(Sorozat masikSorozat) {
+        int kozos = 0;
+
+        if (getK() > 0 && masikSorozat.getK() > 0) {
+            for (int masikElem : masikSorozat.elemek) {
+                for (int elem : elemek) {
+                    if (masikElem == elem) {
+                        kozos++;
+                    }
+                }
+            }
+        } else {
+            return kozos;
+        }
+
+        return kozos;
     }
 
     public void add(int value) {
@@ -32,16 +47,37 @@ public class Sorozat {
         }
     }
 
-    public void remove() {
-        if (k > 0) {
-            k--;
+    public void remove(int index) {
+        if (index >= 0 && index <= getK()) {
+            int[] uj = new int[k--];
+            for (int i = 0; i < uj.length; i++) {
+                if (i != index) {
+                    uj[i] = elemek[i];
+                    System.out.println(elemek[i] + " cserelve " + uj[i]);
+                }
+            }
+            setElemek(uj);
+        }
+    }
+
+    public void removea(int index) {
+        if (index >= 0 && index <= getK() - 1) {
+            setK(getK() - 1);
+
+            final int[] regi = getElemek();
+            System.out.println(k);
+            System.out.println(k - index);
+            for (int i = index; i < k++; i++) {
+                System.out.println(elemek[i] + " cserelve " + elemek[i + 1]);
+                elemek[i] = regi[i + 1];
+            }
         }
     }
 
     public boolean isSzamtani() {
         if (k >= 3) {
             final int differencial = elemek[1] - elemek[0];
-            for (int i = 0; i < elemek.length - 1; i++) {
+            for (int i = 0; i < k - 1; i++) {
                 if (!(elemek[i + 1] == elemek[i] + differencial)) {
                     return false;
                 }
@@ -50,33 +86,6 @@ public class Sorozat {
             return false;
         }
         return true;
-    }
-
-    public int kozosElemek(Sorozat masikSorozat) {
-        int returnValue = 0;
-
-        if (k > 0 && masikSorozat.k > 0) {
-            for (int masikElem : masikSorozat.elemek) {
-                for (int elem : elemek) {
-                    if (masikElem == elem) {
-                        returnValue++;
-                    }
-                }
-            }
-        } else {
-            return returnValue;
-        }
-
-        return returnValue;
-    }
-
-    public void removeFromIndex(int index) {
-        if (index <= k) {
-            k--;
-            for (int i = index; i < elemek.length - index - 1; i++) {
-                elemek[i] = elemek[i + 1];
-            }
-        }
     }
 
     public int getN() {
@@ -96,6 +105,11 @@ public class Sorozat {
     }
 
     public int[] getElemek() {
+        int[] elemek = new int[k];
+
+        for (int i = 0; i < k; i++) {
+            elemek[i] = this.elemek[i];
+        }
         return elemek;
     }
 
