@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="data"></div>
+    
+    <script>
+        const url = "https://jsonplaceholder.typicode.com/users/1"
+        var ujXhr = new XMLHttpRequest()
+        ujXhr.open('GET', url, true)
+
+        ujXhr.onload = function () {
+            if (ujXhr.status === 200) {
+                document.getElementById('data').textContent = ujXhr.responseText
+            } else {
+                document.getElementById('data').textContent = "Nem sikerült betölteni az adatokat: " + ujXhr.status
+            }
+        }
+
+        ujXhr.send()
+    </script>
+</body>
+</html>

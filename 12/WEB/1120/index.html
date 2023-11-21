@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karácsonyi Visszaszámláló</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+  
+    .countdown {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .countdown h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+  
+    .countdown-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  
+    .countdown-item {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="countdown">
+    <h1>Karácsonyi Visszaszámláló</h1>
+    <div class="countdown-container">
+      <div class="countdown-item">
+        <span id="months"></span> hónap
+      </div>
+      <div class="countdown-item">
+        <span id="weeks"></span> hét
+      </div>
+      <div class="countdown-item">
+        <span id="days"></span> nap
+      </div>
+      <div class="countdown-item">
+        <span id="hours"></span> óra
+      </div>
+      <div class="countdown-item">
+        <span id="minutes"></span> perc
+      </div>
+    </div>
+  </div>
+
+  <div id="data"></div>
+
+  <script>
+    const countdownData = {
+      "months": 1.6100726825288403,
+      "weeks": 7.015316686507936,
+      "sleeps": 50,
+      "days": 49.10721679398148,
+      "hours": 1178.5732030555555,
+      "minutes": 70714.39218333333,
+      "seconds": 4242863.531
+    };
+  
+    function updateCountdown() {
+      const monthsElement = document.getElementById('months');
+      const weeksElement = document.getElementById('weeks');
+      const daysElement = document.getElementById('days');
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const secondsElement = document.getElementById('seconds');
+  
+      monthsElement.textContent = Math.floor(countdownData.months);
+      weeksElement.textContent = Math.floor(countdownData.weeks);
+      daysElement.textContent = Math.floor(countdownData.days);
+      hoursElement.textContent = Math.floor(countdownData.hours);
+      minutesElement.textContent = Math.floor(countdownData.minutes);
+      secondsElement.textContent = Math.floor(countdownData.seconds);
+    }
+  
+    updateCountdown(); // Az oldal betöltésekor frissítsük az értékeket
+  
+    // Visszaszámlálás frissítése másodpercenként
+    setInterval(updateCountdown, 1000);
+  </script>
+  
+</body>
+</html>
