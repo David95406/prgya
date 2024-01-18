@@ -18,8 +18,8 @@ public class Szamitogep {
 
     @Override
     public String toString() {
-        return "[" + getOsszesMemoria() + "MN, " + getOsszesMemoria() + ", " +
-                getSzabadMemoria() + "MB, " + isTurnOn() + "]";
+        return "[" + (int) getOsszesMemoria() + " MB, " +
+                (int) getSzabadMemoria() + " MB, " + isTurnOn() + "]";
     }
 
     public void programMasol(double size) throws ComputerMemoryException, IllegalArgumentException {
