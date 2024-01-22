@@ -15,7 +15,9 @@
 
         ujXhr.onload = function () {
             if (ujXhr.status === 200) {
-                document.getElementById('data').textContent = ujXhr.responseText
+                var user = JSON.parse(ujXhr.responseText)
+                document.getElementById('data').innerHTML = user.name + "<br></br>" + user.email + "<br></br>" +
+                user.address.street + ", " + user.address.suite + ", " + user.address.city + ", " + user.address.zipcode
             } else {
                 document.getElementById('data').textContent = "Nem sikerült betölteni az adatokat: " + ujXhr.status
             }
