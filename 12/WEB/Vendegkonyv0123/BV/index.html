@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vendégkönyv App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Vendégkönyv</h2>
+        <form id="message-form">
+            <div class="form-group">
+                <label for="name">Név</label>
+                <input type="text" class="form-control" id="name" placeholder="Add meg a neved">
+            </div>
+            <div class="form-group">
+                <label for="message">Üzenet</label>
+                <textarea class="form-control" id="message" placeholder="Írd ide az üzeneted"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Üzenet elküldése</button>
+        </form>
+        <ul id="messages-list" class="list-group mt-4">
+            <!-- Az üzenetek itt jelennek meg -->
+        </ul>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCXW633QMYEvNhRzS0aFGRp5CkRxGneDN4",
+            authDomain: "vendegkonyv-816c8.firebaseapp.com",
+            projectId: "vendegkonyv-816c8",
+            storageBucket: "vendegkonyv-816c8.appspot.com",
+            messagingSenderId: "462389693527",
+            appId: "1:462389693527:web:c762c80bc96d5e2b2fa712"
+        };
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        document.getElementById('message-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            console.log(name);
+
+            // adatbázis collection-ba írás
+            db.collection("vendegkonyv").add({
+                nev: name,
+                uzenet: message
+            })
+                // mi legyen, ha sikerült (opcionális)
+                .then((docRef) => {
+                    console.log(docRef.id)
+                })
+                // mi legyen, ha hiba van (opcionális, de erősen ajánlott)
+                .catch((error) => {
+                    console.error(error);
+                });
+        });
+
+        // adatbázis collection kiolvasása console-ra
+        db.collection("vendegkonyv").onSnapshot((querySnapshot) => {
+            const documents = querySnapshot.docs;
+            for (let i = 0; i < documents.length; i++) {
+                console.log(documents[i].data());
+            }
+        });
+
+        // adatbázis collection kiírása az oldalon
+        db.collection("vendegkonyv").onSnapshot((querySnapshot) => {
+            const messagesList = document.getElementById('messages-list');
+            messagesList.innerHTML = '';
+            const documents = querySnapshot.docs;
+            for (let i = 0; i < documents.length; i++) {
+                let msg = documents[i].data();
+                const li = document.createElement('li');
+                li.classList.add('list-group-item');
+                li.innerText = `${msg.nev}: ${msg.uzenet}`;
+                messagesList.appendChild(li);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
