@@ -34,6 +34,7 @@ class AutobuszTest {
         Assertions.assertTrue(B1.addUtas(21), "Hiba az addUtas metodusnal lehetseges db utas eseten!");
         Assertions.assertFalse(B2.addUtas(50), "Hiba az addUtas metodusnal nem lehetseges db utas eseten!");
         Assertions.assertFalse(B1.addUtas(5), "Hibas metodus ha a hozzaadott utasok meghaladjak a ferohelyet!");
+        Assertions.assertFalse(B1.addUtas(-10), "Hibas metodus ha a hozzadatott utasok szama negativ!");
     }
 
     @Test

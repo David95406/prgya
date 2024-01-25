@@ -7,11 +7,21 @@ public class Autobusz {
     private int foglaltHelyek;
 
     public boolean addUtas(int utasDb) {
-        if ((foglaltHelyek + utasDb) <= ferohely) {
+        if ((foglaltHelyek + utasDb) <= ferohely && utasDb >= 0) {
             foglaltHelyek += utasDb;
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Autobusz{" +
+                "ferohely=" + getFerohely() +
+                ", isCsuklos=" + isCsuklos() +
+                ", berlesAr=" + getBerlesAr() +
+                ", foglaltHelyek=" + getFoglaltHelyek() +
+                '}';
     }
 
     public boolean isDragabb(Autobusz B2) {
@@ -32,7 +42,9 @@ public class Autobusz {
     }
 
     public void setFerohely(int ferohely) {
-        this.ferohely = ferohely;
+        if (ferohely >= 0) {
+            this.ferohely = ferohely;
+        }
     }
 
     public boolean isCsuklos() {
@@ -56,6 +68,8 @@ public class Autobusz {
     }
 
     public void setFoglaltHelyek(int foglaltHelyek) {
-        this.foglaltHelyek = foglaltHelyek;
+        if (foglaltHelyek >= 0) {
+            this.foglaltHelyek = foglaltHelyek;
+        }
     }
 }
