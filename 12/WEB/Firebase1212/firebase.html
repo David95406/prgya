@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="registration-form">
+        <input type="text" id="email">
+        <input type="password" id="password">
+        <button type="submit">Regisztracio</button>
+    </form>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8uHDZckfRJZ19-LUDOlu4tAZMCqBrGnE",
+            authDomain: "myfirstauthproject-6af68.firebaseapp.com",
+            projectId: "myfirstauthproject-6af68",
+            storageBucket: "myfirstauthproject-6af68.appspot.com",
+            messagingSenderId: "521203715845",
+            appId: "1:521203715845:web:0380bdd0853678281db16c"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app) 
+
+        document.getElementById('registration-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+            .then(function (userCredential) {
+                // Sikeres regisztráció
+                var user = userCredential.user;
+                console.log('Regisztráció sikeres:', user);
+            })
+            .catch(function (error) {
+                // Hiba történt
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.error('Regisztrációs hiba:', errorCode,
+                    errorMessage);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
