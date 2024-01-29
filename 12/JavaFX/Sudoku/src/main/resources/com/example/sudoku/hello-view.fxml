@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="338.0" prefWidth="403.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+
+  <Label fx:id="welcomeText" />
+   <HBox prefHeight="26.0" prefWidth="137.0">
+      <children>
+          <Label text="Új fealdvány mérete: " />
+          <Button alignment="TOP_CENTER" onAction="#minusBtn" prefHeight="25.0" prefWidth="30.0" style="-fx-max-width: 30;" text="-" />
+         <TextField fx:id="txt" alignment="CENTER" prefHeight="26.0" prefWidth="29.0" text="4" />
+          <Button maxWidth="97.0" onAction="#plusBtn" prefHeight="25.0" prefWidth="30.0" text="+" textAlignment="CENTER" />
+      </children>
+   </HBox>
+</VBox>
