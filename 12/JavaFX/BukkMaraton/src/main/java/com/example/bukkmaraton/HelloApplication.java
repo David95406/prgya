@@ -1,4 +1,4 @@
-package com.example.sudoku;
+package com.example.bukkmaraton;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        Scene scene = new Scene(fxmlLoader.load(), 330, 175);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
