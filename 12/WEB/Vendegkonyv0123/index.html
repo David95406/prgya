@@ -27,7 +27,25 @@
         <button type="submit" class="btn btn-primary">Üzenet elküldése</button>
     </form>
 
-    <table id="dataTable">
+    <br><br>
+    <h1>Modositas</h1>
+    <form id="edit_form">
+        <div class="mb-3">
+            <label for="userId" class="form-label">Id</label>
+            <input type="text" name="id" id="userId" class="form-control" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Név modositasa</label>
+            <input type="text" class="form-control" id="editNameInput" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="messageInput" class="form-label">Üzenet modositasas</label>
+            <input type="text" class="form-control" id="editMessageInput" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary" id="editBtn" disabled>Szerkesztés</button>
+    </form>
+
+    <table class="table" id="dataTable">
         <tr>
             <th>Név</th>
             <th>Üzenet</th>
@@ -68,35 +86,46 @@
                 })
         });
 
-        //(venegkony!!)
-        //var fut = 0
         db.collection("vendegkonyv").onSnapshot((querySnapshot) => {
             const documents = querySnapshot.docs;
-            /*
-            if (fut != 0) {
-                for (let i = 0; i < documents.length; i++) {
-                    document.getElementById("").deleteRow(i)
-                }
-            }
-            */
+            const table = document.getElementById("dataTable");
+            table.innerHTML = ""; 
 
-            for (let i = 0; i < documents.length; i++) {
-                //const dataList = document.getElementById("dataList")
-                const adat = documents[i].data()
-                console.log(adat);
+            documents.forEach((doc) => {
+                const adat = doc.data();
+                const row = table.insertRow();
+                row.innerHTML = `<td>${adat.nev}</td><td>${adat.uzenet}</td>`;
+                
+                const editButton = document.createElement('button');
+                editButton.classList.add('btn', 'btn-secondary', 'btn-sm');
+                editButton.textContent = 'Szerkesztés';
+                editButton.addEventListener('click', () => {
+                    document.getElementById("userId").value = doc.id;
+                    document.getElementById("editNameInput").value = adat.nev;
+                    document.getElementById("editMessageInput").value = adat.uzenet;
 
-                var table = document.getElementById("dataTable");
-                var row = table.insertRow(0);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
+                    document.getElementById("editNameInput").disabled = false;
+                    document.getElementById("editMessageInput").disabled = false;
+                    document.getElementById("editBtn").disabled = false;
 
-                cell1.innerHTML = adat.nev;
-                cell2.innerHTML = adat.uzenet;
-                cell3.innerHTML = new Date(adat.ido);
-                //fut++;
-            }
-        })
+                    document.getElementById("edit_form").addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        const docRef = db.collection("vendegkonyv").doc(doc.id);
+                        docRef.update({
+                            nev: document.getElementById("editNameInput").value,
+                            uzenet: document.getElementById("editMessageInput").value,
+                            ido: new Date().toString() 
+                        }).then(() => {
+                            console.log("Update sikeres!")
+                        }).catch(error => {
+                            console.error(error)
+                        });
+                        alert("siker");
+                    });
+                });
+                row.insertCell().appendChild(editButton);
+            });
+        });
     </script>
 </body>
 
