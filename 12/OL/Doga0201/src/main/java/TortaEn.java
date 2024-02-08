@@ -1,4 +1,4 @@
-public class Torta {
+public class TortaEn {
     private int emeletekSzama;
     private boolean isKremes;
     private String alak;
@@ -21,13 +21,13 @@ public class Torta {
         return getEmeletekSzama() * 1000;
     }
 
-    public Torta(int emeletekSzama, boolean isKremes, String alak) throws IllegalArgumentException {
+    public TortaEn(int emeletekSzama, boolean isKremes, String alak) throws IllegalArgumentException {
         this.setEmeletekSzama(emeletekSzama);
         this.setKremes(isKremes);
         this.setAlak(alak);
     }
 
-    public Torta() throws IllegalArgumentException {
+    public TortaEn() throws IllegalArgumentException {
         this(1, false, "kör");
     }
 

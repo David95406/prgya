@@ -1,24 +1,21 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class TortaTest {
-    private static Torta t1;
-    private static Torta t2;
-    private static Torta t3;
-    private static Torta t4;
-    private static Torta t5;
+class TortaEnTest {
+    private static TortaEn t1;
+    private static TortaEn t2;
+    private static TortaEn t3;
+    private static TortaEn t4;
+    private static TortaEn t5;
 
     @BeforeAll
     static void beforeAll() {
-        t1 = new Torta(3, true, "negyzet");
-        t3 = new Torta (3, true, "kor");
-        t2 = new Torta();
-        t4 = new Torta(4, true, "vonal");
-        t5 = new Torta(-2, false, "habok");
+        t1 = new TortaEn(3, true, "negyzet");
+        t3 = new TortaEn(3, true, "kor");
+        t2 = new TortaEn();
+        t4 = new TortaEn(4, true, "vonal");
+        t5 = new TortaEn(-2, false, "habok");
     }
 
     /*
