@@ -4,20 +4,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="331.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="331.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bukkmaraton.HelloController">
    <children>
       <VBox prefHeight="409.0" prefWidth="230.0" translateX="5.0" translateY="10.0">
          <children>
             <HBox prefHeight="32.0" prefWidth="230.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="36.0" text="Táv: " />
-                  <ChoiceBox prefHeight="26.0" prefWidth="198.0" />
+                  <ComboBox fx:id="tavChoice" prefHeight="26.0" prefWidth="198.0" />
                </children>
             </HBox>
             <HBox prefHeight="45.0" prefWidth="230.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="154.0" text="Idő [óra:perc:mádoperc]:" />
-                  <TextField prefHeight="26.0" prefWidth="116.0">
+                  <TextField prefHeight="26.0" prefWidth="116.0" fx:id="idoInput">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
@@ -28,20 +28,20 @@
                   <HBox prefHeight="28.0" prefWidth="230.0">
                      <children>
                         <Label text="Átlagsebesség [km/h]: " />
-                        <Label />
+                        <Label fx:id="kmhAtlagsebesseg" />
                      </children>
                   </HBox>
                   <HBox prefHeight="25.0" prefWidth="230.0">
                      <children>
                         <Label text="Átlagsebesség: [m/s]: " />
-                        <Label />
+                        <Label fx:id="msAtlagsebesseg" />
                      </children>
                   </HBox>
                </children>
             </VBox>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Számol" translateX="15.0" translateY="5.0">
+      <Button fx:id="szamolButton" onMouseClicked="#calculate" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Számol" translateX="15.0" translateY="5.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets></Button>
