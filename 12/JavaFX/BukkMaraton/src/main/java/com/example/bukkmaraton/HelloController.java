@@ -17,21 +17,21 @@ public class HelloController {
     private Button szamolButton;
 
     //  v=s/t
+    private final int[] tavok = {16, 38, 54, 57, 94};
     @FXML
     private void initialize() {
         tavChoice.setItems(FXCollections.observableArrayList(
-                "Mini - 16km",
-                "Rövid - 38km",
-                "Pedelec - 54km",
-                "Közép - 57km",
-                "Hosszú - 94mk"
+                "Mini - " + tavok[0] + "km",
+                "Rövid - " + tavok[1] + "km",
+                "Pedelec - " + tavok[2] + "km",
+                "Közép - " + tavok[3] + "km",
+                "Hosszú - " + tavok[4] + "km"
         ));
-        tavChoice.getSelectionModel().select("Közép - 57km");
+        tavChoice.getSelectionModel().select("Közép - " + tavok[3] + "km");
     }
 
     @FXML
     private void calculate() {
-        int[] tavok = {16, 38, 54, 57, 94};
 
         int tav = tavok[tavChoice.getSelectionModel().getSelectedIndex()];
         String[] ido = idoInput.getText().split(":");
