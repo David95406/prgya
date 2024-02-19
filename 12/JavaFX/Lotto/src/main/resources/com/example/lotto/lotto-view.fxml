@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="250.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lotto.LottoController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label layoutX="161.0" layoutY="14.0" text="Lottó" />
+        <TextField fx:id="lottoSzam1" disable="true" layoutX="70.0" layoutY="40.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="lottoSzam2" disable="true" layoutX="110.0" layoutY="40.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="lottoSzam3" disable="true" layoutX="150.0" layoutY="40.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="lottoSzam4" disable="true" layoutX="190.0" layoutY="40.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="lottoSzam5" disable="true" layoutX="230.0" layoutY="40.0" prefHeight="30.0" prefWidth="30.0" />
+      <Label layoutX="138.0" layoutY="100.0" text="Sorsolt számok:" />
+        <TextField fx:id="userSzam1" layoutX="70.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="userSzam2" layoutX="110.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="userSzam3" layoutX="150.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="userSzam4" layoutX="190.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" />
+        <TextField fx:id="userSzam5" layoutX="230.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" />
+      <Button fx:id="sorsolasBtn" layoutX="145.0" layoutY="194.0" mnemonicParsing="false" onMouseClicked="#sorsolas" text="Sorsolás" />
+      <Label layoutX="147.0" layoutY="165.0" fx:id="eredmeny"/>
+    </children>
+</Pane>

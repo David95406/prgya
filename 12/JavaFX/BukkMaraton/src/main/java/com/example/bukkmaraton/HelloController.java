@@ -13,8 +13,6 @@ public class HelloController {
     private Label msAtlagsebesseg;
     @FXML
     private TextField idoInput;
-    @FXML
-    private Button szamolButton;
 
     //  v=s/t
     private final int[] tavok = {16, 38, 54, 57, 94};
