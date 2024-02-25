@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.szamologep.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+
+  <children>
+    <Pane prefHeight="369.0" prefWidth="419.0">
+      <children>
+        <TextField fx:id="output" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="157.0" />
+        <Button layoutX="16.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onZeroClick" prefHeight="25.0" prefWidth="28.0" text="0" />
+        <Button layoutX="15.0" layoutY="136.0" mnemonicParsing="false" onMouseClicked="#onOneClick" prefHeight="25.0" prefWidth="28.0" text="1" />
+        <Button layoutX="57.0" layoutY="136.0" mnemonicParsing="false" onMouseClicked="#onTwoClick" prefHeight="25.0" prefWidth="28.0" text="2" />
+        <Button layoutX="98.0" layoutY="136.0" mnemonicParsing="false" onMouseClicked="#onThreeClick" prefHeight="25.0" prefWidth="28.0" text="3" />
+        <Button layoutX="16.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#onFourClick" prefHeight="25.0" prefWidth="28.0" text="4" />
+        <Button layoutX="57.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#onFiveClick" prefHeight="25.0" prefWidth="28.0" text="5" />
+        <Button layoutX="98.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#onSixClick" prefHeight="25.0" prefWidth="28.0" text="6" />
+        <Button layoutX="16.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#onSevenClick" prefHeight="25.0" prefWidth="28.0" text="7" />
+        <Button layoutX="57.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#onEightClick" prefHeight="25.0" prefWidth="28.0" text="8" />
+        <Button layoutX="98.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#onNineClick" prefHeight="25.0" prefWidth="28.0" text="9" />
+        <Button layoutX="159.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#onPlusClick" text="+" fx:id="plusBtn" />
+        <Button layoutX="161.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onDivideClick" text="/"  fx:id="divideBtn" />
+        <Button layoutX="161.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#onMinusClick" text="-" fx:id="minusBtn" />
+        <Button layoutX="160.0" layoutY="136.0" mnemonicParsing="false" onMouseClicked="#onMultiplyClick" text="*" fx:id="multiplyBtn" />
+        <Button layoutX="58.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="=" onMouseClicked="#onEquals" />
+        <Button layoutX="98.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="AC" onMouseClicked="#onACClick"/>
+      </children>
+    </Pane>
+  </children>
+
+</VBox>
