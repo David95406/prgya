@@ -1,4 +1,5 @@
-Év: 2000
-Név: asd
-Sz/H: asd
-Ország: asd
+Év: 12330
+Név: 
+Sz/H: 
+Ország: 
+rszág: asd

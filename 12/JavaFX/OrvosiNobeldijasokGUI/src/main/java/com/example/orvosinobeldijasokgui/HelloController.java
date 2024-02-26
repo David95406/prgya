@@ -25,8 +25,8 @@ public class HelloController {
     }
 
     public void save() {
-        if (!(evInput.getText().equals("") && nevInput.getText().equals("") &&
-                szHInput.getText().equals("") && orszagInput.getText().equals(""))) {
+        if (!(evInput.getText().isEmpty() || nevInput.getText().isEmpty() ||
+                szHInput.getText().isEmpty() || orszagInput.getText().isEmpty())) {
             if (Integer.parseInt(evInput.getText()) > 1989) {
                 RandomAccessFile raf;
                 try {

@@ -2,9 +2,7 @@ package com.example.szamologep;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class HelloController {
     @FXML
@@ -12,6 +10,7 @@ public class HelloController {
     int firstNum = 0;
     int secondNum = 0;
     int operator = 0;
+    boolean isMinus = false;
 
     @FXML
     private TextField output;
@@ -76,18 +75,28 @@ public class HelloController {
 
     @FXML
     protected void onPlusClick() {
-        firstNum = Integer.parseInt(output.getText());
-        output.setText("");
-        operator = 1;
-        setOperators(true);
+        if (output.getText().equals("-")) {
+            output.setText("");
+            isMinus = false;
+        } else {
+            firstNum = Integer.parseInt(output.getText());
+            output.setText("");
+            operator = 1;
+            setOperators(true);
+        }
     }
 
     @FXML
     protected void onMinusClick() {
-        firstNum = Integer.parseInt(output.getText());
-        output.setText("");
-        operator = 2;
-        setOperators(true);
+        if (output.getText().isEmpty()) {
+            isMinus = true;
+            output.setText("-");
+        } else {
+            firstNum = isMinus ? (Integer.parseInt(output.getText()) * -1) : Integer.parseInt(output.getText());
+            output.setText("");
+            operator = 2;
+            setOperators(true);
+        }
     }
 
     @FXML
