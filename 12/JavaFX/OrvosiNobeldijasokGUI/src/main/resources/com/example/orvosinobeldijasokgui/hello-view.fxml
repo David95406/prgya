@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.orvosinobeldijasokgui.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Label layoutX="14.0" layoutY="15.0" text="Év:" />
+      <Label layoutX="14.0" layoutY="45.0" text="Név:" />
+      <Label layoutX="14.0" layoutY="75.0" text="Sz/H:" />
+      <Label layoutX="14.0" layoutY="105.0" text="Ország:" />
+      <TextField fx:id="evInput" layoutX="62.0" layoutY="11.0" onKeyReleased="#checkYear" prefHeight="25.0" prefWidth="46.0" />
+      <TextField fx:id="nevInput" layoutX="62.0" layoutY="41.0" />
+      <TextField fx:id="szHInput" layoutX="62.0" layoutY="71.0" prefHeight="25.0" prefWidth="40.0" />
+      <TextField fx:id="orszagInput" layoutX="62.0" layoutY="101.0" prefHeight="25.0" prefWidth="81.0" />
+      <Button fx:id="saveData" layoutX="74.0" layoutY="194.0" mnemonicParsing="false" onMouseClicked="#save" text="Adatok mentése" />
+      <Label fx:id="savingStatus" layoutX="74.0" layoutY="166.0" text="" />
+   </children>
+</Pane>
