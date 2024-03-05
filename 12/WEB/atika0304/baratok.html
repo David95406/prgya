@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Barátok</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPv3bf1hsRXaJGisobzDocPc4s5NuPBXk",
+            authDomain: "gyako-91595.firebaseapp.com",
+            projectId: "gyako-91595",
+            storageBucket: "gyako-91595.appspot.com",
+            messagingSenderId: "441704058194",
+            appId: "1:441704058194:web:a06935be96d9b603dc3e8b"
+        };
+        // Firebase inicializálása
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8" id="notes-list">
+                <h2>Barátok</h2>
+                <!-- A jegyzetek itt jelennek meg -->
+            </div>
+            <div class="col-md-4">
+                <h2>Új barát hozzáadása</h2>
+                <form id="note-form">
+                    <div class="form-group">
+                        <label for="note-title">Neve</label>
+                        <input type="text" class="form-control" id="friend-name" placeholder="Neve">
+                    </div>
+                    <div class="form-group">
+                        <label for="note-title">Kedvenc Étele</label>
+                        <input type="text" class="form-control" id="friend-food" placeholder="Kedvenc Étele">
+                    </div>
+                    <div class="form-group">
+                        <label for="note-title">Születésnapja</label>
+                        <input type="text" class="form-control" id="friend-birthday" placeholder="Születésnapja">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Barát hozzáadása</button>
+                </form>
+                <div id="modify">
+                    <!-- itt lesz a módosítás űrlap -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Új jegyzet hozzáadása
+        document.getElementById('note-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var name = document.getElementById('friend-name').value;
+            var food = document.getElementById('friend-food').value;
+            var birthday = document.getElementById('friend-birthday').value;
+
+            db.collection("baratok").add({
+                Nev: name,
+                KedvencEtel: food,
+                Szuletesnap: birthday
+            })
+                .then(function (docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                    document.getElementById('friend-name').value = '';
+                    document.getElementById('friend-food').value = '';
+                    document.getElementById('friend-birthday').value = '';
+                    loadNotes(); // Frissíti a jegyzetlistát az új jegyzettel
+                })
+                .catch(function (error) {
+                    console.error("Error adding document: ", error);
+                });
+        });
+
+        // Felugró ablak létrehozása és kezelése jegyzet módosításához
+        function editNote(noteId) {
+            db.collection("baratok").doc(noteId).get().then((doc) => {
+                if (doc.exists) {
+                    const note = doc.data();
+                    const editFormHtml = `
+                    <div id="editForm">
+                        <h3 class="mt-3">Módosítás</h3>
+                        <label for="edit-name">Név módosítása</label>
+                        <input type="text" class="form-control" id="edit-name" value="${note.Nev}">
+                        <label for="edit-food">Kedvenc Étel módosítása</label>
+                        <input type="text" class="form-control" id="edit-food" value="${note.KedvencEtel}">
+                        <label for="edit-birthday">Születésnap módositása</label>
+                        <input type="text" class="form-control" id="edit-birthday" value="${note.Szuletesnap}"><br>
+                        <button class="btn btn-info" onclick="closeEditForm()">Mégse</button>
+                        <button  class="btn btn-success" onclick="saveEdit('${doc.id}')">Mentés</button>
+                    </div>
+                `;
+                    document.getElementById('modify').innerHTML += editFormHtml;
+                }
+            });
+        }
+
+        // Módosítások mentése és felugró ablak bezárása
+        function saveEdit(noteId) {
+            const name = document.getElementById('edit-name').value;
+            const food = document.getElementById('edit-food').value;
+            const birthday = document.getElementById('edit-birthday').value;
+
+            db.collection("baratok").doc(noteId).update({
+                Nev: name,
+                KedvencEtel: food,
+                Szuletesnap: birthday
+            }).then(() => {
+                console.log("Document successfully updated!");
+                closeEditForm();
+                loadNotes(); // Frissíti a jegyzetlistát
+            }).catch((error) => {
+                console.error("Error updating document: ", error);
+            });
+        }
+
+        // Felugró űrlap bezárása
+        function closeEditForm() {
+            const editForm = document.getElementById('editForm');
+            if (editForm) {
+                editForm.remove();
+            }
+        }
+
+
+        // Jegyzetek betöltése
+        function loadNotes() {
+            var notesList = document.getElementById('notes-list');
+            notesList.innerHTML = '';
+            db.collection("baratok").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    var note = doc.data();
+                    var noteElement = document.createElement('div');
+                    noteElement.classList.add('card');
+                    noteElement.classList.add('mb-3');
+                    noteElement.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${note.Nev}</h5>
+                        <h5 class="card-text">${note.KedvencEtel}</h5>
+                        <h5 class="card-text">${note.Szuletesnap}</h5>
+                        <button class="btn btn-info" onclick="editNote('${doc.id}')">Módosítás</button>
+                        <button class="btn btn-danger" onclick="deleteNote('${doc.id}')">Törlés</button>
+                    </div>`;
+
+                    document.getElementById('notes-list').appendChild(noteElement);
+                });
+            });
+        }
+        function deleteNote(noteId) {
+            db.collection("baratok").doc(noteId).delete()
+            .then(() => {
+                console.log("Document successfully deleted!");
+                loadNotes();
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
+        }
+        // Jegyzetek betöltése az oldal betöltésekor
+        window.onload = function () {
+            loadNotes();
+        };
+    </script>
+
+
+
+</body>
+
+</html>

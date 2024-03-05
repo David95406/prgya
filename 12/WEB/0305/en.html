@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnvUS4p74aL0CkKBDL2Yn3UgIi7qur3zg",
+            authDomain: "vendegkonyv-78ca1.firebaseapp.com",
+            projectId: "vendegkonyv-78ca1",
+            storageBucket: "vendegkonyv-78ca1.appspot.com",
+            messagingSenderId: "642213650968",
+            appId: "1:642213650968:web:26824a66637efc7b40196d"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        loadBooks(0)
+            .catch((error) => {
+                console.log(error)
+            })
+
+        function loadBooks(index) {
+            var userAuthorInput = null
+            if (index == 8) {
+                userAuthorInput = document.getElementById("book-form").value
+            }
+            db.collection("books").onSnapshot((querySnapshot) => {
+                const documents = querySnapshot.docs
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data()
+                    switch (index) {
+                        case 0: console.log(data.title); break
+                        case 1: if (data.labels[2] == "magyar") console.log(data.title); break
+                        case 2: if (data.published < 2000) console.log(data.title); break
+                        case 3: if (data.author == "Benedek Elek") console.log(data); break
+                        case 4: if (!data.available) console.log(data.title); break
+                        case 5: if (data.published >= 1970 && data.published <= 1980) console.log(data.title); break
+                        case 6: if (data.published <= 1970 && data.labels[0] == "mese") console.log(data.title); break
+                        case 7: if (data.available && !data.labels[0] != "magyar") console.log(data.title); break
+                        case 8: if (data.author == userAuthorInput) console.log(data); break
+                        default: console.log("xd"); break
+                    };
+
+                })
+
+            })
+        }
+    </script>
+
+</body>
+
+</html>

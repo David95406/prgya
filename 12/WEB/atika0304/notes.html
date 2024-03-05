@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Jegyzetkezelő Alkalmazás</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1TDFv2E-VBBx3ey0EdwKANFV-QNYvkmk",
+            authDomain: "jegyzetkezelo-webalkalmazas.firebaseapp.com",
+            projectId: "jegyzetkezelo-webalkalmazas",
+            storageBucket: "jegyzetkezelo-webalkalmazas.appspot.com",
+            messagingSenderId: "1032692182101",
+            appId: "1:1032692182101:web:b5c854677eaf8456df78dc"
+        };
+        // Firebase inicializálása
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Keresés" id="searchBar">
+            </form>
+            <div class="col-md-8" id="notes-list">
+                <h2>Jegyzetek</h2>
+                <!-- A jegyzetek itt jelennek meg -->
+            </div>
+            <div class="col-md-4">
+                <h2>Új Jegyzet</h2>
+                <form id="note-form">
+                    <div class="form-group">
+                        <label for="note-title">Cím</label>
+                        <input type="text" class="form-control" id="note-title" placeholder="Cím">
+                    </div>
+                    <div class="form-group">
+                        <label for="note-content">Szöveg</label>
+                        <textarea class="form-control" id="note-content" rows="6"
+                            placeholder="Jegyzet szövege"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-status">Státusz</label>
+                        <select class="form-control" id="note-status">
+                            <option value="Fontos">Fontos</option>
+                            <option value="Későbbre halasztva">Későbbre halasztva</option>
+                            <option value="Továbbítani">Továbbítani</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Jegyzet hozzáadása</button>
+                </form>
+                <div id="modify">
+                    <!-- itt lesz a módosítás űrlap -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Új jegyzet hozzáadása
+        document.getElementById('note-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var title = document.getElementById('note-title').value;
+            var content = document.getElementById('note-content').value;
+            var status = document.getElementById('note-status').value;
+
+            db.collection("notes").add({
+                title: title,
+                content: content,
+                status: status
+            })
+                .then(function (docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                    document.getElementById('note-title').value = '';
+                    document.getElementById('note-content').value = '';
+                    document.getElementById('note-status').value = 'Fontos';
+                    loadNotes(); // Frissíti a jegyzetlistát az új jegyzettel
+                })
+                .catch(function (error) {
+                    console.error("Error adding document: ", error);
+                });
+        });
+
+        // Felugró ablak létrehozása és kezelése jegyzet módosításához
+        function editNote(noteId) {
+            db.collection("notes").doc(noteId).get().then((doc) => {
+                if (doc.exists) {
+                    const note = doc.data();
+                    const editFormHtml = `
+                    <div id="editForm">
+                        <h3 class="mt-3">Módosítás</h3>
+                        <label for="edit-title">Cím módosítása</label>
+                        <input type="text" class="form-control" id="edit-title" value="${note.cim}">
+                        <label for="edit-content">Szöveg módosítása</label>
+                        <textarea id="edit-content"  class="form-control">${note.tartalom}</textarea>
+                        <label for="edit-status">Státusz módosítása</label>
+                        <select id="edit-status" class="form-control">
+                            <option value="Fontos" ${note.status === 'Fontos' ? 'selected' : ''}>Fontos</option>
+                            <option value="Későbbre halasztva" ${note.status === 'Későbbre halasztva' ? 'selected' : ''}>Későbbre halasztva</option>
+                            <option value="Továbbítani" ${note.status === 'Továbbítani' ? 'selected' : ''}>Továbbítani</option>
+                        </select><br>
+                        <button class="btn btn-info" onclick="closeEditForm()">Mégse</button>
+                        <button  class="btn btn-success" onclick="saveEdit('${doc.id}')">Mentés</button>
+                    </div>
+                `;
+                    document.getElementById('modify').innerHTML += editFormHtml;
+                }
+            });
+        }
+
+        // Módosítások mentése és felugró ablak bezárása
+        function saveEdit(noteId) {
+            const title = document.getElementById('edit-title').value;
+            const content = document.getElementById('edit-content').value;
+            const status = document.getElementById('edit-status').value;
+
+            db.collection("notes").doc(noteId).update({
+                title: title,
+                content: content,
+                status: status
+            }).then(() => {
+                console.log("Document successfully updated!");
+                closeEditForm();
+                loadNotes(); // Frissíti a jegyzetlistát
+            }).catch((error) => {
+                console.error("Error updating document: ", error);
+            });
+        }
+
+        // Felugró űrlap bezárása
+        function closeEditForm() {
+            const editForm = document.getElementById('editForm');
+            if (editForm) {
+                editForm.remove();
+            }
+        }
+
+
+        // Jegyzetek betöltése
+        function loadNotes() {
+            var notesList = document.getElementById('notes-list');
+            notesList.innerHTML = '';
+            db.collection("jegyzetkezelo").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    var note = doc.data();
+                    var noteElement = document.createElement('div');
+                    noteElement.classList.add('card');
+                    noteElement.classList.add('mb-3');
+                    noteElement.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${note.cim}</h5>
+                        <p class="card-text">${note.tartalom}</p>
+                        <div class="d-flex justify-content-start">
+                            <select class="custom-select" style="width:auto;" onchange="updateStatus('${doc.id}', this.value)">
+                                <option value="Fontos" ${note.status === 'Fontos' ? 'selected' : ''}>Fontos</option>
+                                <option value="Későbbre halasztva" ${note.status === 'Későbbre halasztva' ? 'selected' : ''}>Későbbre halasztva</option>
+                                <option value="Továbbítani" ${note.status === 'Továbbítani' ? 'selected' : ''}>Továbbítani</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-info" onclick="editNote('${doc.id}')">Módosítás</button>
+                            <button class="btn btn-danger" onclick="deleteNote('${doc.id}')">Törlés</button>
+                        </div>
+                    </div>`;
+
+                    document.getElementById('notes-list').appendChild(noteElement);
+                });
+            });
+        }
+
+        function updateStatus(noteId, newStatus) {
+            db.collection("notes").doc(noteId).update({
+                status: newStatus
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+        }
+        function deleteNote(noteId) {
+            db.collection("notes").doc(noteId).delete()
+                .then(() => {
+                    console.log("Document successfully deleted!");
+                    loadNotes();
+                }).catch((error) => {
+                    console.error("Error removing document: ", error);
+                });
+        }
+
+
+        // Jegyzetek betöltése az oldal betöltésekor
+        window.onload = function () {
+            loadNotes();
+        };
+
+        const searchBar = document.getElementById("searchBar")
+        searchBar.addEventListener("keyup", function () {
+            const query = db.collection("jegyzetkezelo")
+            const searchInput = document.getElementById("searchBar")
+            query.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data()
+                    if (data.cim == searchInput.value) {
+                        console.log(doc.id)
+                    }
+                })
+            })
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Könyvtár </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-3">Könyvesbolt</h1>
+        <div class="row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Összes könyv</h5>
+                        <p id="card-text1"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">A magyar szerzők könyvei</h5>
+                        <p id="card-text2"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">2000 előtt kiadott könyvek</h5>
+                        <p id="card-text3"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Benedek Elek könyvei</h5>
+                        <p id="card-text4"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nem elérhető könyvek</h5>
+                        <p id="card-text5"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">1970-1980 között kiadott könyvek</h5>
+                        <p id="card-text6"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mese és 1970 előtt kiadott</h5>
+                        <p id="card-text7"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Készleten van és magyar</h5>
+                        <p id="card-text8"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="book-form">
+                            <div class="form-group">
+                                <label for="note-title">Szerző</label>
+                                <input type="text" class="form-control" id="author">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Lekérdezés</button>
+                        </form>
+                        <h5 class="card-title mt-3">Lekérdezett könyvek:</h5>
+                        <p id="card-text9"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnvUS4p74aL0CkKBDL2Yn3UgIi7qur3zg",
+            authDomain: "vendegkonyv-78ca1.firebaseapp.com",
+            projectId: "vendegkonyv-78ca1",
+            storageBucket: "vendegkonyv-78ca1.appspot.com",
+            messagingSenderId: "642213650968",
+            appId: "1:642213650968:web:26824a66637efc7b40196d"
+        };
+        // Firebase inicializálása
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        addEventListener("DOMContentLoaded", (event) => {
+            for (var i = 0; i < 7; i++) {
+                loadBooks(i)
+            }
+        });
+
+        const bookForm = document.getElementById("book-form")
+        bookForm.addEventListener("submit", function (event) {
+            event.preventDefault()
+            loadBooks(8)
+        })
+
+        function loadBooks(index) {
+            var userAuthorInput = null
+            if (index == 8) {
+                userAuthorInput = document.getElementById("author").value;
+            }
+            db.collection("books").onSnapshot((querySnapshot) => {
+                const documents = querySnapshot.docs
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data()
+                    document.getElementById("card-text9").innerHTML = ""
+                    switch (index) {
+                        case 0: document.getElementById("card-text1").innerHTML += data.title + "<br>"; break
+                        case 1: if (data.labels[2] == "magyar") document.getElementById("card-text2").innerHTML += data.title + "<br>"; break
+                        case 2: if (data.published < 2000) document.getElementById("card-text3").innerHTML += data.title + "<br>"; break
+                        case 3: if (data.author == "Benedek Elek") document.getElementById("card-text4").innerHTML += data.title + "<br>"; break
+                        case 4: if (!data.available) document.getElementById("card-text5").innerHTML += data.title + "<br>"; break
+                        case 5: if (data.published >= 1970 && data.published <= 1980) document.getElementById("card-text6").innerHTML += data.title + "<br>"; break
+                        case 6: if (data.published <= 1970 && data.labels[0] == "mese") document.getElementById("card-text7").innerHTML += data.title + "<br>"; break
+                        case 7: if (data.available && !data.labels[0] != "magyar") document.getElementById("card-text8").innerHTML += data.title + "<br>"; break
+                        case 8: if (data.author == userAuthorInput) document.getElementById("card-text9").innerHTML += data.title + "<br>"; break
+                        default: console.log("Baj"); break
+                    }
+            })
+
+        })
+        }
+    </script>
+</body>
+
+</html>

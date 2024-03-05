@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Jegyzetkezelő Webalkalmazás</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Jegyzetkezelő</h1>
+        <div class="row">
+            <div class="col-8">
+                <ul id="todo-list" class="list-group mt-4"></ul>
+            </div>
+            <div class="col-4">
+                <form id="jegyzetForm">
+                    <h4>Új jegyzet</h4>
+                    <div class="mb-3">
+                        <label for="cimInput" class="form-label">Jegyzet címe</label>
+                        <input type="text" class="form-control" id="cimInput" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-check-label" for="tartalomInput">Tartalom</label>
+                        <textarea id="tartalomInput" class="form-control"></textarea>
+                        <div class="mb-3">
+                            <div class="form-floating mt-3">
+                                <select class="form-select" id="statusInput" aria-label="Floating label select example"
+                                    required>
+                                    <option value="1" selected>Fontos</option>
+                                    <option value="2">Későbbre halasztva</option>
+                                    <option value=3">Továbbítani</option>
+                                </select>
+                                <label for="statusInput">Státusz</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Mentés</button>
+                </form>
+            </div>
+        </div>
+        <form id="deleteNote">
+            Törlés:<input type="text" id="noteId">
+            <button type="button">Törlés</button>
+        </form>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const statuszok = ["", "Fontos", "Későbbre halasztva", "Továbbítani"]
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1TDFv2E-VBBx3ey0EdwKANFV-QNYvkmk",
+            authDomain: "jegyzetkezelo-webalkalmazas.firebaseapp.com",
+            projectId: "jegyzetkezelo-webalkalmazas",
+            storageBucket: "jegyzetkezelo-webalkalmazas.appspot.com",
+            messagingSenderId: "1032692182101",
+            appId: "1:1032692182101:web:b5c854677eaf8456df78dc"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        loadNotes()
+        
+        const jegyzetForm = document.getElementById("jegyzetForm")
+        jegyzetForm.addEventListener("submit", function (event) {
+            event.preventDefault()
+            const cimInput = document.getElementById("cimInput")
+            const statusInput = document.getElementById("statusInput")
+            const tartalomInput = document.getElementById("tartalomInput")
+
+            var statusValue = statuszok[parseInt(statusInput)]
+            /*
+            switch (parseInt(statusInput.value)) {
+                case 1: statusValue = "Fontos"; break;
+                case 2: statusValue = "Későbbre halasztva"; break;
+                case 3: statusValue = "Továbbítani"; break;
+                default: break;
+            }
+            */
+
+            db.collection("jegyzetkezelo").add({
+                cim: cimInput.value,
+                status: statusValue,
+                tartalom: tartalomInput.value
+            })
+                .then((docRef) => {
+                    console.log(docRef.id)
+                })
+                .catch((error) => {
+                    console.error(error)
+                });
+
+                loadNotes()
+
+
+            //reset
+            cimInput.value = ""
+            statusInput.value = 1
+            tartalomInput.value = ""
+        })
+
+        /*
+        db.collection("jegyzetkezelo").doc("TayQZ7wzrbJCZR2MAR27").delete()
+
+        document.getElementById("deleteNote").addEventListener("submit", function (event) {
+            event.preventDefault()
+            console.log("asdasdsadasdasddsa")
+            const noteId = document.getElementById("noteId").value
+            db.collection("jegyzetkezelo").doc(noteId).delete()
+                .then(() => {
+                    console.log("sikeres torles")
+                })
+                .catch(() => {
+                    alert("xd")
+                })
+        })
+        */
+
+        function loadNotes() {
+            db.collection("jegyzetkezelo").onSnapshot((querySnapshot) => {
+                const documents = querySnapshot.docs;
+                let list = document.getElementById("note-list")
+                list.innerHTML = "";
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const li = document.createElement("li");
+                    console.log(doc.id)
+                    li.classList.add('list-group-item');
+                    li.classList.add('glassNavbar');
+                    li.classList.add('fs-5');
+                    li.innerHTML = `<h5>${data.cim}</h5>` + "\n"
+                        + `<p>${data.tartalom}</p>`
+                        + `<strong>${data.status}</strong>` + "\n" +
+                        `<button type="button" id="editBtn" class="btn btn-primary" id="editBtn">Szerkesztés</button>` +
+                        `<button type="button" id="deleteBtn" class="btn btn-danger">Törlés</button>`;
+                    list.appendChild(li);
+                })
+            })
+        }
+
+        /*
+        db.collection("jegyzetkezelo").onSnapshot((querySnapshot) => {
+            const documents = querySnapshot.docs;
+            let list = document.getElementById("note-list")
+            list.innerHTML = "";
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const li = document.createElement("li");
+                console.log(doc.id)
+                li.classList.add('list-group-item');
+                li.classList.add('glassNavbar');
+                //li.classList.add('text-black');
+                li.classList.add('fs-5');
+                //li.classList.add('mt-2');
+                li.innerHTML = `<h5>${data.cim}</h5>` + "\n"
+                    + `<p>${data.tartalom}</p>`
+                    + `<strong>${data.status}</strong>` + "\n" +
+                    `<button type="button" id="editBtn" class="btn btn-primary" id="editBtn">Szerkesztés</button>` +
+                    `<button type="button" id="deleteBtn" class="btn btn-danger">Törlés</button>`;
+                list.appendChild(li);
+                const deleteBtn = document.getElementById("deleteBtn")
+            })
+        })
+        */
+
+    </script>
+</body>
+
+</html>
