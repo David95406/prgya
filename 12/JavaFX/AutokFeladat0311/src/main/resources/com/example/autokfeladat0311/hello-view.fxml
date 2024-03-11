@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autokfeladat0311.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <TextField fx:id="markaInput" layoutX="65.0" layoutY="30.0" prefHeight="25.0" prefWidth="130.0" />
+    <TextField fx:id="tipusInput" layoutX="65.0" layoutY="60.0" prefHeight="25.0" prefWidth="130.0" />
+    <TextField fx:id="hengerurtartalomInput" layoutX="150.0" layoutY="90.0" prefHeight="25.0" prefWidth="45.0" />
+    <TextField fx:id="szallithatoSzemelyekInput" layoutX="150.0" layoutY="120.0" prefHeight="25.0" prefWidth="45.0" />
+    <TextField fx:id="rendszamInput" layoutX="85.0" layoutY="150.0" prefHeight="25.0" prefWidth="110.0" />
+
+    <Label layoutX="20.0" layoutY="30.0" text="Márka">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <Label layoutX="20.0" layoutY="60.0" text="Típus">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <Label layoutX="20.0" layoutY="90.0" text="Hengerűrtartalom">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <Label layoutX="20.0" layoutY="120.0" text="Szállítható személyek">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <Label layoutX="20.0" layoutY="150.0" text="Rendszám">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+
+    <Label fx:id="savingStatus" layoutX="182.0" layoutY="181.0">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <Button layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#addAuto" text="Hozzáadás">
+        <font>
+          <Font size="13.0" />
+        </font>
+    </Button>
+   <Label fx:id="printAutok" layoutX="21.0" layoutY="243.0" />
+
+</Pane>
