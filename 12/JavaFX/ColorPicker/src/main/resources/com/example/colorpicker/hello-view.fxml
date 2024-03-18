@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.colorpicker.HelloController">
+   <children>
+      <ColorPicker fx:id="colorPicker" layoutX="14.0" layoutY="14.0" onAction="#changeColor" />
+      <Ellipse fx:id="ellipszis" fill="DODGERBLUE" layoutX="284.0" layoutY="154.0" radiusX="50.0" radiusY="50.0" stroke="BLACK" strokeType="INSIDE" />
+      <Slider fx:id="horizontalSlider" layoutX="227.0" layoutY="263.0" majorTickUnit="150.0" minorTickCount="20" onMouseDragged="#changeHorizontal" value="1.0" />
+      <Slider fx:id="verticalSlider" layoutX="426.0" layoutY="84.0" onMouseDragged="#changeVertical" orientation="VERTICAL" value="1.0" />
+      <ImageView fx:id="patricStar" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="https://pbs.twimg.com/media/Fqt5gpeWYBcSrGE?format=jpg&amp;name=medium" />
+         </image>
+      </ImageView>
+      <Button layoutX="88.0" layoutY="204.0" mnemonicParsing="false" onMousePressed="#showBelai" text="Bela" />
+   </children>
+</Pane>

@@ -48,5 +48,5 @@ public class HelloController {
             printAutok.setText(printAutok.getText() + egyAuto.toString());
         }
     }
-    
+
 }

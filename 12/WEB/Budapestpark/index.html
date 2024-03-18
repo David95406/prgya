@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Budapest Park jegy nyilvántartás</title>
+</head>
+
+<body>
+    <h1>Budapest Park jegy nyilvántartás</h1>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA60Qle2nqqGic-QbnppazWhe_Ai0_BPJI",
+            authDomain: "budapestpark-84b9a.firebaseapp.com",
+            projectId: "budapestpark-84b9a",
+            storageBucket: "budapestpark-84b9a.appspot.com",
+            messagingSenderId: "586127543408",
+            appId: "1:586127543408:web:dabb4b84412b3f5ef338b5"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const query = db.collection("concerts").where('concertId', '==', '4')
+        query.get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.data())
+                })
+            })
+            .catch((error) => {
+                console.log("baj:", error)
+            })
+
+        loadCollections()
+
+        function regi(collectionName) {
+            db.collection(collectionName).onSnapshot((querySnapshot) => {
+                const documents = querySnapshot.docs
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    console.log(data)
+                })
+            })
+        }
+
+        function loadCollections() {
+            db.collection("participants").get()
+                .then(function (participantsSnapshot) {
+                    participantsSnapshot.forEach(function (participantDoc) {
+                        const participantData = participantDoc.data()
+                        var userId = participantData.userId
+                        var concertId = participantData.concertId
+                        var ticketType = participantData.ticketType
+
+
+                        db.collection("users").doc(userId).get()
+                            .then((userDoc) => {
+                                const userData = userDoc.data()
+                                var userName = userData.name
+                                console.log(userName)
+
+
+                                db.collection("concerts").doc(userId).get()
+                                    .then((concertDoc) => {
+                                        const concertData = concertDoc.data()
+                                        console.log(concertData.artist)
+                                    })
+                            })
+                            .catch((error) => {
+                                console.log("hiba: ", error)
+                            })
+                    })
+                })
+                .catch(function (error) {
+                    console.log("Hiba loadParticipants: ", error)
+                })
+        }
+
+    </script>
+</body>
+
+</html>
