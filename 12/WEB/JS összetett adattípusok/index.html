@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS összetett adattípusok</title>
+</head>
+
+<body>
+
+
+    <script>
+        //map
+        let map = new Map();
+        map.set('kulcs1', 'érték1');
+        map.set('kulcs2', 'érték2');
+        console.log(map.get('kulcs1')); // 'érték1'
+
+
+        //set
+        let set = new Set();
+        set.add('alma');
+        set.add('banán');
+        set.add('alma'); // Az 'alma' már szerepel a készletben, így nem lesz hozzáadva újra.
+        console.log(set.has('alma')); // true
+        console.log(set.size)
+        set.forEach((adat) => {
+            console.log(adat)
+        })
+        console.log("\n\n\n")
+
+        //1. feladat
+        /*
+        var autokatalogus = new Set()
+
+        class Auto {
+            constructor(marka, modell, gyartasiEv, szin) {
+                this.marka = marka;
+                this.modell = modell;
+                this.gyartasiEv = gyartasiEv;
+                this.szin = szin;
+            };
+            
+            toString() {
+                return this.marka + " " + this.modell + "(" + this.gyartasiEv + ") - " + this.szin;
+            }
+        }
+        autokatalogus.add(new Auto("Toyota", "Corolla", 2020, "kék"))
+        autokatalogus.add(new Auto("Seat", "Leon", 2010, "piros"))
+        autokatalogus.add(new Auto("Volkswagen", "Tiguan", 2018, "szürke"))
+
+        autokatalogus.forEach((egyAuto) => {
+            console.log(egyAuto.toString())
+        })
+        */
+        //1. feladat
+        var autokatalogus = []
+
+        function addAuto(marka, modell, gyartasiEv, szin) {
+            const ujAuto = {
+                marka: marka,
+                modell: modell,
+                gyartasiEv: gyartasiEv,
+                szin: szin
+            }
+            autokatalogus.push(ujAuto)
+        }
+
+        function printAutok() {
+            autokatalogus.forEach((egyAuto) => {
+                console.log(egyAuto.marka + " " + egyAuto.modell + " (" + egyAuto.gyartasiEv + ") - " + egyAuto.szin)
+            })
+        }
+
+        addAuto("Toyota", "Corolla", 2020, "kék")
+        addAuto("Seat", "Leon", 2010, "piros")
+        addAuto("Volkswagen", "Tiguan", 2018, "szürke")
+        printAutok()
+        console.log("\n\n\n")
+
+        //2. feladat
+        var felhasznalonevek = new Set()
+
+        function felhasznaloNevHozzaadasa(felhasznalonev) {
+            if (felhasznalonevek.has(felhasznalonev)) {
+                return false;
+            }
+            felhasznalonevek.add(felhasznalonev)
+            return true
+        }
+
+        function felhasznaloNevekListazasa() {
+            felhasznalonevek.forEach((egyFelhasznalonev) => {
+                console.log(egyFelhasznalonev)
+            })
+        }
+
+        felhasznaloNevHozzaadasa("Leon")
+        felhasznaloNevHozzaadasa("Atika")
+        felhasznaloNevHozzaadasa("Miklos")
+        felhasznaloNevHozzaadasa("Miklos")
+        felhasznaloNevekListazasa()
+        console.log("\n\n\n")
+
+        //3. feladat
+        var varosok = new Map()
+
+        function addVaros(varosnev, lakossag) {
+            varosok.set(varosnev, lakossag)
+        }
+
+        function removeVaros(varosnev) {
+            if (varosok.has(varosnev)) {
+                varosok.delete(varosnev)
+            }
+        }
+
+        function printVarosok() {
+            for (const [varosnev, lakossag] of varosok.entries()) {
+                console.log(varosnev + ": " + lakossag + " fő")
+            }
+        }
+
+        function legnepesebbVaros() {
+            var legnepesebbVaros = varosok.entries().next().value //elso eleme a mapnek
+            for (const [varosnev, lakossag] of varosok.entries()) {
+                if (lakossag > legnepesebbVaros[1]) {
+                    legnepesebbVaros = [varosnev, lakossag]
+                }
+            }
+            console.log("A legnépesebb város: " + legnepesebbVaros[0] +
+                ",\nlakossága: " + legnepesebbVaros[1] + "fő")
+        }
+
+        addVaros("Vérteskethely", 560)
+        addVaros("Bakonysárkány", 980)
+        addVaros("Oroszlány", 20000)
+        printVarosok()
+        legnepesebbVaros()
+        addVaros("Bakonysárkány", 977)
+    </script>
+
+</body>
+
+</html>
