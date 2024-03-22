@@ -37,7 +37,7 @@ public class Szoveg implements Feldolgozo {
         return atalakit(Feldolgozo.SORHOSSZ);
     }
 
-    void tisztit() {
+    public void tisztit() {
         setValue(getValue().trim().toLowerCase());
     }
 }
