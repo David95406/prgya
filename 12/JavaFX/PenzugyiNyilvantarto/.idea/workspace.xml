@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f18c3ae2-f10e-4084-97c1-bceb534659de" name="Changes" comment="" />
+    <list default="true" id="211713dd-bf7f-43c6-9e7d-6fd5e57eeb42" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,17 +18,12 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -39,10 +34,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2ctYB8cdSseSfWAKxMVXZRSU3aA" />
+  <component name="ProjectId" id="2eAen2hwPlIsOaQnWDJsEIgVypQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,18 +44,17 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/User1/Documents/GitHub/prgya/12/JavaFX/OrvosiNobeldijasokGUI",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "last_opened_file_path": "C:/Users/User1/Documents/GitHub/prgya/12/JavaFX/OrvosiNobeldijasokGUI"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f18c3ae2-f10e-4084-97c1-bceb534659de" name="Changes" comment="" />
-      <created>1708932205476</created>
+      <changelist id="211713dd-bf7f-43c6-9e7d-6fd5e57eeb42" name="Changes" comment="" />
+      <created>1711351975728</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1708932205476</updated>
+      <updated>1711351975728</updated>
     </task>
     <servers />
   </component>
