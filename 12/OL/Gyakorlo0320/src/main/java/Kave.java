@@ -6,13 +6,13 @@ public class Kave implements Arlap {
     }
 
     @Override
-    public int mennyibeKerul() {
-        return isHabosE() ? (int) (CSESZEKAVE * 1.5) : CSESZEKAVE;
+    public double mennyibeKerul() {
+        return isHabosE() ? (CSESZEKAVE * 1.5) : CSESZEKAVE;
     }
 
     @Override
     public String toString() {
-        return (isHabosE() ? "Habos kave" : "Nem habos kave") + " - " + mennyibeKerul() + " Ft";
+        return (isHabosE() ? "Habos" : "Nem habos") + " kave - " + mennyibeKerul() + " Ft";
     }
 
     public boolean isHabosE() {

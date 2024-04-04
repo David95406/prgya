@@ -8,6 +8,7 @@ public class Pekseg {
     public static void main(String[] args) {
         vasarlok("adatok.txt");
         etelLeltar();
+        System.out.println(lista);
     }
 
     public static void vasarlok(String eleresiUt) {

@@ -1,8 +1,8 @@
 public abstract class Peksutemeny implements Arlap {
     protected int mennyiseg;
-    private int alapar;
+    private double alapar;
 
-    public Peksutemeny(int mennyiseg, int alapar) throws IllegalArgumentException {
+    public Peksutemeny(int mennyiseg, double alapar) throws IllegalArgumentException {
         setMennyiseg(mennyiseg);
         setAlapar(alapar);
     }
@@ -10,7 +10,7 @@ public abstract class Peksutemeny implements Arlap {
     public abstract void megkostol();
 
     @Override
-    public int mennyibeKerul() {
+    public double mennyibeKerul() {
         return getAlapar() * getMennyiseg();
     }
 
@@ -28,11 +28,11 @@ public abstract class Peksutemeny implements Arlap {
         this.mennyiseg = mennyiseg;
     }
 
-    public int getAlapar() {
+    public double getAlapar() {
         return alapar;
     }
 
-    private void setAlapar(int alapar) throws IllegalArgumentException {
+    private void setAlapar(double alapar) throws IllegalArgumentException {
         if (alapar < 0) throw new IllegalArgumentException("Az alapar nem lehet kisebb 0-nal!");
         this.alapar = alapar;
     }
