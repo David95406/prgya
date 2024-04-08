@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.valasztasok.HelloController">
+    <children>
+        <Button fx:id="beolvasasBtn" layoutX="131.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#beolvasas" text="Szavazazok beolvasása" />
+        <Label fx:id="statusLabel" layoutX="186.0" layoutY="227.0" />
+        <TextField fx:id="valasztokeruletInput" layoutX="125.0" layoutY="25.0" />
+        <TextField fx:id="szavazatokSzamaInput" layoutX="125.0" layoutY="55.0" />
+        <TextField fx:id="vezeteknevInput" layoutX="125.0" layoutY="85.0" />
+        <TextField fx:id="keresztnevInput" layoutX="125.0" layoutY="115.0" />
+        <TextField fx:id="partNevInput" layoutX="125.0" layoutY="145.0" />
+        <Label layoutX="20.0" layoutY="25.0" text="Választókerület:" />
+        <Label layoutX="20.0" layoutY="55.0" text="Szavazatok száma:" />
+        <Label layoutX="20.0" layoutY="85.0" text="Vezetéknév:" />
+        <Label layoutX="20.0" layoutY="115.0" text="Keresztnév:" />
+        <Label layoutX="20.0" layoutY="145.0" text="Párt neve:" />
+        <Button fx:id="hozzaadasBtn" layoutX="163.0" layoutY="190.0" mnemonicParsing="false" onMouseClicked="#hozzaadas" text="Hozzáadás" visible="false" />
+      <TextField fx:id="searchVNevInput" layoutX="290.0" layoutY="13.0" prefHeight="25.0" prefWidth="97.0" promptText="Vezetéknév" />
+      <Button fx:id="searchVNevBtn" disable="true" layoutX="329.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#searchVNev" text="Keresés" />
+      <TextField fx:id="searchPartInput" layoutX="290.0" layoutY="90.0" prefHeight="25.0" prefWidth="97.0" promptText="Párt név" />
+      <Button fx:id="searchPartBtn" disable="true" layoutX="329.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#searchPart" text="Keresés" />
+      <Label layoutX="300.0" layoutY="145.0" fx:id="szavazatokSzamaLabel" />
+        
+
+    </children>
+</Pane>
