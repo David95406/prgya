@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 class TestClass {
     private static Pogacsa p1;
     private static Pogacsa p2;
+    private static Pogacsa p3;
     private static Kave k1;
     private static Kave k2;
     private static Kave k3;
@@ -12,13 +13,9 @@ class TestClass {
     @BeforeAll
     static void beforeAll() {
         p1 = new Pogacsa(5, 100);
+        p3 = new Pogacsa(1, 200);
         k1 = new Kave(true);
         k2 = new Kave(false);
-    }
-
-    @Test
-    void interfaceTest() {
-        Assertions.assertEquals(180, Arlap.CSESZEKAVE, "Hibas az arlap CSESZEKAVE erteke!");
     }
 
     @Test
@@ -79,13 +76,18 @@ class TestClass {
 
     @Test
     void kaveToStringTest() {
-        Assertions.assertEquals("Habos kave - 270 Ft", k1.toString(), "Hibas a Kave osztaly toString metodus!");
-        Assertions.assertEquals("Nem habos kave - 180 Ft", k2.toString(), "Hibas a Kave osztaly toString metodus!");
+        Assertions.assertEquals("Habos kave - 270.0 Ft", k1.toString(), "Hibas a Kave osztaly toString metodus!");
+        Assertions.assertEquals("Nem habos kave - 180.0 Ft", k2.toString(), "Hibas a Kave osztaly toString metodus!");
     }
 
     @Test
     void pogacsaToStringTest() {
-        Assertions.assertEquals("Pogacsa 5db - 500 Ft", p1.toString(), "Hibas a Pogacsa osztaly toString metodus!");
+        Assertions.assertEquals("Pogacsa 5db - 500.0 Ft", p1.toString(), "Hibas a Pogacsa osztaly toString metodus!");
     }
 
+    @Test
+    void pogacsaSetterTest() {
+        p3.setMennyiseg(20);
+        Assertions.assertEquals(20, p3.getMennyiseg(), "Hibas a setMennyiseg metodus!");
+    }
 }

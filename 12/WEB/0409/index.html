@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <title>News API</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center flex-column align-items-center">
+            <form class="d-flex justify-content-center w-75 flex-column text-center my-4" id="kereso">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <select class="form-select" id="orszag">
+                            <option value="us" selected>Orszag</option>
+                            <option value="hu">Magyarorszag</option>
+                            <option value="au">Australia</option>
+                            <option value="us">USA</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <select class="form-select" id="kategoria">
+                            <option value="business" selected>Kategoria</option>
+                            <option value="business">Uzlet</option>
+                            <option value="science">Tudomany</option>
+                            <option value="sports">Sport</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="keresoBtn">Keresés</button>
+            </form>
+
+        </div>
+        <div id="newsCards" class="row"></div>
+    </div>
+
+
+    <script>
+        const kereso = document.getElementById("keresoBtn")
+        kereso.addEventListener("click", function (e) {
+            e.preventDefault()
+            document.getElementById("newsCards").innerHTML = ""
+
+            const orszag = document.getElementById("orszag").value
+            const kategoria = document.getElementById("kategoria").value
+
+
+            const url = `https://newsapi.org/v2/top-headlines?country=${orszag}&category=${kategoria}&apiKey=9995ebb005484475b567f665ee2e68cf`
+
+            var xhr = new XMLHttpRequest()
+            xhr.open('GET', url, true)
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const adat = JSON.parse(xhr.responseText)
+                    adat["articles"].forEach((article) => {
+                        console.log(article)
+                        var newsCardsContainer = document.getElementById('newsCards');
+
+                        var card = document.createElement('div');
+                        card.className = 'card';
+                        card.classList.add("col-4", "mb-3")
+
+                        var cardBody = document.createElement('div');
+                        cardBody.className = 'card-body';
+
+                        var cardTitle = document.createElement('h5');
+                        cardTitle.className = 'card-title';
+                        cardTitle.textContent = article.title;
+
+                        var cardText = document.createElement('p');
+                        cardText.className = 'card-text';
+                        cardText.textContent = article.description;
+
+                        var cardLink = document.createElement('a');
+                        cardLink.href = article.url;
+                        cardLink.className = 'btn btn-primary';
+                        cardLink.textContent = 'Read More';
+
+                        var cardImage = document.createElement('img')
+                        if (article.urlToImage === null) {
+                            switch (orszag) {
+                                case "hu": cardImage.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Hungary.svg/1920px-Flag_of_Hungary.svg.png"; break;
+                                case "us": cardImage.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/1920px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png"; break;
+                                case "au": cardImage.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/1920px-Flag_of_Australia_%28converted%29.svg.png"; break;
+                                default: break;
+                            }
+
+                        } else {
+                            cardImage.src = article.urlToImage
+                        }
+                        cardImage.className = "card-img"
+
+                        cardBody.appendChild(cardImage)
+                        cardBody.appendChild(cardTitle);
+                        cardBody.appendChild(cardText);
+                        cardBody.appendChild(cardLink);
+
+                        card.appendChild(cardBody);
+
+                        newsCardsContainer.appendChild(card);
+                    })
+                } else {
+                    //document.getElementById('data').textContent = "Nem sikerült betölteni az adatokat: " + xhr.status
+                    alert("hiba: " + xhr.status)
+                    return
+                }
+            }
+
+            xhr.send()
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
