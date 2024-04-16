@@ -1,0 +1,35 @@
+.background {
+    -fx-background-color: #2b2d32;
+}
+
+Button {
+    -fx-background-color: #3a3c41;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+}
+
+Label {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( one-pass-box , black, 8 , 0.0 , 2 , 0 );
+}
+
+RadioButton, CheckBox {
+    -fx-text-fill: white;
+}
+
+progressLabel {
+    -fx-font-size: 10px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( one-pass-box , black, 8 , 0.0 , 2 , 0 );
+}
+
+.infoLabel {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( one-pass-box , black, 8 , 0.0 , 2 , 0 );
+}

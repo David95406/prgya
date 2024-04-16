@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxwelcome.InfoController"
+      styleClass="background">
+    <stylesheets>
+        <URL value="@infostyle.css"/>
+    </stylesheets>
+
+    <children>
+        <Label styleClass="infoLabel" layoutX="14.0" layoutY="6.0" text="ÁPR. 15. JavaFX és CSS"/>
+        <MenuButton layoutX="332.0" layoutY="100.0" prefHeight="40.0" prefWidth="123.0" text="English"/>
+        <RadioButton layoutX="20.0" layoutY="60.0" mnemonicParsing="false" text="High"/>
+        <RadioButton layoutX="20.0" layoutY="90.0" mnemonicParsing="false" text="Medium"/>
+        <RadioButton layoutX="20.0" layoutY="120.0" mnemonicParsing="false" text="Low"/>
+        <Button layoutX="10.0" layoutY="150.0" mnemonicParsing="false" prefWidth="82.0" text="Accept"/>
+        <Button layoutX="100.0" layoutY="150.0" mnemonicParsing="false" text="Decline"/>
+        <Button disable="true" layoutX="193.0" layoutY="150.0" mnemonicParsing="false" text="Not Available"/>
+        <TextField layoutX="176.0" layoutY="49.0" prefHeight="40.0" prefWidth="149.0" promptText="Your name"/>
+        <TextField layoutX="176.0" layoutY="101.0" prefHeight="40.0" prefWidth="149.0" promptText="Your password"/>
+        <CheckBox layoutX="15.0" layoutY="200.0" mnemonicParsing="false" text="Normal"/>
+        <CheckBox layoutX="105.0" layoutY="200.0" mnemonicParsing="false" text="Checked"/>
+        <CheckBox layoutX="205.0" layoutY="200.0" mnemonicParsing="false" text="Undefined"/>
+        <Slider fx:id="progressSlider" layoutX="106.0" layoutY="288.0" onMouseDragged="#progress"/>
+        <ProgressIndicator fx:id="progressIndicator" layoutX="249.0" layoutY="285.0" progress="0.0"/>
+        <Label styleClass="infoLabel" layoutX="5.0" layoutY="280.0" text="Progress:"/>
+        <Label fx:id="progressLabel" layoutX="248.0" layoutY="310.0"/>
+
+
+    </children>
+</Pane>

@@ -1,19 +1,23 @@
 Pane {
-    -fx-background-color: grey;
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
 
 Label {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-text-fill: white;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 6, 0.0 , 0 , 2 );
 }
 
 .welcomeLabel {
     -fx-font-size: 32px;
-    -fx-font-family: "Arial Black";
+    -fx-font-family: "Georgia";
     -fx-fill: #818181;
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+    -fx-text-fill: white;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.3) , 6, 0.0 , 0 , 2 );
 }
 
 #actiontarget {
@@ -22,11 +26,17 @@ Label {
   -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
-Button {
+TextField, PasswordField {
+    -fx-control-inner-background: transparent, white;
     -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
+}
+
+Button {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-family: "Lucida Fax";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-background-color: linear-gradient(#3a3c41, #2A5058);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
