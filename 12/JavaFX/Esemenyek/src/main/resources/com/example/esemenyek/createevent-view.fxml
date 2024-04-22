@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="250.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esemenyek.CreateEventController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+    <children>
+        <Label layoutX="14.0" layoutY="14.0" styleClass="cimLabel" text="Esemény létrehozás" />
+        <Button layoutX="14.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#back" text="&lt;-" />
+        <TextField fx:id="nevInput" layoutX="100.0" layoutY="60.0" />
+        <TextField fx:id="datumInput" layoutX="100.0" layoutY="90.0" />
+        <TextField fx:id="helyszinInput" layoutX="100.0" layoutY="120.0" />
+        <Label styleClass="inputLabel" layoutX="30.0" layoutY="60.0" text="Név:" />
+        <Label styleClass="inputLabel" layoutX="30.0" layoutY="90.0" text="Dátum:" />
+        <Label styleClass="inputLabel" layoutX="30.0" layoutY="120.0" text="Helyszín:" />
+
+        <Label fx:id="statusLabel" layoutX="130.0" layoutY="150.0" />
+      <Button layoutX="147.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#createEvent" text="Mentés" />
+    </children>
+
+</Pane>

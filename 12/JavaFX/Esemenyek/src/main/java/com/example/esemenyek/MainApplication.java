@@ -1,0 +1,65 @@
+package com.example.esemenyek;
+
+import com.example.esemenyek.model.Esemeny;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class MainApplication extends Application {
+    private static Stage stg;
+    public static ArrayList<Esemeny> esemenyek = new ArrayList<>();
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        stg = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 500, 350);
+        stage.setTitle("Események");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+
+    public void changeScene(String view) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(view));
+        switch (view) {
+            case "main-view.fxml":
+                stg.setScene(new Scene(pane, 500, 350));
+                stg.setTitle("Események");
+            case "createevent-view.fxml":
+                stg.setScene(new Scene(pane, 350, 250));
+                stg.setTitle("Létrehozás");
+            case "eventlist-view.fxml":
+                stg.setScene(new Scene(pane, 600, 400));
+                stg.setTitle("Listázás");
+            case "searchevent-view.fxml":
+                stg.setScene(new Scene(pane, 500, 350));
+                stg.setTitle("Keresés");
+            default:
+                throw new IOException("Nem letezo oldal!");
+        }
+        //stg.getScene().setRoot(pane);
+    }
+
+    public static void back() throws IOException {
+        MainApplication main = new MainApplication();
+        main.changeScene("main-view.fxml");
+    }
+
+    public static void printLabel(Label l, String value, String color) {
+        l.setTextFill(Paint.valueOf(color));
+        l.setText(value);
+    }
+
+}
