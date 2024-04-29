@@ -1,34 +1,40 @@
 package com.example.esemenyek;
 
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class SeachEventController {
     @FXML
-    protected ScrollPane eventScollPane;
-    @FXML
     protected TextField searchBar;
+
+    @FXML
+    protected TableView<Esemeny> eventTable;
+    @FXML
+    protected TableColumn<Esemeny, StringProperty> nevColumn, datumColumn, helyszinColumn;
 
     public void search() {
         String input = searchBar.getText();
-        ArrayList<Esemeny> results = new ArrayList<>();
-
-        for (Esemeny egyEsemeny : DataManager.esemenylista) {
-            if (egyEsemeny.toString().contains(input)) {
-                results.add(egyEsemeny);
-            }
+        if (input.isEmpty()) {
+            eventTable.setItems(null);
+            return;
         }
 
-        VBox eventList = new VBox();
-        for (Esemeny egyEsemeny : results) {
-            eventList.getChildren().add(EventListController.getEvent(egyEsemeny));
-            eventScollPane.setContent(eventList);
+        nevColumn.setCellValueFactory(new PropertyValueFactory<>("Nev"));
+        datumColumn.setCellValueFactory(new PropertyValueFactory<>("Datum"));
+        helyszinColumn.setCellValueFactory(new PropertyValueFactory<>("Helyszin"));
+        ObservableList<Esemeny> results = FXCollections.observableArrayList();
+        for (Esemeny egyEsemeny : DataManager.getEsemenylista()) {
+            if (egyEsemeny.getValue().contains(input)) results.add(egyEsemeny);
         }
+        eventTable.setItems(results);
     }
 
     public void back() throws IOException {

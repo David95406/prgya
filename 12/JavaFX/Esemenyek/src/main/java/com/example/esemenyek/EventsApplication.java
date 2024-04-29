@@ -13,7 +13,6 @@ import java.util.Objects;
 
 public class EventsApplication extends Application {
     private static Stage stg;
-    //public static ArrayList<Esemeny> esemenyek = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws IOException {

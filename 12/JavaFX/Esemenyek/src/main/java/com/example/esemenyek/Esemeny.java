@@ -14,8 +14,12 @@ public class Esemeny {
         setHelyszin(helyszin);
     }
 
-    public StringProperty nevProperty() {
-        return nev;
+    public String getValue() {
+        return getNev() + " " + getHelyszin() + " " + getDatum();
+    }
+
+    public String getLabelFormat() {
+        return "Név: " + getNev() + "    Dátum: " + getDatum() + "    Helyszin: " + getHelyszin();
     }
 
     public String getNev() {
@@ -26,20 +30,12 @@ public class Esemeny {
         this.nev.set(name);
     }
 
-    public StringProperty helyszinProperty() {
-        return helyszin;
-    }
-
     public String getHelyszin() {
         return helyszin.get();
     }
 
     public void setHelyszin(String helyszin) {
         this.helyszin.set(helyszin);
-    }
-
-    public StringProperty datumProperty() {
-        return datum;
     }
 
     public String getDatum() {

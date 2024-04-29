@@ -14,10 +14,6 @@ public class CreateEventController {
     @FXML
     protected Label statusLabel;
 
-    public void back() throws IOException {
-        EventsApplication.back();
-    }
-
     private void clearTextFields() {
         nevInput.setText("");
         datumInput.setText("");
@@ -36,5 +32,9 @@ public class CreateEventController {
         } catch (Exception e) {
             EventsApplication.printLabel(statusLabel, "Hiba!", "red");
         }
+    }
+
+    public void back() throws IOException {
+        EventsApplication.back();
     }
 }
