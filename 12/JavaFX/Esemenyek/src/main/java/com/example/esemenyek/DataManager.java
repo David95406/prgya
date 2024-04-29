@@ -1,4 +1,4 @@
-package com.example.esemenyek.model;
+package com.example.esemenyek;
 
 import java.util.ArrayList;
 

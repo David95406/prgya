@@ -1,7 +1,6 @@
 package com.example.esemenyek;
 
-import com.example.esemenyek.model.DataManager;
-import com.example.esemenyek.model.Esemeny;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

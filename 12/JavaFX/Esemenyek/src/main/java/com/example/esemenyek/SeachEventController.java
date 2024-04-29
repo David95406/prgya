@@ -1,7 +1,5 @@
 package com.example.esemenyek;
 
-import com.example.esemenyek.model.DataManager;
-import com.example.esemenyek.model.Esemeny;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -21,7 +19,7 @@ public class SeachEventController {
         ArrayList<Esemeny> results = new ArrayList<>();
 
         for (Esemeny egyEsemeny : DataManager.esemenylista) {
-            if (egyEsemeny.getValue().contains(input)) {
+            if (egyEsemeny.toString().contains(input)) {
                 results.add(egyEsemeny);
             }
         }
