@@ -1,5 +1,6 @@
 package com.example.esemenyek;
 
+import com.example.esemenyek.model.DataManager;
 import com.example.esemenyek.model.Esemeny;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ public class CreateEventController {
     protected Label statusLabel;
 
     public void back() throws IOException {
-        MainApplication.back();
+        EventsApplication.back();
     }
 
     private void clearTextFields() {
@@ -26,15 +27,15 @@ public class CreateEventController {
 
     public void createEvent() {
         try {
-            MainApplication.esemenyek.add(new Esemeny(
+            DataManager.esemenylista.add(new Esemeny(
                     nevInput.getText(),
                     datumInput.getText(),
                     helyszinInput.getText()
             ));
             clearTextFields();
-            MainApplication.printLabel(statusLabel, "Sikeres mentés!", "green");
+            EventsApplication.printLabel(statusLabel, "Sikeres mentés!", "green");
         } catch (Exception e) {
-            MainApplication.printLabel(statusLabel, "Hiba!", "red");
+            EventsApplication.printLabel(statusLabel, "Hiba!", "red");
         }
     }
 }

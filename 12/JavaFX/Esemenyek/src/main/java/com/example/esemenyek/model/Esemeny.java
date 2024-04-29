@@ -1,11 +1,12 @@
 package com.example.esemenyek.model;
 
-import java.util.Collection;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Esemeny {
-    private String nev;
-    private String datum;
-    private String helyszin;
+    private StringProperty nev;
+    private StringProperty datum;
+    private StringProperty helyszin;
 
     public Esemeny(String nev, String datum, String helyszin) {
         setNev(nev);
@@ -22,28 +23,40 @@ public class Esemeny {
                 '}';
     }
 
+    public String getNev() {
+        return nev.get();
+    }
+
+    public StringProperty nevProperty() {
+        return nev;
+    }
+
+    public String getDatum() {
+        return datum.get();
+    }
+
+    public StringProperty datumProperty() {
+        return datum;
+    }
+
+    public String getHelyszin() {
+        return helyszin.get();
+    }
+
+    public StringProperty helyszinProperty() {
+        return helyszin;
+    }
+
     public String getLabelFormat() {
-        return "Név: " + getNev() + "    Dátum: " + getDatum() + "    Helyszin: " + getHelyszin();
+        return "Név: " + getNev() + "    Dátum: " + getDatum() + "    Helyszín: " + getHelyszin();
     }
 
     public String getValue() {
         return getNev() + " " + getHelyszin() + " " + getDatum();
     }
-
-    public String getNev() {
-        return nev;
-    }
-
-    protected void setNev(String nev) {
-        this.nev = nev;
-    }
-
+    /*
     public String getDatum() {
         return datum;
-    }
-
-    protected void setDatum(String datum) {
-        this.datum = datum;
     }
 
     public String getHelyszin() {
@@ -53,5 +66,26 @@ public class Esemeny {
     protected void setHelyszin(String helyszin) {
         this.helyszin = helyszin;
     }
+
+     */
+
+
+    protected void setNev(String nev) {
+        this.nev = new SimpleStringProperty(nev);
+    }
+
+
+
+    protected void setDatum(String datum) {
+        this.datum = new SimpleStringProperty(datum);
+    }
+
+    protected void setHelyszin(String helyszin) {
+        this.helyszin = new SimpleStringProperty(helyszin);
+    }
+
+
+
+
 
 }

@@ -20,7 +20,7 @@ public class SeachEventController {
         String input = searchBar.getText();
         ArrayList<Esemeny> results = new ArrayList<>();
 
-        for (Esemeny egyEsemeny : MainApplication.esemenyek) {
+        for (Esemeny egyEsemeny : DataManager.esemenylista) {
             if (egyEsemeny.getValue().contains(input)) {
                 results.add(egyEsemeny);
             }
@@ -34,6 +34,6 @@ public class SeachEventController {
     }
 
     public void back() throws IOException {
-        MainApplication.back();
+        EventsApplication.back();
     }
 }
