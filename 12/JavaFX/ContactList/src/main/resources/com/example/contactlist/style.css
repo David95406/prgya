@@ -1,0 +1,32 @@
+Pane {
+    -fx-background-color: #f4f4f4;
+}
+
+Label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+Button {
+    -fx-padding: 5px 15px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+}
+
+TextField {
+    -fx-padding: 5px;
+    -fx-border-color: #c3c3c3;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+Button:hover {
+    -fx-background-color: #45a049;
+}
+
+Button:pressed {
+    -fx-background-color: #388E3C;
+}
