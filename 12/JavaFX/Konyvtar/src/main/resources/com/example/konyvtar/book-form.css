@@ -1,0 +1,41 @@
+.root {
+    -fx-background-color: #e0f7fa;
+    -fx-border-color: #00838f;
+    -fx-border-radius: 5px;
+}
+
+Label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #004d40;
+}
+
+.mezok {
+    -fx-border-color: #004d40;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-border-color: #004d40;
+}
+
+.mezok:focus {
+    -fx-background-color: #b2dfdb;
+}
+
+Button {
+    -fx-background-color: #00796b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+}
+
+Button:hover {
+    -fx-background-color: #004d40;
+}
+
+Button:pressed {
+    -fx-background-color: black;
+}
+
+#statusLabel {
+    -fx-text-size: 13px;
+}

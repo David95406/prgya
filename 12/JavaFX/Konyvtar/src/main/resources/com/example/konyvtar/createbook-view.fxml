@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.konyvtar.NewBookController">
+    <stylesheets>
+        <URL value="@book-form.css" />
+    </stylesheets>
+    <children>
+        <Label layoutX="25.0" layoutY="40.0" text="Szerző:" />
+        <Label layoutX="25.0" layoutY="80.0" text="Cím:" />
+        <Label layoutX="25.0" layoutY="120.0" text="Kiadás éve:" />
+        <Label layoutX="25.0" layoutY="160.0" text="Kategória:" />
+        <Label layoutX="25.0" layoutY="200.0" text="Bevételezés időpontja:" />
+        <TextField fx:id="authorInput" layoutX="220.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" styleClass="mezok" />
+        <TextField fx:id="titleInput" layoutX="220.0" layoutY="80.0" prefHeight="35.0" prefWidth="250.0" styleClass="mezok" />
+        <TextField fx:id="yearInput" layoutX="220.0" layoutY="120.0" prefHeight="35.0" prefWidth="250.0" styleClass="mezok" />
+        <ComboBox fx:id="categoryInput" layoutX="220.0" layoutY="160.0" prefHeight="35.0" prefWidth="250.0"
+                  styleClass="mezok"/>
+        <DatePicker fx:id="acquisitionDateInput" layoutX="220.0" layoutY="200.0" prefHeight="35.0" prefWidth="250.0" styleClass="mezok" />
+        <Button layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#switchToKeszlet" prefHeight="35.0" prefWidth="65.0" text="Készlet" />
+        <Button layoutX="430.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="35.0" prefWidth="65.0" text="Mentés" />
+        <Label fx:id="statusLabel" layoutX="206.0" layoutY="242.0" />
+
+    </children>
+</Pane>

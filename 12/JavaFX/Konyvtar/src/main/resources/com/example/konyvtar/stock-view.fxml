@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.konyvtar.StockController">
+    <stylesheets>
+        <URL value="@book-form.css" />
+    </stylesheets>
+   <children>
+
+       <TableView fx:id="booksTable" layoutX="15.0" layoutY="30.0" prefHeight="300.0" prefWidth="570.0">
+           <columns>
+               <TableColumn fx:id="szIrodalomColumn" prefWidth="143.0" text="szépirodalom" />
+               <TableColumn fx:id="scifiColumn" prefWidth="143.0" text="scifi" />
+               <TableColumn fx:id="nyelvkonyvColumn" prefWidth="143.0" text="nyelvkönyv" />               <TableColumn fx:id="helyszinColumn" prefWidth="190.0" text="nyelvkönyv" />
+               <TableColumn fx:id="tudomanyColumn" prefWidth="143.0" text="tudomány" />
+           </columns>
+       </TableView>
+       <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="35.0" prefWidth="65.0" text="Vissza" />
+   </children>
+
+</Pane>
