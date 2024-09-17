@@ -10,6 +10,4 @@ const showFirst = ref(true)
     <p v-if="!showFirst">Maecenas euismod nec est eu luctus. Phasellus tempor justo in nunc vestibulum tempor.</p>
 </template>
 
-<style scoped>
-    
-</style>
+<style scoped></style>

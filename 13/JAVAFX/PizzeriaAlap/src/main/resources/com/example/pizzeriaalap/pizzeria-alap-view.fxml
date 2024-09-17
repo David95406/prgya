@@ -10,12 +10,21 @@
     <stylesheets>
         <URL value="@style.css" />
     </stylesheets>
-   <children>
-      <ImageView fitHeight="163.0" fitWidth="210.0" layoutX="383.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="142.0" layoutY="77.0" styleClass="szoveg" text="Monetar Pizza" textFill="WHITE">
+    <children>
+        <ImageView fitHeight="163.0" fitWidth="210.0" layoutX="383.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+        <Label layoutX="15.0" layoutY="15.0" styleClass="szoveg" text="Milyen pizzát szeretne rendelni?" textFill="WHITE">
+            <font>
+                <Font name="Bodoni MT Black" size="24.0" />
+            </font>
+        </Label>
+      <Label layoutX="15.0" layoutY="60.0" text="Pizza mérete" textFill="WHITE">
          <font>
-            <Font name="Bodoni MT Black" size="24.0" />
+            <Font size="20.0" />
          </font></Label>
-   </children>
+      <CheckBox layoutX="15.0" layoutY="100.0" mnemonicParsing="false" text="22cm" textFill="white" />
+      <CheckBox layoutX="90.0" layoutY="100.0" mnemonicParsing="false" text="32cm" textFill="white" />
+      <CheckBox layoutX="165.0" layoutY="100.0" mnemonicParsing="false" text="45cm" textFill="white" />
+
+    </children>
 
 </Pane>
