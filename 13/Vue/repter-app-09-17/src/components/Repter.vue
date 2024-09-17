@@ -1,9 +1,24 @@
 <script setup>
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import { airports } from "../data/airports.js";
 
 var selectedAP = ref("")
 //css idk
+
+
+//hazi
+var searchText = ref("")
+var searchResults = ref([])
+
+watch(searchText, () => {
+    searchResults = ref([])
+    for (var i = 0; i < airports.length; i++) {
+        if (airports[i].name.toLowerCase().includes(searchText.value.toLowerCase())) {
+            console.log(airports[i].name)
+            searchResults.value.push(airports[i])
+        }
+    }
+})
 
 </script>
 
@@ -26,6 +41,14 @@ var selectedAP = ref("")
             <p>Phone: {{ selectedAP["contacts"]["phone"] }}</p>
         </div>
     </section>
+
+    <input type="text" v-model="searchText">
+    <div class="card" v-for="searchedAirport in searchResults" v-if="searchText.length != 0">
+        <h2>Airport: {{ searchedAirport["name"] }}</h2>
+        <p>Country: {{ searchedAirport["country"]["name"]["en"] }}</p>
+        <p>City: {{ searchedAirport["city"]["name"]["en"] }}</p>
+        <p>Phone: {{ searchedAirport["contacts"]["phone"] }}</p>
+    </div>
 </template>
 
 <style scoped>
