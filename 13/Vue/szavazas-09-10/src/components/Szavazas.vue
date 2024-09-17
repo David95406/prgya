@@ -1,17 +1,38 @@
 <script setup>
+import { films } from "../data/films.js"
+import { ref } from "vue"
+
+const filmlist = ref(films)
+
+function getImageUrl(film) {
+    return new URL(film["image"], import.meta.url).href
+}
+
+const vote = (film) => {
+    film["vote"]++
+}
+
+const vote2 = (i) => {
+    filmlist.value[i]["vote"]++
+    updateFilms()
+}
+
+const updateFilms = () => {
+    filmlist.value.sort((a, b) => b.vote - a.vote)
+}
 
 </script>
 
 
 <template>
-    <section v-for="i in 3" class="df">
-        <div><img src="../assets/film-1.jpg" alt="film1" title="Film 1"></div>
+    <section v-for="(film, i) in filmlist" class="df" v-bind:class="{ 'green-border': film.vote >= 10 }">
+        <div><img :src="getImageUrl(film)" alt="film1" title="Film 1"></div>
         <div>
             <div class="df">
-                <h2>Lorem Ipsum</h2>
-                <div><strong>Vote</strong> | {{ 1 }}</div>
+                <h2>{{ film["name"] }}</h2> <!--    @click.prevent="film.vote++"    -->
+                <div><strong class="vote" @click.prevent="vote2(i)">Vote</strong> | {{ film["vote"] }}</div>
             </div>
-            <p></p>
+            <p>{{ film["description"] }}</p>
         </div>
     </section>
 </template>
@@ -43,5 +64,13 @@ img {
 h2 {
     margin: 0;
     padding: 0;
+}
+
+.vote {
+    cursor: pointer;
+}
+
+.green-border {
+    border: 3px solid green;
 }
 </style>
