@@ -3,22 +3,20 @@ import { ref, watch } from "vue"
 import { airports } from "../data/airports.js";
 
 var selectedAP = ref("")
-//css idk
 
 
 //hazi
 var searchText = ref("")
 var searchResults = ref([])
 
-watch(searchText, () => {
-    searchResults = ref([])
-    for (var i = 0; i < airports.length; i++) {
-        if (airports[i].name.toLowerCase().includes(searchText.value.toLowerCase())) {
-            console.log(airports[i].name)
-            searchResults.value.push(airports[i])
+const onsubmit = () => {
+    searchResults.value = []
+    airports.forEach((airport) => {
+        if (airport.name.includes(searchText.value)) {
+            searchResults.value.push(airport)
         }
-    }
-})
+    })
+}
 
 </script>
 
@@ -42,13 +40,19 @@ watch(searchText, () => {
         </div>
     </section>
 
-    <input type="text" v-model="searchText">
-    <div class="card" v-for="searchedAirport in searchResults" v-if="searchText.length != 0">
-        <h2>Airport: {{ searchedAirport["name"] }}</h2>
-        <p>Country: {{ searchedAirport["country"]["name"]["en"] }}</p>
-        <p>City: {{ searchedAirport["city"]["name"]["en"] }}</p>
-        <p>Phone: {{ searchedAirport["contacts"]["phone"] }}</p>
+    <div>
+        <input type="text" v-model="searchText" placeholder="Keresés...">
+        <button @click="onsubmit">Go</button>
+
+        <div class="card" v-for="searchedAirport in searchResults"
+            v-if="searchText.length != 0 || searchResults.length != 0">
+            <h2>Airport: {{ searchedAirport["name"] }}</h2>
+            <p>Country: {{ searchedAirport["country"]["name"]["en"] }}</p>
+            <p>City: {{ searchedAirport["city"]["name"]["en"] }}</p>
+            <p>Phone: {{ searchedAirport["contacts"]["phone"] }}</p>
+        </div>
     </div>
+
 </template>
 
 <style scoped>
@@ -89,5 +93,24 @@ span {
 form,
 .card {
     padding: 20px;
+}
+
+input,
+button {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input {
+    width: 200px;
+}
+
+button {
+    color: white;
+    cursor: pointer;
+    background-color: black;
 }
 </style>
