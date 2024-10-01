@@ -1,0 +1,42 @@
+body {
+    background-image: url("/images/hero-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.navbar {
+    color: #1e2577;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.navbar-brand {
+    color: lightblue;
+}
+
+.nav-item {
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link.active {
+    color: #00aaff;
+}
+
+header {
+    color: white;
+}
