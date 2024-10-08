@@ -1,5 +1,6 @@
 <script setup>
 import Todo from './components/Todo.vue';
+import Plot from './components/Plot.vue';
 
 </script>
 
@@ -9,6 +10,7 @@ import Todo from './components/Todo.vue';
   </header>
   <main>
     <Todo />
+    <Plot/>
   </main>
   <footer>
     <p>&copy; 2024</p>
