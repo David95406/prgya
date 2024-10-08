@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import Tetel from "../classes/Tetel"
+import "../classes/Tetel"
 
 const errorMessage = ref("")
 const errorMessages = ["A név csak az angol ábécé kisbetűit tartalmazhatja, maximum 30 karakter hosszúságig!", "Az ár csak pozitív egész szám lehet, maximum értéke 1 millió forint."]

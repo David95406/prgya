@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaloria Kalkulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form id="kalkulatorForm">
+        <input type="number" name="eletkor" id="eletkorInput" required>
+        <input type="number" name="suly" id="sulyInput" required>
+        <input type="number" name="magassag" id="magassagInput" required>
+        <select name="nem" id="nemInput" required>
+            <option value="-1" selected>Válasszon...</option>
+            <option value="0">Férfi</option>
+            <option value="1">Nő</option>
+        </select>
+        <select name="aktivitas" id="aktivitasInput" required>
+            <option value="-1" selected>Válasszon...</option>
+            <option value="0">Kevés mozgás (heti 1 - 3 alkalom)</option>
+            <option value="1">Könnyű mozgás (heti 3 - 5 alkalom)</option>
+            <option value="2">Közepes mozgág (heti 6 - 7 alkalom)</option>
+            <option value="3">Intenzív mozgás (heti 1 - 3 alkalom)</option>
+            <option value="4">Nagyon intenzív mozgág (heti több alkalom)</option>
+        </select>
+        <button type="submit">Számítás</button>
+    </form>
+
+    <script>
+        const kalkulatorForm = document.getElementById("kalkulatorForm")
+
+        kalkulatorForm.onsubmit = ((event) => {
+            event.preventDefault()
+            const eletkorInput = document.getElementById("eletkorInput")
+            const magassagInput = document.getElementById("magassagInput")
+            const nemInput = document.getElementById("nemInput")
+            const aktivitasInput = document.getElementById("aktivitasInput")
+
+            alert(nemInput.value)
+        })
+    </script>
+</body>
+
+</html>
