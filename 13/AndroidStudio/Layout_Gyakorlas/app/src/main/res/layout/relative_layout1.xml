@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d4fcff"
+    android:padding="16dp"
+    >
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/kamera" />
+
+    <!-- Name label -->
+    <TextView
+        android:id="@+id/txtNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textColor="#00695C"
+        android:textSize="18sp"
+        android:layout_below="@id/imgProfile"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true" />
+
+    <!-- Name input -->
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:layout_below="@id/txtNameLabel"
+        android:background="#FFFFFF"
+        android:padding="8dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Address label -->
+    <TextView
+        android:id="@+id/txtAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address:"
+        android:textColor="#00695C"
+        android:textSize="18sp"
+        android:layout_below="@id/edtName"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true" />
+
+    <!-- Address input -->
+    <EditText
+        android:id="@+id/edtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your address"
+        android:layout_below="@id/txtAddressLabel"
+        android:background="#FFFFFF"
+        android:padding="8dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Phone label -->
+    <TextView
+        android:id="@+id/txtPhoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone:"
+        android:textColor="#00695C"
+        android:textSize="18sp"
+        android:layout_below="@id/edtAddress"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true" />
+
+    <!-- Phone input -->
+    <EditText
+        android:id="@+id/edtPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your phone"
+        android:layout_below="@id/txtPhoneLabel"
+        android:background="#FFFFFF"
+        android:padding="8dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Save button -->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:backgroundTint="#388E3C"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/edtPhone"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Cancel button -->
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:backgroundTint="#D32F2F"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/edtPhone"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>
