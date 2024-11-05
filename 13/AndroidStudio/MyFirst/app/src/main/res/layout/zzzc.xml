@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/consGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <View
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/dolgozatColor"
+        app:layout_constraintBottom_toTopOf="@+id/consGuideLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></View>
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Űrlap Kitöltése"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="@+id/header">
+
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/portaitPicture"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/portrait"></ImageView>
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/fullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Teljes név"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/portaitPicture"></EditText>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Email cím"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/fullName"
+        app:layout_constraintStart_toStartOf="@id/fullName"
+        app:layout_constraintTop_toBottomOf="@+id/fullName"></EditText>
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Telefonszám"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/email"
+        app:layout_constraintStart_toStartOf="@id/email"
+        app:layout_constraintTop_toBottomOf="@id/email"></EditText>
+
+    <TextView
+        android:id="@+id/nem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Nem:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/ferfiButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Férfi"
+        app:layout_constraintBottom_toBottomOf="@+id/nem"
+        app:layout_constraintStart_toEndOf="@+id/nem"
+        app:layout_constraintTop_toTopOf="@+id/nem">
+
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Nő"
+        app:layout_constraintBottom_toBottomOf="@+id/nem"
+        app:layout_constraintStart_toEndOf="@+id/ferfiButton"
+
+        app:layout_constraintTop_toTopOf="@+id/nem">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/rovidBemutatkozas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Rövid bemutatkozás:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/nem"
+        app:layout_constraintTop_toBottomOf="@+id/nem">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/rovidBemutatkozasText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:drawable/edit_text"
+        android:hint="Bemutatkozás..."
+        android:inputType="textMultiLine"
+        android:lines="3"
+        app:layout_constraintTop_toBottomOf="@+id/rovidBemutatkozas">
+
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:text="Adatok Elküdése"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
