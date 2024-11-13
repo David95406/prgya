@@ -7,6 +7,36 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditTextANum"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
+        android:hint="Add meg az első számot..."
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditTextBNum"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
+        android:hint="Add meg a második számot..."
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Összeadás"
+        android:onClick="addNumbers" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/TextViewResult"
+        android:text=""
+        />
 
 </LinearLayout>

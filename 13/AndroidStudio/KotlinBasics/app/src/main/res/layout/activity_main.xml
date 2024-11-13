@@ -7,41 +7,17 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="36dp"
-        android:src="@android:drawable/star_big_on" />
-
-    <EditText
-        android:id="@+id/EditTextNameInput"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:background="@android:drawable/edit_text"
-        android:hint="Add meg a neved..." />
-
-    <Button
-        android:id="@+id/ButtonSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="Köszöntés"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/TextViewResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:padding="8dp"
-        android:textSize="24sp" />
-
-    <Button
-        android:id="@+id/OpenCalculatorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Számológép megnyitása"
+        android:id="@+id/OpenGreetingButton"
+        android:text="Greeting Activity megnyitasa"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/OpenCalculatorButton"
+        android:text="Szamologep megnyitasa"
+    />
 </LinearLayout>

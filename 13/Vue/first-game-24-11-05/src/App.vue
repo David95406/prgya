@@ -1,5 +1,27 @@
 <script setup>
+import { ref } from 'vue';
+import GameArea from './components/GameArea.vue';
 
+const isGame = ref(false)
+const score = ref(0)
+
+const startGame = (() => {
+  isGame.value = true
+  score.value = 0
+})
+
+const updateScore = ((pont) => {
+  score.value += pont
+
+  if (score.value == 10) {
+    alert("Gratulalok gyoztel")
+    isGame.value = false
+  }
+  if (score.value == -10) {
+    alert("Sajnalom vesztettel")
+    isGame.value = false
+  }
+})
 </script>
 
 <template>
@@ -10,16 +32,18 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-9">
-          <section class="game-area"></section>
+          <section>
+            <GameArea :isGame="isGame" @updateScore="updateScore"/>
+          </section>
         </div>
         <div class="col-lg-3">
           <aside>
-            <div class="score">Pont: 0</div>
+            <div class="score">Pont: {{ score }}</div>
             <h2>Játékszabályok</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt gravida sapien non
               scelerisque. Nulla sit amet auctor diam. Donec sit amet scelerisque risus. Sed varius purus at nulla
               pharetra tempus. Mauris interdum neque id metus fermentum elementum. Cras vel risus quam.</p>
-            <p><button class="btn btn-warning">Játék indítása</button></p>
+            <p><button class="btn btn-warning" @click="startGame()">Játék indítása</button></p>
           </aside>
         </div>
       </div>
@@ -53,14 +77,6 @@ main {
   background-size: cover;
 }
 
-.game-area {
-  background-color: #add8e6;
-  border: 2px solid #D6322F;
-  width: 400px;
-  height: 500px;
-  margin: 30px auto;
-}
-
 aside {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
@@ -78,6 +94,4 @@ aside {
   font-size: 20px;
   font-weight: 600;
 }
-
-
 </style>

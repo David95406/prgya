@@ -1,0 +1,20 @@
+A Gyűrűk Ura;J.R.R. Tolkien;1954;1178
+Harry Potter és a bölcsek köve;J.K. Rowling;1997;223
+A kisherceg;Antoine de Saint-Exupéry;1943;96
+A Da Vinci-kód;Dan Brown;2003;454
+Az alkimista;Paulo Coelho;1988;208
+1984;George Orwell;1949;328
+A Szél árnyéka;Carlos Ruiz Zafón;2001;545
+Ne bántsátok a feketerigót!;Harper Lee;1960;281
+Büszkeség és balítélet;Jane Austen;1813;279
+Moby Dick;Herman Melville;1851;635
+A nagy Gatsby;F. Scott Fitzgerald;1925;180
+Száz év magány;Gabriel García Márquez;1967;417
+A mester és Margarita;Mihail Bulgakov;1966;384
+Jane Eyre;Charlotte Brontë;1847;500
+Ulysses;James Joyce;1922;730
+Háború és béke;Lev Tolsztoj;1869;1225
+Anna Karenina;Lev Tolsztoj;1877;864
+Édes Anna;Kosztolányi Dezső;1926;223
+Tüskevár;Fekete István;1957;248
+Egri csillagok;Gárdonyi Géza;1899;623
