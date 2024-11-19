@@ -25,6 +25,8 @@ export default class Product {
         this.#darabszam = 0
         this.setDarabszam = this.setDarabszam.bind(this)
         this.getDarabszam = this.getDarabszam.bind(this)
+        this.increaseDarabszam = this.increaseDarabszam.bind(this)
+        this.decreaseDarabszam = this.decreaseDarabszam.bind(this)
     }
 
     setDarabszam(darabszam) {
@@ -33,6 +35,16 @@ export default class Product {
 
     getDarabszam() {
         return this.#darabszam
+    }
+
+    increaseDarabszam() {
+        this.#darabszam++
+    }
+
+    decreaseDarabszam() {
+        if (this.getDarabszam() > 0) {
+            this.#darabszam--
+        }
     }
 
     setId(id) {
@@ -58,6 +70,7 @@ export default class Product {
     getPrice() {
         return this.#price
     }
+
 
     setImg(img) {
         this.#img = img

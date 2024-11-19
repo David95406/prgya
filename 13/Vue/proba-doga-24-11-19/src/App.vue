@@ -16,28 +16,60 @@ productsFile.forEach((egyProduct) => {
 })
 const kosar = ref([])
 const addToKosar = ((product) => {
-  kosar.value.push(product)
-  console.log("siker")
-  console.log(kosar.value)
+  var ids = []
+  kosar.value.forEach((products) => ids.push(products.getId()))
+  var isUres = true
+  ids.forEach((id) => {
+    if (id === product.getId()) {
+      const i = kosar.value.indexOf(product)
+      kosar.value[i].increaseDarabszam()
+      isUres = false
+    }
+  })
+  if (isUres) {
+    kosar.value.push(product)
+    console.log("siker")
+    console.log(kosar.value.length)
+    kosarSize.value++
+  }
+
 })
 
 const kosarSize = ref(0)
-watch(kosar.value, (() => {
-  var ids = []
-  kosar.value.forEach((product) => {
-    console.log(product.getId())
-    if (!ids.includes(product.getId())) {
-      ids.push(product.getId())
-    }
-  })
-  console.log(ids)
-  kosarSize.value = ids.length
-}))
 
 const isKosar = ref(false)
+const isFizetes = ref(false)
+const setIsKosar = ((value) => {
+  isKosar.value = value
+})
+
+const setIsFizetes = ((value) => {
+  isFizetes.value = value
+})
+
 const goToKosar = (() => {
-  isKosar.value = true
-  return true
+  setIsFizetes(false)
+  setIsKosar(true)
+})
+
+
+
+const back = (() => {
+  setIsKosar(false)
+  setIsFizetes(false)
+})
+
+const vegsoKosar = ref(null)
+const goToFizetes = ((vKosar) => {
+  setIsKosar(false)
+  setIsFizetes(true)
+  vegsoKosar.value = vKosar
+})
+
+const vegsoFizetes = (() => {
+  back()
+  kosar.value = []
+  location.reload()
 })
 </script>
 
@@ -48,10 +80,10 @@ const goToKosar = (() => {
     </button>
   </header>
   <main>
-    <section v-if="!isKosar">
+    <section v-if="!isKosar && !isFizetes">
       <div v-for="product in products">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" .src="product.getImg()" .alt="product.getName()">
+          <img class="card-img-top" :src="product.getImg()" .alt="product.getName()">
           <div class="card-body">
             <h5 class="card-title">{{ product.getName() }}</h5>
             <p class="card-text">{{ product.getPrice() }} Ft</p>
@@ -63,7 +95,12 @@ const goToKosar = (() => {
 
     <section>
       <div v-if="isKosar">
-        <Kosar :kosar=kosar/>
+        <Kosar :kosar="kosar" @back="back()" @fizetes="goToFizetes" />
+      </div>
+    </section>
+    <section>
+      <div v-if="isFizetes">
+        <Fizetes :kosar="vegsoKosar" @vegso_fizetes="vegsoFizetes"/>
       </div>
     </section>
   </main>
