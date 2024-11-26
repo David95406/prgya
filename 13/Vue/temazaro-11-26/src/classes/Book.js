@@ -54,4 +54,8 @@ export default class Book {
         return this.#img
     }
 
+    toString() {
+        return this.getAzon() + " - " + this.getAuthors() + ": " + this.getName()
+    }
+
 }
