@@ -109,4 +109,138 @@ class DataClassGyak {
         val agencyName: String,
         val customers: List<Customer>
     )
+
+    //uj 11-25
+    //1 feladat
+    data class UjCustomer(
+        val customerId: String,
+        val name: String,
+        val email: String,
+        val phone: String
+    )
+
+    data class Items(
+        val itemId: String,
+        val productName: String,
+        val quantity: Byte,
+        val pricePerUnit: Double,
+        val discount: Double //vagy boolean
+    )
+
+    data class Shipping(
+        val address: Address,
+        val shippingMethod: String,
+        val estimatedDeliveryDays: Byte
+    )
+
+    data class Address(
+        val street: String,
+        val city: String,
+        val postalCode: Int,
+        val country: String
+    )
+
+    data class Payment(
+        val paymentMethod: String,
+        val totalAmount: Double,
+        val paid: Boolean
+    )
+
+    data class Order(
+        val orderId: String,
+        val customer: UjCustomer,
+        val orderItems: List<Items>,
+        val shipping: Shipping,
+        val payment: Payment,
+        val status: String
+    )
+    //2 feladat
+    data class Member(
+        val studentId: String,
+        val name: String,
+        val grade: Byte,
+        val hasCompleted: Boolean
+    )
+
+    data class Assignment(
+        val assignmentName: String,
+        val maxPoints: Int,
+        val studentScores: List<StudentScore>
+    )
+
+    data class StudentScore(
+        val STU123: Int,
+        val STU124: Int,
+        val STU125: Int,
+    )
+
+    data class  Project(
+        val projectName: String,
+        val subject: String,
+        val durationWeeks: Byte,
+        val teamMembers: List<Member>,
+        val assignments: List<Assignment>,
+        val completed: Boolean
+    )
+    //3 feladat
+    data class Location(
+        val latitude: Double,
+        val longitude: Double
+    )
+
+    data class Vehicle(
+        val vehicleId: String,
+        val capacity: Byte,
+        val currentLocation: Location,
+        val status: String
+    )
+
+    data class Schedule(
+        val weekday: List<DepArr>,
+        val weekend: List<DepArr>,
+    )
+
+    data class DepArr(
+        val departureTime: String,
+        val arrivalTime: String
+    )
+
+    data class Bus(
+        val routeNumber: Int,
+        val routeName: String,
+        val vehicles: List<Vehicle>,
+        val schedule: Schedule,
+    )
+
+    data class Tram(
+        val routeNumber: Int,
+        val routeName: String,
+        val vehicles: List<Vehicle>,
+        val schedule: Schedule,
+    )
+
+    data class TransitSystem(
+        val busses: List<Bus>,
+        val trams: List<Tram>
+    )
+
+    data class EmergencyContact(
+        val name: String,
+        val phone: String,
+        val shift: String
+    )
+
+    data class ControlCenter(
+        val contactNumber: String,
+        val emergencyContacts: List<EmergencyContact>
+    )
+
+    data class City(
+        val cityName: String,
+        val transitSystem: TransitSystem,
+        val controlCenter: ControlCenter,
+
+
+    )
+
 }

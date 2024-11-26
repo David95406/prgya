@@ -83,4 +83,14 @@ export default class Product {
     toString() {
         return this.getName() + ": " + this.getPrice()
     }
+
+    toString() {
+        return '{ valami: ' + this.getId() + ', valami2: ' + this.getName()
+    }
+
+    getImageURL = ((imageURL) => {
+        console.log(new URL(imageURL, import.meta.url).origin + "/src/" + imageURL)
+        return new URL(imageURL, import.meta.url.substring(0,26)).href;
+    })
+
 }

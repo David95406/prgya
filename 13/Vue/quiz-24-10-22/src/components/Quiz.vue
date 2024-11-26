@@ -19,6 +19,7 @@ const emitAnswer = (() => {
     emit('answer', userAnswer.value)
     userAnswer.value = ""
 })
+
 </script>
 
 <template>
