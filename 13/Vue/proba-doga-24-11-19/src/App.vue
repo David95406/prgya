@@ -71,10 +71,13 @@ const vegsoFizetes = (() => {
   kosar.value = []
   location.reload()
 })
+
 </script>
 
 <template>
   <header>
+    <h1>asdasd</h1>
+    <img src="./assets/apple.png" :title="kosarSize">
     <button @click="goToKosar" .disabled="kosarSize == 0">
       <p>Kosár {{ kosarSize }}</p>
     </button>

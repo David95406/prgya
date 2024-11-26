@@ -1,0 +1,196 @@
+{
+    "orderId": "ORD987654",
+    "customer": {
+        "customerId": "CUS456789",
+        "name": "Varga Anna",
+        "email": "varga.anna@example.com",
+        "phone": "+36 30 123 4567"
+    },
+    "orderItems": [
+        {
+            "itemId": "ITEM123",
+            "productName": "Bluetooth Fülhallgató",
+            "quantity": 2,
+            "pricePerUnit": 15000.0,
+            "discount": null
+        },
+        {
+            "itemId": "ITEM124",
+            "productName": "Vezeték nélküli egér",
+            "quantity": 1,
+            "pricePerUnit": 5000.0,
+            "discount": 10.0
+        }
+    ],
+    "shipping": {
+        "address": {
+            "street": "Rózsakert utca 10.",
+            "city": "Budapest",
+            "postalCode": "1024",
+            "country": "Magyarország"
+        },
+        "shippingMethod": "Futárszolgálat",
+        "estimatedDeliveryDays": 3
+    },
+    "payment": {
+        "paymentMethod": "Bankkártya",
+        "totalAmount": 34500.0,
+        "paid": true
+    },
+    "status": "Feldolgozás alatt"
+}
+//----------------------------------------------------------------
+{
+    "projectName": "Ökológiai Lábnyom Elemzése",
+    "subject": "Biológia",
+    "durationWeeks": 4,
+    "teamMembers": [
+        {
+            "studentId": "STU123",
+            "name": "Kiss Péter",
+            "grade": 11,
+            "hasCompleted": true
+        },
+        {
+            "studentId": "STU124",
+            "name": "Nagy Anna",
+            "grade": 11,
+            "hasCompleted": true
+        },
+        {
+            "studentId": "STU125",
+            "name": "Tóth Gergő",
+            "grade": 11,
+            "hasCompleted": false
+        }
+    ],
+    "assignments": [
+        {
+            "assignmentName": "Bevezetés az Ökológiai Lábnyomba",
+            "maxPoints": 20,
+            "studentScores": {
+                "STU123": 18,
+                "STU124": 19,
+                "STU125": 15
+            }
+        },
+        {
+            "assignmentName": "Csoportos Adatgyűjtés",
+            "maxPoints": 30,
+            "studentScores": {
+                "STU123": 28,
+                "STU124": 27,
+                "STU125": 25
+            }
+        }
+    ],
+    "completed": false
+}
+//-------------------------------------------------------------
+{
+    "cityName": "Budapest",
+    "transitSystem": {
+        "buses": [
+            {
+                "routeNumber": 7,
+                "routeName": "Újpalota - Albertfalva",
+                "vehicles": [
+                    {
+                        "vehicleId": "BUS001",
+                        "capacity": 50,
+                        "currentLocation": {
+                            "latitude": 47.49801,
+                            "longitude": 19.03991
+                        },
+                        "status": "Operational"
+                    },
+                    {
+                        "vehicleId": "BUS002",
+                        "capacity": 50,
+                        "currentLocation": {
+                            "latitude": 47.50402,
+                            "longitude": 19.04650
+                        },
+                        "status": "In Service"
+                    }
+                ],
+                "schedule": {
+                    "weekday": [
+                        {
+                            "departureTime": "06:00",
+                            "arrivalTime": "07:00"
+                        },
+                        {
+                            "departureTime": "07:15",
+                            "arrivalTime": "08:15"
+                        }
+                    ],
+                    "weekend": [
+                        {
+                            "departureTime": "08:00",
+                            "arrivalTime": "09:00"
+                        },
+                        {
+                            "departureTime": "09:30",
+                            "arrivalTime": "10:30"
+                        }
+                    ]
+                }
+            }
+        ],
+        "trams": [
+            {
+                "routeNumber": 4,
+                "routeName": "Széll Kálmán tér - Újbuda-központ",
+                "vehicles": [
+                    {
+                        "vehicleId": "TRAM001",
+                        "capacity": 150,
+                        "currentLocation": {
+                            "latitude": 47.51102,
+                            "longitude": 19.02713
+                        },
+                        "status": "Operational"
+                    }
+                ],
+                "schedule": {
+                    "weekday": [
+                        {
+                            "departureTime": "05:30",
+                            "arrivalTime": "06:30"
+                        },
+                        {
+                            "departureTime": "06:45",
+                            "arrivalTime": "07:45"
+                        }
+                    ],
+                    "weekend": [
+                        {
+                            "departureTime": "07:00",
+                            "arrivalTime": "08:00"
+                        },
+                        {
+                            "departureTime": "08:30",
+                            "arrivalTime": "09:30"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "controlCenter": {
+        "contactNumber": "+36 1 123 4567",
+        "emergencyContacts": [
+            {
+                "name": "Vezető Diszpécser",
+                "phone": "+36 1 987 6543",
+                "shift": "Day"
+            },
+            {
+                "name": "Éjszakai Diszpécser",
+                "phone": "+36 1 876 5432",
+                "shift": "Night"
+            }
+        ]
+    }
+}
