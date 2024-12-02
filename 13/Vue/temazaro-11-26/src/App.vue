@@ -56,12 +56,20 @@ const kolcsonzes = ((ujKonyv, index) => {
 })
 
 const searchBooks = (() => {
-  finalSearch.value = search.value
+  if (listAll.value) {
+    alert("Kereseshez kapcsolja ki a 'Minden könyv mutatása'-t!")
+  } else {
+    finalSearch.value = search.value
+  }
 })
 
 const isKolcsonzes = ref(false)
 const goToKolcsonzes = (() => {
-  isKolcsonzes.value = true
+  if (kolcsonzott.value.length == 0) {
+    alert("Üres!")
+  } else {
+    isKolcsonzes.value = true
+  }
 })
 
 const back = ((newBooks) => {
@@ -85,7 +93,7 @@ const back = ((newBooks) => {
   <main>
     <section v-if="!isKolcsonzes">
       <div>
-        <span @click="goToKolcsonzes">Kölcsönzött {{ kolcsonzott.length }}</span>
+        <span @click="goToKolcsonzes" class="kolcsonzott">Kölcsönzött {{ kolcsonzott.length }}</span>
         <div class="form-check form-switch">
           <label for="flexSwitchCheckDefault">Minden könyv mutatása</label>
           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
@@ -94,9 +102,11 @@ const back = ((newBooks) => {
       </div>
     </section>
     <section v-if="!isKolcsonzes">
-      <Konyvtar :books="searchResult"/>
+      <!--
+      <Konyvtar :books="searchResult" @kolcsonzes="kolcsonzes"/>
+      -->
       <div v-for="(book, index) in searchResult" class="card" style="width: 18rem;">
-        <img :src="getImageURL(book.getImg())" class="card-img-top" :title="book.getAuthors()">
+        <img :src="getImageURL(book.getImg())" class="card-img-top" :title="book.getTitle()">
         <div class="card-body">
           <h5 class="card-title">{{ book.getName() }}</h5>
           <p class="card-text">{{ book.getAzon() }}</p>
@@ -111,4 +121,9 @@ const back = ((newBooks) => {
   <footer></footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+.kolcsonzott {
+  cursor: pointer;
+  font-weight: 700;
+}
+</style>

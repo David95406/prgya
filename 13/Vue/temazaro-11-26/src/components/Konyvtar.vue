@@ -8,7 +8,7 @@ const props = defineProps({
 
 <template>
     <div>
-        <div v-for="(book, index) in searchResult" class="card" style="width: 18rem;">
+        <div v-for="(book, index) in props.books" class="card" style="width: 18rem;">
             <img :src="getImageURL(book.getImg())" class="card-img-top" :title="book.getAuthors()">
             <div class="card-body">
                 <h5 class="card-title">{{ book.getName() }}</h5>

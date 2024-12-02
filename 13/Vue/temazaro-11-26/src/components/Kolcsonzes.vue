@@ -3,25 +3,6 @@ import { defineProps, ref, defineEmits } from 'vue';
 const props = defineProps({
     books: Array
 })
-props.books = props.books.sort((a, b) => a.getAzon() - b.getAzon())
-
-const selectedBook = ref("Válasszon!")
-const selectedBookIndex = ref(0)
-const selectBook = ((book, index) => {
-    selectedBook.value = book.getName()
-    selectedBookIndex.value = index
-    console.log("ok")
-})
-
-const removeItem = (() => {
-    if (confirm("Bizosan vissza akarja adni?")) {
-        props.books.splice(selectedBookIndex.value, 1)
-        selectedBook.value = "Válasszon!"
-        selectedBookIndex.value = 0
-        alert("Sikeres vissza")
-        if (props.books.length == 0) {back()}
-    }
-})
 
 const emits = defineEmits(
     ['back']
@@ -30,6 +11,28 @@ const emits = defineEmits(
 const back = (() => {
     emits('back', props.books)
 })
+props.books = props.books.sort((a, b) => a.getAzon() - b.getAzon())
+
+const selectedBook = ref("Válasszon!")
+const selectedBookIndex = ref(-1)
+const selectBook = ((book, index) => {
+    selectedBook.value = book.getName()
+    selectedBookIndex.value = index
+    console.log("ok")
+})
+
+const removeItem = (() => {
+    if (selectedBookIndex.value != -1) {
+        if (confirm("Bizosan vissza akarja adni?")) {
+            props.books.splice(selectedBookIndex.value, 1)
+            selectedBook.value = "Válasszon!"
+            selectedBookIndex.value = -1
+            alert("Sikeres vissza")
+            if (props.books.length == 0) { back() }
+        }
+    }
+})
+
 </script>
 
 <template>

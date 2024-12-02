@@ -6,11 +6,11 @@ export default class Book {
 
     constructor(azon, name, authors, img) {
         this.setAzon(azon)
-        this.setAzon = this.setAzon.bind(this)
+        //this.setAzon = this.setAzon.bind(this)
         this.getAzon = this.getAzon.bind(this)
 
         this.setName(name)
-        this.setName = this.setName.bind(this)
+        //this.setName = this.setName.bind(this)
         this.getName = this.getName.bind(this)
 
         this.setAuthors(authors)
@@ -18,8 +18,11 @@ export default class Book {
         this.getAuthors = this.getAuthors.bind(this)
 
         this.setImg(img)
-        this.setImg = this.setImg.bind(this)
+        //this.setImg = this.setImg.bind(this)
         this.getImg = this.getImg.bind(this)
+
+        this.toString = this.toString.bind(this)
+        this.getTitle = this.getTitle.bind(this)
     }
 
     setAzon(azon) {
@@ -57,5 +60,11 @@ export default class Book {
     toString() {
         return this.getAzon() + " - " + this.getAuthors() + ": " + this.getName()
     }
+
+    getTitle() {
+        return this.getAuthors() + ": " + this.getName()
+    }
+
+    
 
 }
