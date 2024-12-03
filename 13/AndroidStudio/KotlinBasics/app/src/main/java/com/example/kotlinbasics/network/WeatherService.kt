@@ -18,32 +18,4 @@ interface WeatherService {
         @Query("appid") apiKey: String,
         @Query("units") units: String
     ): Call<WeatherResponse>
-
-    private fun fetchData() {
-        val apiKey = "ads"
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val weatherService = retrofit.create(WeatherService::class.java)
-        val call = weatherService.getWeather("Tatabánya", apiKey = apiKey, units = "metric")
-        call.enqueue(object: Callback<WeatherResponse> {
-            override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
-                if (response.isSuccessful) {
-                    val weatherResponse = response.body()
-
-                    if (weatherResponse != null) {
-                        val weatherInfo = weatherResponse.main.temp
-                        textViewTemp.text = "Hőmérséklet: $weatherInfo °C"
-                    }
-                }
-
-            }
-
-            override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
-
-            }
-        })
-    }
 }

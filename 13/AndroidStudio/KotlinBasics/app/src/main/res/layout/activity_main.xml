@@ -20,4 +20,10 @@
         android:id="@+id/OpenCalculatorButton"
         android:text="Szamologep megnyitasa"
     />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/OpenWeatherButton"
+        android:text="Szamologep megnyitasa"/>
 </LinearLayout>

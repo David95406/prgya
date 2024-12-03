@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var OpenCalculatorButton: Button
     private lateinit var OpenGreetingButton: Button
+    private lateinit var OpenWeatherButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,5 +115,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GreetingActivity::class.java)
             startActivity(intent)
         }
+
+        OpenWeatherButton = findViewById(R.id.OpenWeatherButton)
+        OpenWeatherButton.setOnClickListener() {
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }
