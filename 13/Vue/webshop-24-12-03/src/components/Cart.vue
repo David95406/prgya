@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
     <aside>
         <h2>Cart</h2>
@@ -10,11 +14,33 @@
         </div>
         <div class="total">Total quantity: 1</div>
         <div class="mb-3">
-            <button class="btn btn-primary">Checkout ($ 200)</button>
+            <button class="btn w-100">Checkout ($ 200)</button>
         </div>
     </aside>
 </template>
-<script setup>
 
-</script>
-<style scoped></style>
+<style scoped>
+aside {
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.d-flex {
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.price {
+    color: #3AB982;
+    font-weight: 700;
+}
+
+.btn {
+    margin-top: 15px;
+}
+</style>

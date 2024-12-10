@@ -1,37 +1,71 @@
+<script setup>
+import { p as productsData } from '../data/productData';
+import { ref, computed, defineEmits } from 'vue';
+
+const emit = defineEmits(['productsSize']);
+
+const search = ref("");
+const result = computed(() => {
+    var returnValue = productsData.filter((product) =>
+    (product.name.toLowerCase().includes(search.value.toLowerCase()) ||
+        product.desc.toLowerCase().includes(search.value.toLowerCase()) ||
+        product.price == search.value)
+    )
+
+    emit('productsSize', returnValue.length)  
+    return returnValue
+})
+
+const addToCart = ((index) => {
+    console.log('Add to cart', index)
+})
+</script>
+
 <template>
     <section>
         <h2>Products</h2>
         <div class="mb-3">
-            <input type="search" class="form-control" placeholder="Filter...">
+            <input v-model="search" type="search" class="form-control" placeholder="Filter...">
         </div>
-        <div class="products">
+        <div v-for="(product, index) in result" class="products">
             <div class="product d-flex">
-                <h3>Lorum Ipse</h3>
-                <p>Lórum ipse az olstás, mint tatus, és a válat prom. Aktusnak értelt: rohos, sőt szaftos rányos volt a
-                    cseskesben.</p>
-                <p class="price">$ 10</p>
-            </div>
-            <div class="product d-flex">
-                <h3>HEISENBERG IPSUM</h3>
-                <p>Ludum mutavit. Verbum est ex. Et ... sunt occidat. Videtur quod est super omne oppidum. Quis
-                    transfretavit tu iratus es contudit cranium cum dolor apparatus. Qui curis! Modo nobis certamen est,
-                    qui non credunt at.</p>
-                <p class="price">$ 10</p>
-            </div>
-            <div class="product d-flex">
-                <h3>Brainrot Ipsum</h3>
-                <p>Yass queen, slay all day, bet! I'm shooketh, TBH fam, that meme's lit AF. SMH my head, bruh, that's a
-                    big mood. Low-key vibin', no cap. This is the tea, sis, sippin' it. If you ain't yeeting, you ain't
-                    trying. FOMO's real, YOLO, amirite? Legit squad goals. OMG, that hit different. Stan culture,
-                    flexin'
-                    on the gram. Bruh, I'm deceased, sending it to the group chat. Big brain energy, boomer alert. Oof,
-                    that's a yikes from me, dawg. Thirst trap, TFW, can't even.</p>
-                <p class="price">$ 10</p>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.desc }}</p>
+                <p class="price">$ {{ product.price }}</p>
+                <button @click="addToCart(index)" type="button" class="btn">Add to Cart</button>
             </div>
         </div>
     </section>
 </template>
-<script setup>
 
-</script>
-<style scoped></style>
+<style scoped>
+section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.form-control {
+    border: 10px solid #ccc;
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.product {
+    border-bottom: 1px solid #ccc;
+    padding-top: 15px;
+    align-items: center;
+}
+
+.product:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    width: 200px;
+    margin-left: 144px;
+}
+</style>

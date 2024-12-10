@@ -1,6 +1,10 @@
 <script setup>
+import { ref } from 'vue';
 import Cart from './components/Cart.vue';
 import Products from './components/Products.vue';
+
+const productsSize = ref(-1);
+const updateProductsSize = ((newSize) => productsSize.value = newSize);
 </script>
 
 <template>
@@ -14,13 +18,15 @@ import Products from './components/Products.vue';
           <Cart />
         </div>
         <div class="col-lg-9">
-          <Products/>
+          <Products @productsSize="updateProductsSize" />
         </div>
       </div>
     </div>
   </main>
   <footer>
-    <p># of products 11</p>
+    <div class="container">
+      <p class="text-end fw-bold mt-2"># of products {{ productsSize }}</p>
+    </div>
   </footer>
 </template>
 

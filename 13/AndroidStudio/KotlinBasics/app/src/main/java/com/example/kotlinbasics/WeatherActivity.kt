@@ -1,5 +1,6 @@
 package com.example.kotlinbasics
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -39,6 +40,7 @@ class WeatherActivity : AppCompatActivity() {
         val call = service.getWeather("Tatabánya", apiKey, "metric")
 
         call.enqueue(object : Callback<WeatherResponse> {
+            @SuppressLint("SetTextI18n")
             override fun onResponse(
                 call: Call<WeatherResponse>,
                 response: Response<WeatherResponse>
@@ -47,7 +49,10 @@ class WeatherActivity : AppCompatActivity() {
                     val weatherResponse = response.body()
                     if (weatherResponse != null) {
                         val temperature = weatherResponse.main.temp
-                        textViewTemp.text = "$temperature °C"
+                        val humidity = weatherResponse.main.humidity
+                        val wind = weatherResponse.wind.speed
+
+                        textViewTemp.text = "$temperature °C\n$humidity%\n$wind km/h"
                     } else {
                         textViewTemp.text = "Üres válasz érkezett."
                     }
