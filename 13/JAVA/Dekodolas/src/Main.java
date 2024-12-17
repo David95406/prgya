@@ -148,4 +148,6 @@ public class Main {
         System.out.println("5: " + otodik_szabaly(3456));
         System.out.println("6: " + hatodik_szabaly(1360));
     }
+
+    
 }

@@ -1,6 +1,8 @@
 <script setup>
 import { p as productsData } from '../data/productData';
-import { ref, computed, defineEmits } from 'vue';
+import { ref, computed, defineEmits, watchEffect } from 'vue';
+import Product from '../classes/Product';
+import { state } from '../state/state';
 
 const emit = defineEmits(['productsSize']);
 
@@ -12,13 +14,21 @@ const result = computed(() => {
         product.price == search.value)
     )
 
-    emit('productsSize', returnValue.length)  
+    emit('productsSize', returnValue.length)
     return returnValue
 })
 
-const addToCart = ((index) => {
-    console.log('Add to cart', index)
+const newProduct = ref()
+const addToCart = ((product) => {
+    newProduct.value = {...(new Product(product.name, product.price, 1))}
 })
+
+watchEffect(() => {
+    state.product = newProduct.value
+})
+
+
+
 </script>
 
 <template>
@@ -32,7 +42,7 @@ const addToCart = ((index) => {
                 <h3>{{ product.name }}</h3>
                 <p>{{ product.desc }}</p>
                 <p class="price">$ {{ product.price }}</p>
-                <button @click="addToCart(index)" type="button" class="btn">Add to Cart</button>
+                <button @click="addToCart(product)" type="button" class="btn">Add to Cart</button>
             </div>
         </div>
     </section>

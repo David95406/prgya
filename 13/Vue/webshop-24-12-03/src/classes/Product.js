@@ -5,16 +5,16 @@ export default class Product {
 
     constructor(name, price, piece) {
         this.setName(name)
+        this.setPrice(price)
+        this.setPiece(piece)
+
         this.setName = this.setName.bind(this)
         this.getName = this.getName.bind(this)
-
-        this.setPrice(price)
         this.setPrice = this.setPrice.bind(this)
         this.getPrice = this.getPrice.bind(this)
-        
-        this.setPiece(piece)
         this.setPiece = this.setPiece.bind(this)
         this.getPiece = this.getPiece.bind(this)
+        this.addPiece = this.addPiece.bind(this)
     }
 
     setName(name) {
@@ -39,6 +39,10 @@ export default class Product {
 
     getPiece() {
         return this.#piece
+    }
+
+    addPiece() {
+        this.setPiece(this.getPiece() + 1)
     }
 
 }
