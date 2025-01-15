@@ -1,0 +1,6 @@
+Leon;Oroszlan;5
+Pingu;Pingvin;3
+Kobra;Kigyo;2
+Pingwin;Pingvin;2
+balazs;Oroszlan;2
+zs;Oroszlan;2
