@@ -49,4 +49,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.okhttp)
     implementation(libs.retrofit.gson)
+    // image loader
+    implementation(libs.androidx.recyclerview)
 }

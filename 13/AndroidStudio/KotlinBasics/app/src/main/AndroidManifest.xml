@@ -24,6 +24,9 @@
             android:name=".WeatherActivity"
             android:exported="false" />
         <activity
+            android:name=".UserListActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -32,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
