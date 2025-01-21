@@ -1,0 +1,56 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+}
+
+body {
+  padding: auto;
+
+}
+
+h1, h2, footer, p:last-of-type {
+  text-align: center;
+}
+
+h2 {
+  color: aqua;
+}
+
+label {
+  display: block;
+}
+
+label, button {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+input {
+  margin-top: 5px;
+  padding: 7px;
+  width: calc(100% - 14px);
+}
+
+button {
+  background-color: aquamarine;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  color: black;
+}
+
+button:last-of-type {
+  background-color: greenyellow;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  margin-top: 70px;
+  padding-top: 20px;
+}
