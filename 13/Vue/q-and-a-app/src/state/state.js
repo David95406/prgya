@@ -9,7 +9,6 @@ import Question from "../classes/Question";
 export const questionState = defineStore('questionState', (() => {
     const questions = ref([])
     const userAnswers = ref([])
-    const userAnswersIndexes = ref([])
     const questionsIndexes = ref([])
 
     function addQuestion(question) {
