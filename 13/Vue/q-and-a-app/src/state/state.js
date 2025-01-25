@@ -4,10 +4,12 @@ import {
 import {
     ref
 } from "vue";
+import Question from "../classes/Question";
 //                                      👇 store azonosito
 export const questionState = defineStore('questionState', (() => {
     const questions = ref([])
     const userAnswers = ref([])
+    const userAnswersIndexes = ref([])
     const questionsIndexes = ref([])
 
     function addQuestion(question) {
@@ -47,7 +49,9 @@ export const questionState = defineStore('questionState', (() => {
     }
 
     function clearState() {
-        questions.value = userAnswers.value = questionsIndexes.value = []
+        questions.value = []
+        userAnswers.value = []
+        questionsIndexes.value = []
     }
 
     return {
@@ -59,6 +63,6 @@ export const questionState = defineStore('questionState', (() => {
         getQuestionByIndex,
         getQuestionsIndexes,
         setQuestionsIndexes,
-        clearState
+        clearState,
     }
 }))

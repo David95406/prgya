@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { questionState } from '../state/state';
 import Question from '../classes/Question';
 
@@ -34,7 +34,7 @@ const reset = (() => {
             <span>
                 <label>Kérdés: {{ questions[index].getQuestion() }}</label>
                 <label class="answer">Helyes válasz: {{ questions[index].getAnswer() }}</label>
-                <label class="userAnswer">Adott válasz: {{ userAnswers[index] }}</label>
+                <label class="userAnswer">Adott válasz: {{ userAnswers[i] }}</label>
             </span>
             <span class="buttons" :id="i">
                 <button @click="check(i, true)">Jó</button>
