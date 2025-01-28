@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Saksham",
+        "last": "Nair"
+      },
+      "location": {
+        "street": {
+          "number": 4017,
+          "name": "Dadabhai Naoroji Rd"
+        },
+        "city": "Ramagundam",
+        "state": "Daman and Diu",
+        "country": "India",
+        "postcode": 50216,
+        "coordinates": {
+          "latitude": "12.1154",
+          "longitude": "-79.9096"
+        },
+        "timezone": {
+          "offset": "-3:00",
+          "description": "Brazil, Buenos Aires, Georgetown"
+        }
+      },
+      "email": "saksham.nair@example.com",
+      "login": {
+        "uuid": "d9564c37-4eff-4cfc-8f5b-d128bdcb55ad",
+        "username": "greenpanda881",
+        "password": "walton",
+        "salt": "q608Y8VF",
+        "md5": "33a3dedab13c1f512a0b889c8af451a8",
+        "sha1": "d68daf2300f19b65ee72d99c8d00bc078fcd30b1",
+        "sha256": "0ca3bd39783bf04b9a80f9b4aa666c21a31cf8d49a59a6f6247eb7454e9e8ac6"
+      },
+      "dob": {
+        "date": "1948-06-07T09:15:08.553Z",
+        "age": 76
+      },
+      "registered": {
+        "date": "2005-12-23T22:08:39.148Z",
+        "age": 19
+      },
+      "phone": "9877336888",
+      "cell": "8572995123",
+      "id": {
+        "name": "UIDAI",
+        "value": "336713307086"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/53.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/53.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/53.jpg"
+      },
+      "nat": "IN"
+    }
+  ],
+  "info": {
+    "seed": "7559cdbfc31bc1c1",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}

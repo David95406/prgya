@@ -26,6 +26,8 @@
         <activity
             android:name=".UserListActivity"
             android:exported="false" />
+        <activity android:name=".RandomUserListActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

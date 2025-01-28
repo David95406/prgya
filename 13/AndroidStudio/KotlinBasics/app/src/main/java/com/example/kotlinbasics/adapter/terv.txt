@@ -1,0 +1,7 @@
+list_item_randomuser
+    image_view_profile
+    text_view_name
+    text_view_emails
+    text_view_country
+activity_random_users
+    randomUserListRecyclerView
