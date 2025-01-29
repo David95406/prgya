@@ -1,7 +1,7 @@
 export const roomsData = [{
     id: "Room 1",
     seats: [
-      [false, false, false, false],
+      [true, false, false, false],
       [false, false, false, false],
       [false, false, false, false],
       [false, false, false, false],

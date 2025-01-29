@@ -9,13 +9,11 @@ import { ref } from 'vue';
 const movieState = screenings()
 if (movieState.getScreeningsLength() == 0) {
   screeningsData.forEach((sd) => {
-    const roomSeats = roomsData.find((room) => room.id === sd.roomId);
+    const roomSeats = roomsData.find((room) => room.id == sd.roomId);
     const copyOfRoomSeats = roomSeats.seats.map((seat) => [...seat]); // tomb masolas
-    
-    const s = new Screening(sd.id, sd.movieId, sd.time, copyOfRoomSeats)
+    const s = new Screening(sd.movieId, sd.roomId, sd.time, copyOfRoomSeats)
     movieState.addMovie(s)
   })
-  console.log(screeningsData)
 }
 
 </script>

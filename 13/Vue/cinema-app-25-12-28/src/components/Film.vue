@@ -17,18 +17,38 @@ const movieScreenings = screeningsData.filter(screening => screening.movieId ===
 const currentScreeningData = ref(null)
 const showSeats = ref(false)
 const setSeats = (time) => {
-    showSeats.value = true; // a state-el van a baj
-    currentScreeningData.value = movieState.getScreenings().find(ms => (ms.getTime() === time && ms.getMovieId() === movieState.getFilmId()));
-    console.log(currentScreeningData.value.getSeets())
+    console.log(movieState.getScreenings())
+    currentScreeningData.value = movieState.getScreenings().find((ms) => {
+        console.log(ms)
+        return ms.getTime() === time && ms.getMovieId() == movieState.getFilmId()
+    });
+    showSeats.value = true;
 }
 
 const prefix = "seat-";
-const setColor = ((i, j) => {
-    document.querySelector(prefix + i + j).style.backgroundColor = "red";
+const setColor = ((i, j, col) => {
+    console.log(i + "" + j)
+    const seatElement = document.querySelector("#" + prefix + i + j);
+    seatElement.classList = col ? "box green" : "box red";
 
-    if (currentScreeningData.value.isFree(i, j)) {
-        currentScreeningData.value.setSeat(i, j);
-    } 
+    if (currentScreeningData.value && !currentScreeningData.value.isFree(i, j)) {
+        currentScreeningData.value.setSeets(i, j)
+        console.log("success add")
+    } else if (currentScreeningData.value) {
+        alert("already reserved!")
+    } else {
+        console.error("currentScreeningData is undefined");
+    }
+})
+
+const reserve = (() => {
+    showSeats.value = false;
+    console.log(movieState.getScreenings())
+    console.log(currentScreeningData.value)
+    const index = movieState.getScreenings().findIndex((ms) => ms.getTime() === currentScreeningData.value.getTime() && ms.getMovieId() == currentScreeningData.value.getMovieId())
+    movieState.setScreeningsData(movieState.getScreenings().splice(index, 1))
+    movieState.setScreeningsData(movieState.getScreenings().concat(currentScreeningData.value)); 
+    alert("Reserved!")
 })
 
 </script>
@@ -51,10 +71,10 @@ const setColor = ((i, j) => {
         </div>
     </section>
     <section v-if="showSeats">
-        <h2>Seats - </h2>
+        <h2>Seats - {{ currentScreeningData.getRoomId() }}</h2>
         <div class="df" v-for="(row, rId) in currentScreeningData.getSeets()" :key="rId">
-            <div v-for="(col, cId) in row.length" :key="cId">
-                <span :id="prefix + rId + cId" @click="setColor(rId, cId)">A</span>
+            <div v-for="(col, cId) in row" :key="cId">
+                <span :id="prefix + rId + cId" @click="setColor(rId, cId, col)" class="box" :class="col ? 'red' : 'green'"></span>
             </div>
         </div>
         <button @click="reserve">Reserve</button>
@@ -96,5 +116,19 @@ button {
     display: block;
 }
 
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    display: inline-block;
+    margin: 8px;
+}
 
+.green {
+    background-color: green !important;
+}
+
+.red {
+    background-color: red !important;
+}
 </style>
