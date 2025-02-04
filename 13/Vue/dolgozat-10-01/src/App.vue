@@ -1,10 +1,12 @@
 <script setup>
 import Bevasarlolista from './components/Bevasarlolista.vue';
+
 </script>
 
 <template>
   <header>
     <h1>Shopping list App</h1>
+
   </header>
   <main>
     <Bevasarlolista />
