@@ -51,4 +51,7 @@ dependencies {
     implementation(libs.retrofit.gson)
     // image loader
     implementation(libs.androidx.recyclerview)
+    // glide (ezek rosszak meg libs.version.toml-ban)
+    implementation(libs.glide)
+    implementation(libs.glide.compiler)
 }

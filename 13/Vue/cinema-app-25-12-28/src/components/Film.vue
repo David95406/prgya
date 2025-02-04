@@ -47,7 +47,7 @@ const reserve = (() => {
     console.log(currentScreeningData.value)
     const index = movieState.getScreenings().findIndex((ms) => ms.getTime() === currentScreeningData.value.getTime() && ms.getMovieId() == currentScreeningData.value.getMovieId())
     movieState.setScreeningsData(movieState.getScreenings().splice(index, 1))
-    movieState.setScreeningsData(movieState.getScreenings().concat(currentScreeningData.value)); 
+    movieState.setScreeningsData(movieState.getScreenings().concat(currentScreeningData.value));
     alert("Reserved!")
 })
 
@@ -74,7 +74,8 @@ const reserve = (() => {
         <h2>Seats - {{ currentScreeningData.getRoomId() }}</h2>
         <div class="df" v-for="(row, rId) in currentScreeningData.getSeets()" :key="rId">
             <div v-for="(col, cId) in row" :key="cId">
-                <span :id="prefix + rId + cId" @click="setColor(rId, cId, col)" class="box" :class="col ? 'red' : 'green'"></span>
+                <span :id="prefix + rId + cId" @click="setColor(rId, cId, col)" class="box"
+                    :class="col ? 'red' : 'green'"></span>
             </div>
         </div>
         <button @click="reserve">Reserve</button>

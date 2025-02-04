@@ -36,6 +36,15 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
+        <TextView
+            android:id="@+id/user_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vérteskethely"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+
     </LinearLayout>
 
 </LinearLayout>
