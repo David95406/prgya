@@ -4,13 +4,8 @@ import gridData from '../data/gridData';
 import Grid from '../classes/Grid';
 
 let props = defineProps({
-    filter: String
-})
-console.log(props.filter)
-
-const grids = ref([])
-gridData.forEach((grid) => {
-    grids.value.push(new Grid(grid.name, grid.power))
+    filter: String,
+    grids: Array
 })
 
 const isSortByName = ref(false)
@@ -18,7 +13,7 @@ const sortByName = (() => isSortByName.value = true)
 const sortByPower = (() => isSortByName.value = false)
 
 const sortedGrids = computed(() => {
-    let sorted = grids.value.sort((a, b) => {
+    let sorted = props.grids.sort((a, b) => {
         if (isSortByName.value) {
             return a.getName().localeCompare(b.getName());
         } else {

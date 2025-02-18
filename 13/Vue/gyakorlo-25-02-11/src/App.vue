@@ -10,6 +10,7 @@ import gridData from './data/gridData';
 import Grid from './classes/Grid';
 import GridTable from './components/GridTable.vue';
 import ListManager from './components/ListManager.vue';
+import Modal from './components/Modal.vue';
 
 const userState = useUserState()
 
@@ -28,8 +29,19 @@ watch(selectedUserIndex, (() => {
   userState.setSelectedUserIndex(selectedUserIndex.value)
 }))
 
-//2
+//2 - szures es rendezes
 const sortGrid = ref("")
+
+const grids = ref([])
+gridData.forEach((grid) => {
+    grids.value.push(new Grid(grid.name, grid.power))
+})
+
+//3 - modal
+const showModal = ref(false)
+const handleModal = (() => {
+  showModal.value = !showModal.value
+})
 </script>
 
 <template>
@@ -51,7 +63,7 @@ const sortGrid = ref("")
     <section>
       <br><br>
       <input v-model="sortGrid" type="text" placeholder="Search...">
-      <GridTable :filter="sortGrid"/>
+      <GridTable :filter="sortGrid" :grids="grids"/>
     </section>
     <section>
       <br><br>
@@ -60,6 +72,10 @@ const sortGrid = ref("")
     <section>
       <br><br>
       <ListManager/>
+    </section>
+    <section>
+      <button @click="handleModal">Show Modal</button>
+      <Modal v-if="showModal"/>
     </section>
   </main>
   <footer>
