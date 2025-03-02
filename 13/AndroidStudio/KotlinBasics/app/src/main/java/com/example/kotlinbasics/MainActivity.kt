@@ -1,16 +1,11 @@
 package com.example.kotlinbasics
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Phone
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinbasics.ui.ColorListActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var OpenCalculatorButton: Button
@@ -18,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var OpenWeatherButton: Button
     private lateinit var OpenUserListButton: Button
     private lateinit var OpenRandomUserListButton: Button
+    private lateinit var OpenColorListButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +48,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RandomUserListActivity::class.java)
             startActivity(intent)
         }
+
+        OpenColorListButton = findViewById(R.id.OpenColorListButton)
+        OpenColorListButton.setOnClickListener() {
+            val intent = Intent(this, ColorListActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 }

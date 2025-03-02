@@ -17,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RandomUserListActivity : AppCompatActivity() {
+    /*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,6 +41,7 @@ class RandomUserListActivity : AppCompatActivity() {
 
     }
 
+
     private suspend fun fetchRandomUserList() : List<RUser> {
         // Retrofit inicializálása
         val retrofit = Retrofit.Builder()
@@ -58,5 +60,7 @@ class RandomUserListActivity : AppCompatActivity() {
             }
         }
     }
+        */
+
 
 }

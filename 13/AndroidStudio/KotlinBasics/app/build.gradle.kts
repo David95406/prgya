@@ -37,7 +37,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -46,13 +45,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    // halozat kezeles
     implementation(libs.retrofit)
     implementation(libs.okhttp)
     implementation(libs.retrofit.gson)
-    // image loader
     implementation(libs.androidx.recyclerview)
-    // glide (ezek rosszak meg libs.version.toml-ban)
     implementation(libs.glide)
-    implementation(libs.glide.compiler)
+    kapt(libs.glide.compiler)
+}
+
+configurations.all {
+    exclude(group = "com.github.bumptech.glide", module = "annotations")
+    exclude(group = "com.github.bumptech.glide", module = "compiler")
 }

@@ -28,6 +28,11 @@
             android:exported="false" />
         <activity android:name=".RandomUserListActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.ColorListActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

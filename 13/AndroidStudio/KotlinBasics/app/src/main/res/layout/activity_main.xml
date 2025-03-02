@@ -38,4 +38,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/OpenRandomUserListButton"
         android:text="Random felhasználók megnyitása"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/OpenColorListButton"
+        android:text="Color list megnyitása"/>
+
 </LinearLayout>

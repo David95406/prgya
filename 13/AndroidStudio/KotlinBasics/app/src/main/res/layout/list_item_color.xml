@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/colorImageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:id="@+id/colorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="color"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/colorYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="year"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/colorPantone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pantone"
+        android:textSize="16sp" />
+
+
+</LinearLayout>
