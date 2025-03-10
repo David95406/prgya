@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "9d887df2-3f67-47af-ab99-3e3b614ce164",
+		"name": "swagger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39842159"
+	},
+	"item": [
+		{
+			"name": "textsimilarity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text_1\": \"Hello World!\",\n    \"text_2\": \"world hello?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.api-ninjas.com/v1/textsimilarity",
+					"protocol": "https",
+					"host": [
+						"api",
+						"api-ninjas",
+						"com"
+					],
+					"path": [
+						"v1",
+						"textsimilarity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "convertcurrency",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.api-ninjas.com/v1/convertcurrency?have=GBP&amount=5000&want=AUD",
+					"protocol": "https",
+					"host": [
+						"api",
+						"api-ninjas",
+						"com"
+					],
+					"path": [
+						"v1",
+						"convertcurrency"
+					],
+					"query": [
+						{
+							"key": "x-api-key",
+							"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+							"disabled": true
+						},
+						{
+							"key": "have",
+							"value": "GBP"
+						},
+						{
+							"key": "amount",
+							"value": "5000"
+						},
+						{
+							"key": "new_amount",
+							"value": "9559.32",
+							"disabled": true
+						},
+						{
+							"key": "want",
+							"value": "AUD"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
