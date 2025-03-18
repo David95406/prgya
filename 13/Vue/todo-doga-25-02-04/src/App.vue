@@ -19,7 +19,7 @@ watch((sortBy), () => {
 const sortedTodos = computed(() => {
   if (sortBy.value && isSort.value) {
     return todos.getTodos().filter((a) => { //gomb!
-      return a.getName().includes(sortBy.value)
+      return a.getName().includes(sortBy.value) 
     })
   } else {
     return todos.getTodos()
