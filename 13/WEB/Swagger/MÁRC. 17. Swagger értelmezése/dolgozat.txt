@@ -1,0 +1,63 @@
+Hány kérés van? 2
+Kérésenként:
+Mi az endpoint? https://api.usermanagement.com/users
+
+Milyen típusú kérés? GET
+
+Milyen adatokat küld fel, azok milyen típusúak, és hol mennek?
+A kérés paraméterként megy fel (query): id (integer), name (string), status (string), egyik sem kötelező!
+
+Milyen válaszok érkezhetnek, milyen formátumban?
+(Ahol jsont lehet értelmezni, ott azt is mutasd be)
+200-as válasz:
+	json objektumlista, id (integer), name (string), status (string):
+	[
+		{
+			id: 0,
+			name: “”,
+			status: “”},
+		{…},
+	]
+
+401-es válasz:
+	json objektum:
+	ErrorResponse
+400-as válasz:
+	json objektum:
+	ErrorResponse
+
+Mit tudsz még esetleg elmondani a kérésekről még?
+A status csak: active vagy inactive lehet.
+
+
+2. kérés:
+Mi az endpoint? https://api.usermanagement.com/workplaces
+
+Milyen típusú kérés? POST
+
+Milyen adatokat küld fel, azok milyen típusúak, és hol mennek?
+Kérés body-ként megy fel, json: name (string), postal_code (integer), city (string), street (string), kötelező megadni!
+
+Milyen válaszok érkezhetnek, milyen formátumban?
+201-es válasz:
+	json objektum:
+	{
+		message: “”	
+	}
+
+401-es válasz:
+	json objektum:
+	ErrorResponse
+
+400-as válasz:
+	json objektum
+	ErrorResponse
+
+(Ahol jsont lehet értelmezni, ott azt is mutasd be)
+
+Mit tudsz még esetleg elmondani a kérésekről még? Hiba esetén a válasz az ErrorResponse objektumot adja vissza
+ErrorResponse: (error: string, message, string)
+	{
+		error: “”,
+		message: “”
+	}

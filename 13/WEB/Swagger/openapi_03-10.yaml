@@ -1,0 +1,280 @@
+openapi: 3.0.0
+info:
+  title: Kombinált API
+  description: Egyesített API dokumentáció, amely felhasználók adatait kezeli.
+  version: 1.0.0
+servers:
+  - url: https://reqres.in/api
+  - url: https://api.example.com/v1
+  - url: https://api.api-ninjas.com/
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey 
+      in: header 
+      name: X-API-KEY 
+
+paths:
+  /users:
+    get:
+      summary: Felhasználók lekérdezése
+      responses:
+        "200":
+          description: Sikeres válasz
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+    post:
+      summary: Új felhasználó létrehozása
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+                - name
+      responses:
+        "201":
+          description: Sikeres létrehozás
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+        "400":
+          description: Hibás kérés
+  /users/{id}:
+    get:
+      summary: Egy adott felhasználó adatainak lekérdezése
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A felhasználó egyedi azonosítója
+          schema:
+            type: integer
+            example: 2
+      responses:
+        "200":
+          description: Sikeres válasz
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      email:
+                        type: string
+                        example: "janet.weaver@reqres.in"
+                      first_name:
+                        type: string
+                        example: "Janet"
+                      last_name:
+                        type: string
+                        example: "Weaver"
+                      avatar:
+                        type: string
+                        format: uri
+                        example: "https://reqres.in/img/faces/2-image.jpg"
+                  support:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        example: "https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral"
+                      text:
+                        type: string
+                        example: "Tired of writing endless social media content? Let Content Caddy generate it for you."
+  /register:
+    post:
+      summary: Regisztráció
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: A felhasználó egyedi email címe
+                  example: jhonedoe@mail.com
+                password:
+                  type: string
+                  description: A felhasználó jelszava
+                  example: password
+              required:
+                - email
+                - password
+      responses:
+        "200":
+          description: Sikeres válasz
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  email:
+                    type: string
+                    example: "janet.weaver@reqres.in"
+                  first_name:
+                    type: string
+                    example: "Janet"
+                  last_name:
+                    type: string
+                    example: "Weaver"
+  /login:
+    post:
+      summary: Bejelentkezés
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: A felhasználó email címe
+                  example: "eve.holt@reqres.in"
+                password:
+                  type: string
+                  description: A felhasználó jelszava
+                  example: "cityslicka"
+              required:
+                - email
+                - password
+      responses:
+        "200":
+          description: Sikeres bejelentkezés
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: "QpwL5tke4Pnpja7X4"
+  /v1/textsimilarity:
+    post:
+      summary: Szöveg-hasonlóság számítása
+      description: Két szöveg közötti hasonlóság kiszámítása.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text_1:
+                  type: string
+                  example: "Hello World!"
+                text_2:
+                  type: string
+                  example: "hello world?"
+              required:
+                - text_1
+                - text_2
+      responses:
+        "200":
+          description: Hasonlósági pontszám visszaadva
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  similarity:
+                    type: number
+                    example: 0.75
+        "400":
+          description: Hibás kérés vagy api kulcs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid API key."
+  /v1/convertcurrency:
+    get:
+      summary: Valuta váltás
+      description: Valuta átváltás
+      parameters:
+        - name: have
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "GBP"
+          description: A váltani kívánt pénznem.
+        - name: want
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "AUD"
+          description: Pénznem, amire át akarjuk váltani a pénznemet.
+        - name: amount
+          in: query
+          required: true
+          schema:
+            type: number
+            example: 5000
+          description: Az átváltandó összeg.
+      responses:
+        "200":
+          description: A valuta átváltás sikeres volt.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  new_amount:
+                    type: number
+                    example: 10217.24
+                  new_currency:
+                    type: string
+                    example: "AUD"
+                  old_currency:
+                    type: string
+                    example: "GBP"
+                  old_amount:
+                    type: number
+                    example: 5000.0
+        "400":
+          description: Hibás kérés vagy api kulcs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid API key."

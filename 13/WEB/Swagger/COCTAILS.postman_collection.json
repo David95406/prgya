@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "601067b5-54f0-4829-9630-8ccfea5265f4",
+		"name": "COCTAILS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39842159"
+	},
+	"item": [
+		{
+			"name": "get_coctails_by_ingredients",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.api-ninjas.com/v1/cocktail?ingredients=orange",
+					"protocol": "https",
+					"host": [
+						"api",
+						"api-ninjas",
+						"com"
+					],
+					"path": [
+						"v1",
+						"cocktail"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "orange"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.api-ninjas.com/v1/cocktail?ingredients=orange",
+							"protocol": "https",
+							"host": [
+								"api",
+								"api-ninjas",
+								"com"
+							],
+							"path": [
+								"v1",
+								"cocktail"
+							],
+							"query": [
+								{
+									"key": "ingredients",
+									"value": "orange"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2457"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Mar 2025 07:22:06 GMT"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67cfe49e-789bdca272b4819163bbc4ae;Parent=330788c934f1c7fe;Sampled=0;Lineage=1:5750af76:0"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "05bc5a05-f7ab-40d7-9fca-16129da8c9ae"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "HQCowHAuvHcESGg="
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 4cfa930fc6c84f21e8b75edab9c07bbc.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "BUD50-P1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "-VphjS8dGw-C1iMJZoVNgA-0GCrj8cshHGfz-huns5n0qNqyVMRsQA=="
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ingredients\": [\n            \"3 parts Brandy\",\n            \"2 parts Yellow Chartreuse\",\n            \"1 part Lillet\",\n            \"1 part Orange Juice\",\n            \"1 part Dubonnet\"\n        ],\n        \"instructions\": \"Shake ingredients together with ice, and strain into a cocktail glass.\",\n        \"name\": \"four score\"\n    },\n    {\n        \"ingredients\": [\n            \"3.5 cl (7 parts) gin\",\n            \"2 cl (4 parts) apricot brandy\",\n            \"1.5 cl (3 parts) orange juice\"\n        ],\n        \"instructions\": \"Shake together over ice.  Strain into cocktail glass and serve chilled.\",\n        \"name\": \"paradise\"\n    },\n    {\n        \"ingredients\": [\n            \"3 parts Brandy\",\n            \"2 parts Yellow Chartreuse\",\n            \"1 part Lillet\",\n            \"1 part Orange Juice\",\n            \"1 part Dubonnet\"\n        ],\n        \"instructions\": \"Shake ingredients together with ice, and strain into a cocktail glass.\",\n        \"name\": \"savoy affair\"\n    },\n    {\n        \"ingredients\": [\n            \"3 parts Brandy\",\n            \"2 parts Yellow Chartreuse\",\n            \"1 part Lillet\",\n            \"1 part Orange Juice\",\n            \"1 part Dubonnet\"\n        ],\n        \"instructions\": \"Shake ingredients together with ice, and strain into a cocktail glass.\",\n        \"name\": \"savoy corpse reviver\"\n    },\n    {\n        \"ingredients\": [\n            \"3 parts Brandy\",\n            \"2 parts Yellow Chartreuse\",\n            \"1 part Lillet\",\n            \"1 part Orange Juice\",\n            \"1 part Dubonnet\"\n        ],\n        \"instructions\": \"Shake ingredients together with ice, and strain into a cocktail glass.\",\n        \"name\": \"the blenheim\"\n    },\n    {\n        \"ingredients\": [\n            \"52.5 ml dry gin\",\n            \"22.5 ml lemon juice\",\n            \"22.5 ml orange juice\",\n            \"2 teaspoons honey syrup\"\n        ],\n        \"instructions\": \"Stir honey syrup with lemon and orange juices until it dissolves, add gin and shake with ice. Strain into chilled cocktail glass\",\n        \"name\": \"bee's knees\"\n    },\n    {\n        \"ingredients\": [\n            \"1 oz Gin\",\n            \"1 oz Sweet vermouth\",\n            \"1 oz Herbal liqueur, Green Chartreuse\",\n            \"1 ds Orange bitters\",\n            \"1  Maraschino cherry (as garnish)\"\n        ],\n        \"instructions\": \"Stir, strain, straight up, cocktail glass, garnish.\",\n        \"name\": \"bijou\"\n    },\n    {\n        \"ingredients\": [\n            \"3 cl (6 parts) Gin\",\n            \"1.5 cl (3 parts) Sweet Red Vermouth\",\n            \"1 cl (2 parts) Dry Vermouth\",\n            \"1.5 cl (3 parts) Orange juice\"\n        ],\n        \"instructions\": \"Pour into cocktail shaker all ingredients with ice cubes, shake well. Strain in chilled cocktail or martini glass.\",\n        \"name\": \"bronx\"\n    },\n    {\n        \"ingredients\": [\n            \"2 oz Old Tom Gin\",\n            \"2 ds Lemon juice\",\n            \"2 ds Maraschino Liqueur\",\n            \"2 ds Orange bitters\",\n            \"1  Cherry (as garnish)\"\n        ],\n        \"instructions\": \"Shake with ice, strain into glass.\",\n        \"name\": \"casino\"\n    },\n    {\n        \"ingredients\": [\n            \"1 measure gin\",\n            \"1/2 measure sweet vermouth\",\n            \"1/2 measure orange juice\",\n            \"1/4 measure orange curacao or triple sec\"\n        ],\n        \"instructions\": \"Shake with ice and strain into a chilled large cocktail glass\",\n        \"name\": \"damn the weather\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "auth_error",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "/h3+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.api-ninjas.com/v1/cocktail?ingredients=orange",
+					"protocol": "https",
+					"host": [
+						"api",
+						"api-ninjas",
+						"com"
+					],
+					"path": [
+						"v1",
+						"cocktail"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "orange"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "/h3+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.api-ninjas.com/v1/cocktail?ingredients=orange",
+							"protocol": "https",
+							"host": [
+								"api",
+								"api-ninjas",
+								"com"
+							],
+							"path": [
+								"v1",
+								"cocktail"
+							],
+							"query": [
+								{
+									"key": "ingredients",
+									"value": "orange"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Mar 2025 07:23:12 GMT"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67cfe4e0-7df04aa74e4a0bed080874f4;Parent=408afed22a5c8a18;Sampled=0;Lineage=1:5750af76:0"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "cce3d624-fecf-4ae2-9aa4-640669a36a49"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "HQCzJFcSPHcEIHw="
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Error from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 4cfa930fc6c84f21e8b75edab9c07bbc.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "BUD50-P1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "_gblIpW7SnE-wG8uUD4cVoNBfi9Y6jkYgQquCCoPIlNotqOX1U1M-Q=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid API Key.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get_coctails_by_name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.api-ninjas.com/v1/cocktail?name=bloody",
+					"protocol": "https",
+					"host": [
+						"api",
+						"api-ninjas",
+						"com"
+					],
+					"path": [
+						"v1",
+						"cocktail"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "bloody"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "/h2+C5zc1e0jDzgAH7yYPw==yL7KIEmBsjNg40am",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.api-ninjas.com/v1/cocktail?name=bloody",
+							"protocol": "https",
+							"host": [
+								"api",
+								"api-ninjas",
+								"com"
+							],
+							"path": [
+								"v1",
+								"cocktail"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bloody"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "425"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Mar 2025 07:25:29 GMT"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67cfe569-12c12287350f9d2d7cc5a38f;Parent=47a86cbb11182a5b;Sampled=0;Lineage=1:5750af76:0"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "c808fad2-e1c1-44bc-bf8d-ef7cb4e77f3c"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "HQDImFWrPHcEPRg="
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 37dba5ebe5274111ab6f46c6b0e15070.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "BUD50-P1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "_9x9WmtJQMs6rU8sumKhCycJduIHH8WLR-dtVAuSpp5rqAd6YP9gUg=="
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ingredients\": [\n            \"1 part cognac\",\n            \"1 part Benedictine\"\n        ],\n        \"instructions\": \"Combine and stir.\",\n        \"name\": \"bloody aztec\"\n    },\n    {\n        \"ingredients\": [\n            \"4.5 cl (3 parts) vodka\",\n            \"9 cl (6 parts) Tomato juice\",\n            \"1.5 cl (1 part) Lemon juice\",\n            \"2 to 3 dashes of Worcestershire Sauce\",\n            \"Tabasco sauce\",\n            \"Celery salt\",\n            \"Black pepper\"\n        ],\n        \"instructions\": \"Stirring gently, pour all ingredients into highball glass. Garnish.\",\n        \"name\": \"bloody mary\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

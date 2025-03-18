@@ -1,5 +1,11 @@
-import { describe, test, expect } from "vitest";
-import { mount } from "@vue/test-utils";
+import {
+    describe,
+    test,
+    expect
+} from "vitest";
+import {
+    mount
+} from "@vue/test-utils";
 import Notification from "../../components/Notification.vue";
 
 describe('Notification tests', () => {
@@ -19,22 +25,32 @@ describe('Notification tests', () => {
         expect(span.text()).toBe(message)
     })
 
-    test('Notification color change test', () => {
+    test('Notification color change test', async () => {
         console.log("okokokk")
 
         const span = wrapper.find('span')
 
         expect(span.attributes('style')).toBe('color: green;')
 
-        wrapper.setProps({
+        await wrapper.setProps({
             type: "error"
         })
-       // expect(span.attributes('style')).toBe('color: red;')
+        expect(span.attributes('style')).toBe('color: red;')
 
 
-        wrapper.setProps({
-            type: "warning"
+        await wrapper.setProps({
+            type: "warning",
+            message: "Hello"
         })
+
+        var ujwrapper = mount(Notification, {
+            props: {
+                type: "warning",
+                message: "Hello"
+            }
+        })
+        var ujspan = ujwrapper.find('span')
+        expect(ujspan.attributes('style')).toBe('color: yellow;')
         expect(span.attributes('style')).toBe('color: yellow;')
     })
 

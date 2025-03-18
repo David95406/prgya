@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: User Management API
+  description: Felhasználók adatainak lekérdezése, munkahelyi adatok rögzítése.
+  version: 1.0.0
+
+servers:
+  - url: https://api.usermanagement.com
+    description: Felhasználókezelő rendszer
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+   
+paths:
+  /users:
+    get:
+      summary: Felhasználók lekérdezése
+      description: Lekéri a felhasználók listáját
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          required: false
+          description: A felhasználó egyedi azonosítója
+          schema:
+            type: integer
+            format: int64
+        - name: name
+          in: query
+          required: false
+          description: A felhasználó neve
+          schema:
+            type: string
+        - name: status
+          in: query
+          required: false
+          description: A felhasználó státusza (aktív/inaktív)
+          schema:
+            type: string
+            enum: [active, inactive]
+      responses:
+        "200":
+          description: Sikeres válasz - felhasználók listája
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    status:
+                      type: string
+        "401":
+          description: Nincs megfelelő autentikáció
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: Hibás kérési paraméterek
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /workplaces:
+    post:
+      summary: Munkahelyi adatok rögzítése
+      description: Új munkahelyi adatokat visz fel a rendszerbe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              name: "Példa Kft."
+              postal_code: "1234"
+              city: "Budapest"
+              street: "Fő utca 1."
+      responses:
+        "201":
+          description: Sikeres létrehozás
+          content:
+            application/json:
+              example:
+                message: "Munkahelyi adat sikeresen rögzítve."
+        "401":
+          description: Nincs megfelelő autentikáció
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: Hibás kérési adatok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

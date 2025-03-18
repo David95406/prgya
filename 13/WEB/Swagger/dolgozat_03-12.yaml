@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: API Dolgozat
+  description: Dologzat
+  version: 1.0.0
+
+servers:
+  - url: https://api.api-ninjas.com
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header   
+      name: X-API-KEY  
+
+paths:
+  /v1/cocktail:
+    get:
+      summary: Koktélok lekérése
+      description: Koktél keresés név vagy hozzávaló alapján
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+          example: "Bloody"
+          description: A keresett koktél neve
+        - name: ingredients
+          in: query
+          required: false
+          schema:
+            type: string
+          example: "orange"
+          description: Szures adott hozzávalóra
+      responses:
+        "200":
+          description: Sikeres válasz
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: "Bloody Aztec"
+                    ingredients:
+                      type: array
+                      items:
+                        type: string
+                      example: ["1 part cognac", "1 part Benedictine"]
+                    instructions:
+                      type: string
+                      example: "Combine and stir"
+        "400":
+          description: Hibás kérés, érvénytelen API kulcs vagy bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid API Key."
