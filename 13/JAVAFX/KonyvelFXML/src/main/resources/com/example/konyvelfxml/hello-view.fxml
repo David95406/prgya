@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="478.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.konyvelfxml.HelloController">
+   <children>
+      <TableView fx:id="elerhetoKonyvTableView" layoutX="15.0" layoutY="4.0" prefHeight="450.0" prefWidth="281.0">
+        <columns>
+          <TableColumn fx:id="EKCim" prefWidth="127.0" text="Cím" />
+          <TableColumn fx:id="EKSzerzo" prefWidth="73.0" text="Szerző" />
+          <TableColumn fx:id="EKKiadasEve" text="Kiadás éve" />
+        </columns>
+      </TableView>
+      <TableView fx:id="kiadottKonyTableView" layoutX="418.0" layoutY="4.0" prefHeight="450.0" prefWidth="300.0">
+        <columns>
+          <TableColumn fx:id="KKCim" prefWidth="154.0" text="Cím" />
+          <TableColumn fx:id="KKKolcsonzo" prefWidth="79.0" text="Kölcsönző" />
+          <TableColumn fx:id="KKDatum" prefWidth="67.0" text="Dátum" />
+        </columns>
+      </TableView>
+      <TextField fx:id="KNevTextField" layoutX="304.0" layoutY="32.0" prefHeight="25.0" prefWidth="108.0" />
+      <Button onAction="#kiadas" layoutX="315.0" layoutY="78.0" mnemonicParsing="false" text="Kiadás -&gt;" />
+      <Button onAction="#visszavetel" layoutX="303.0" layoutY="126.0" mnemonicParsing="false" text="&lt;- Visszavétel" />
+      <Label layoutX="306.0" layoutY="6.0" text="Kölcsönző neve:" />
+   </children>
+</Pane>
