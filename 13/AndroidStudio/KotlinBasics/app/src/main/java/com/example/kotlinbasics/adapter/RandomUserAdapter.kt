@@ -21,27 +21,19 @@ class RandomUserAdapter(private val userList: List<RUser>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RandomUserViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_randomuser, parent, false)
         return RandomUserViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RandomUserAdapter.RandomUserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RandomUserViewHolder, position: Int) {
         val user = userList[position]
         holder.nameText.text = user.name.first + " " + user.name.last
         holder.emailText.text = user.email
         holder.countryText.text = user.location.country
-
         Glide.with(holder.itemView.context)
             .load(user.picture.medium)
-            .placeholder(R.drawable.user)
-            .error(R.drawable.ic_launcher_background)
+            .placeholder(R.drawable.ic_launcher_background)
             .into(holder.profileImage)
     }
-
-    override fun getItemCount(): Int {
-        return userList.size
-    }
-
-
-
+    override fun getItemCount() = userList.size
 }

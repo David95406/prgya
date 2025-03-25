@@ -1,4 +1,4 @@
-import { createPinia, defineStore } from "pinia";
+import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const usePokeState = defineStore(('pokemon state'), () => {
@@ -22,7 +22,13 @@ export const usePokeState = defineStore(('pokemon state'), () => {
     }
 
     function addFavorite(favorite) {
-        favorite.value.push(favorite)
+        if (!favorites.value.some(fav => fav.getName() == favorite.getName())) {
+            favorites.value.push(favorite);
+        }
+    }
+
+    function removePokemonByIndex(index) {
+        favorites.value.splice(index, 1)
     }
 
     return {
@@ -30,7 +36,8 @@ export const usePokeState = defineStore(('pokemon state'), () => {
         addPokemon,
         getFavoirites,
         getFavoiritesByIndex,
-        addFavorite
+        addFavorite,
+        removePokemonByIndex
     }
 
 })

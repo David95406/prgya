@@ -1,11 +1,9 @@
-<script>
-    export default {
-        name: 'Home'
-    }
-</script>
-
 <script setup>
 import SearchBar from './SearchBar.vue';
+
+defineOptions({
+    name: 'Home'
+})
 </script>
 
 <template>
@@ -13,5 +11,3 @@ import SearchBar from './SearchBar.vue';
         <SearchBar />
     </div>
 </template>
-
-<style scoped></style>

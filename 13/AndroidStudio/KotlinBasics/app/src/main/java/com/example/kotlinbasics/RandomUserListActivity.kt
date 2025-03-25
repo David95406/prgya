@@ -2,7 +2,6 @@ package com.example.kotlinbasics
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,51 +15,43 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class RandomUserListActivity : AppCompatActivity() {
-    /*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_random_users)
 
-        val recyclerView: RecyclerView = findViewById(R.id.randomUserListRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
+        val recycylerView : RecyclerView = findViewById(R.id.randomUserListRecyclerView);
+        recycylerView.layoutManager = LinearLayoutManager(this)
         lifecycleScope.launch {
             try {
                 val randomUsers = fetchRandomUserList()
-                if (!randomUsers.isNullOrEmpty()) {
-                    recyclerView.adapter = RandomUserAdapter(randomUsers)
-                } else {
-                    Log.e("RandomUserListActivity", "No random users found")
+                if(!randomUsers.isNullOrEmpty()){
+                    recycylerView.adapter = RandomUserAdapter(randomUsers)
+                }else{
+                    Log.e("Hiba", "A recyclerview nem található")
                 }
+                recycylerView.adapter = randomUsers?.let { RandomUserAdapter(it) }
             } catch (e: Exception) {
-                Log.e("RandomUserListActivity", "Error fetching random users", e)
+                Log.e("Hiba", "Hiba az letoltesben")
             }
         }
-
     }
 
-
-    private suspend fun fetchRandomUserList() : List<RUser> {
-        // Retrofit inicializálása
+    private suspend fun fetchRandomUserList(): List<RUser>? {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://randomuser.me/")
-            .addConverterFactory(GsonConverterFactory.create()) // JSON -> Kotlin objektum
+            .baseUrl("https://randomuser.me/api/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-        val service = retrofit.create(RandomUserService::class.java)
-        val RandomUserService = retrofit.create(RandomUserService::class.java)
+        val randomUserService = retrofit.create(RandomUserService::class.java)
         return withContext(Dispatchers.IO) {
             try {
-                val response = RandomUserService.getRandomUsers(10)
+                val response = randomUserService.getRandomUsers("10")
                 response.results
             } catch (e: Exception) {
-                Log.e("RandomUserListActivity", "Error fetching random users", e)
+                Log.e("Hiba", "Hiba az API kérés során")
+                null
             }
-        }
+        };
     }
-        */
-
-
 }

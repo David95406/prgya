@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import axios from 'axios';
 import Pokemon from './classes/Pokemon';
 import { usePokeState } from './state/state';
@@ -21,13 +20,21 @@ const getPokemons = async () => {
         .finally(() => {
             console.log("sikeres lekérés")
         })
-}
+}   
 getPokemons()
+
 </script>
 
 <template>
-    <Navigation />
-    <RouterView />
+    <header class="container-fluid bg-light py-3">
+        <div class="text-center">
+            <img src="./assets/pokeapi_256.png" class="img-fluid" style="max-height: 80px;">
+        </div>
+        <Navigation />
+        <RouterView />
+    </header>
+    <main class="container mt-4"></main>
+    <footer class="container-fluid bg-dark text-white py-3 mt-4 text-center footer">
+        <p class="mb-0">Pokemon App &copy; 2025</p>
+    </footer>
 </template>
-
-<style scoped></style>
