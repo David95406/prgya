@@ -5,15 +5,16 @@ plugins {
 }
 
 android {
-    namespace = "com.example.kotlinbasics"
+    namespace = "com.example.dolgozat"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.kotlinbasics"
+        applicationId = "com.example.dolgozat"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,6 +37,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -50,9 +52,4 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.glide)
     kapt(libs.glide.compiler)
-}
-
-configurations.all {
-    exclude(group = "com.github.bumptech.glide", module = "annotations")
-    exclude(group = "com.github.bumptech.glide", module = "compiler")
 }
