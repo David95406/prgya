@@ -16,6 +16,7 @@ const planetStore = usePlanetStore()
 const planets = ref([])
 
 const fetchData = async () => {
+  planets.value = []
   axios.get(CRUD_API_PLANETS)
     .then((response) => {
       const data = response.data
@@ -112,7 +113,7 @@ const uppercaseAll = async () => {
       </div>
     </div>
     <div>
-      <AddPlanetModal :showModal="viewState.showAddPlanetModal" @close="handleAddNew" />
+      <AddPlanetModal :showModal="viewState.showAddPlanetModal" @close="handleAddNew" @save="fetchData" />
     </div>
   </main>
   <footer class="text-center fixed-bottom">

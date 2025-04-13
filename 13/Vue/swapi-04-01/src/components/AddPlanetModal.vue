@@ -9,7 +9,7 @@ const props = defineProps({
     showModal: Boolean
 })
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'save'])
 
 const closeModal = () => {
     emit('close')
@@ -37,7 +37,6 @@ getPlanet(1)
 
 watch(() => currentPlanet.progress, (newValue) => {
     getPlanet(newValue);
-    console.log(currentPlanet.planet)
 })
 
 
@@ -46,8 +45,8 @@ const addPlanet = async () => {
         planet: currentPlanet.planet.getJSON(),
         //is_uppercase: false
     })
-        .then((response) => {
-            console.log(response.data)
+        .then(() => {
+            emit('save')
         })
         .catch((error) => {
             console.error(error)

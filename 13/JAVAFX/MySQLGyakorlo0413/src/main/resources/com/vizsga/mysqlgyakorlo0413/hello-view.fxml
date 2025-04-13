@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="440.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vizsga.mysqlgyakorlo0413.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <TableView fx:id="jegyzetekTableView" layoutX="31.0" layoutY="14.0" onMouseClicked="#setSelected" prefHeight="200.0" prefWidth="872.0">
+            <columns>
+                <TableColumn fx:id="jegyzetCimColumn" prefWidth="163.0" text="cím" />
+                <TableColumn fx:id="jegyzetTartalomColumn" minWidth="2.0" prefWidth="708.0" text="leírás" />
+            </columns>
+        </TableView>
+        <TextField fx:id="jegyzetCimTextField" layoutX="141.0" layoutY="221.0" promptText="cim" />
+        <TextArea fx:id="jegyzetTartalomTextArea" layoutX="85.0" layoutY="267.0" prefHeight="82.0" prefWidth="259.0" promptText="tartalom" />
+        <Button layoutX="187.0" layoutY="366.0" mnemonicParsing="false" onMouseClicked="#createJegyzet" text="Mentés" />
+        <Button layoutX="14.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#removeJegyzet" text="Törlés" />
+      <TextArea fx:id="updateJegyzetTartalomTextArea" layoutX="585.0" layoutY="268.0" prefHeight="82.0" prefWidth="259.0" promptText="tartalom" />
+      <TextField fx:id="updateJegyzetCimTextField" layoutX="639.0" layoutY="234.0" promptText="cim" />
+      <Button onMouseClicked="#updateJegyzet" layoutX="686.0" layoutY="364.0" mnemonicParsing="false" text="Frissites" />
+    </children>
+</AnchorPane>
