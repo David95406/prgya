@@ -15,7 +15,7 @@ const kivalaszt = (index) => {
 </script>
 
 <template>
-    <table class="table">
+    <table>
         <thead>
             <tr>
                 <th>Név</th>
@@ -37,4 +37,23 @@ const kivalaszt = (index) => {
     </table>
 </template>
 
-<style scoped></style>
+<style scoped>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: aqua;
+    color: black;
+    text-transform: uppercase;
+}
+
+td, th {
+    padding: 10px;
+    text-align: center;
+}
+td {
+    border: 1px solid white;
+}
+</style>

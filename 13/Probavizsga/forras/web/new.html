@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faj Rögzítés</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 class="text-center mb-4">Új faj</h1>
+  <form>
+    <div class="mb-3">
+      <label for="raceName" class="form-label">Faj neve</label>
+      <input type="text" class="form-control" id="raceName" placeholder="Pl. Elf, Törpe, Ork">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Leírás</label>
+      <textarea class="form-control" id="description" rows="3" placeholder="Írj egy rövid jellemzést..."></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Méretkategória</label>
+      <select class="form-select">
+        <option>Kicsi</option>
+        <option>Közepes</option>
+        <option>Nagy</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Speciális képességek</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input ability-check" type="checkbox" id="nightVision" value="">
+        <label class="form-check-label" for="nightVision">Éjjellátás</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input ability-check" type="checkbox" id="magicAffinity" value="">
+        <label class="form-check-label" for="magicAffinity">Mágikus hajlam</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input ability-check" type="checkbox" id="resilience" value="">
+        <label class="form-check-label" for="resilience">Ellenálló képesség</label>
+      </div>
+      <div class="mt-2">Kiválasztott képességek: 0</div>
+    </div>
+    <button type="submit" class="btn btn-outline-light">Mentés</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const abilityChecks = document.querySelectorAll('.ability-check');
+    const abilityCount = document.getElementById('abilityCount');
+
+    function updateAbilityCount() {
+      const count = Array.from(abilityChecks).filter(cb => cb.checked).length;
+      abilityCount.textContent = `Kiválasztott képességek: ${count}`;
+    }
+
+    abilityChecks.forEach(cb => cb.addEventListener('change', updateAbilityCount));
+    updateAbilityCount();
+  </script>
+</body>
+
+</html>

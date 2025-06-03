@@ -1,0 +1,17 @@
+
+²
+java:S1319	"jThe type of "dijazottak" should be an interface such as "List" rather than the implementation "ArrayList".(ïŒ£¦şÿÿÿÿ8¾Ÿ½µï2J$57b2cafa-85d9-4e53-b7bf-1c33f2497a06
+]
+java:S1220""Move this file to a named package.8¾Ÿ½µï2J$e7ed6bd7-f32c-4e13-8dbb-69a81a857e42
+
+java:S1854"7Remove this useless assignment to local variable "sor".(²¤†ÿÿÿÿÿ8ì ½µï2J$a9fe8e3e-0891-4946-916b-0ab48e39f10c
+k
+java:S16590"#Declare "maxEv" on a separate line.(Ğç˜ñûÿÿÿÿ8ü ½µï2J$bcc551bf-dd27-4ca0-b525-368b16c9186e
+r	java:S106""+Replace this use of System.out by a logger.(ä”““úÿÿÿÿ8ü ½µï2J$27a9b881-f1d4-43d5-83d9-52918cf23211
+r	java:S106$"+Replace this use of System.out by a logger.(¨¶ÑÍşÿÿÿÿ8ü ½µï2J$88d51922-a5a3-421b-826c-78d8ac6505df
+m	java:S106'"+Replace this use of System.out by a logger.(ñ¿ÅŠ8ü ½µï2J$2e6e5274-7c86-45df-b4a0-ee8bccdc7ce5
+r	java:S106."+Replace this use of System.out by a logger.(£çñ™ÿÿÿÿÿ8ü ½µï2J$be9d273c-8a8a-4aab-9220-6c0cddca1fac
+r	java:S106="+Replace this use of System.out by a logger.(£Ğ›ïûÿÿÿÿ8ü ½µï2J$3e984df5-b491-4b9f-8d7c-fb140e179cbe
+r	java:S106>"+Replace this use of System.out by a logger.(‘Ê¥şÿÿÿÿ8ü ½µï2J$64bc915b-2099-4a1a-bb74-47cb1c46848e
+m	java:S106?"+Replace this use of System.out by a logger.(§Ä¾8³¿µï2J$44a175c6-3fc0-43bb-b65c-89686cf44316
+r	java:S106@"+Replace this use of System.out by a logger.(æ–Ö¡üÿÿÿÿ8‘³¿µï2J$080caab2-3efd-4836-b447-9d6a1e32d4c8
